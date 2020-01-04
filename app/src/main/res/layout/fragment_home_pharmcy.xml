@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/list_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_main2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SearchProduct"
+        tools:openDrawer="end">
+
+        <RelativeLayout
+            android:id="@+id/design_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/White_Snow"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="50dp"
+            app:elevation="4dp"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <Button
+                android:id="@+id/Local_medicines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/typeSearch"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bt_shap"
+                android:onClick="goSearchLocal_medicines"
+                android:text="أدوية محلية"
+                android:textColor="@color/White_White"
+                android:textSize="28sp" />
+
+
+            <Button
+                android:id="@+id/Imported_medicines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Local_medicines"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bt_shap"
+                android:onClick="goSearchImported_medicines"
+                android:text="ادوية مستوردة"
+                android:textColor="@color/White_White"
+                android:textSize="28sp" />
+
+            <Button
+                android:id="@+id/Accessories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Imported_medicines"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bt_shap"
+                android:onClick="goSearchAccessories"
+                android:text="مستلزمات"
+                android:textColor="@color/White_White"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/typeSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="@string/searchPh"
+                android:textAlignment="center"
+                android:textColor="@color/White_White"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_action_up"
+
+                />
+
+        </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

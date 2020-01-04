@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "142820749106",
+    "firebase_url": "https://sala-f4c03.firebaseio.com",
+    "project_id": "sala-f4c03",
+    "storage_bucket": "sala-f4c03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142820749106:android:710018f37cd925fc",
+        "android_client_info": {
+          "package_name": "pharamacy.eg.sala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142820749106-il8j1h64k2nfaib9t486hqqna3a75lqf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pharamacy.eg.sala",
+            "certificate_hash": "73fb6f993a0b773afdf1aebdb729f2404c91f2d4"
+          }
+        },
+        {
+          "client_id": "142820749106-4m7i3ncmo8kv7ripsjtqq06fanffkf81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeJLHtew-rxZiXEO_IUzNWeGufy0xcZCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142820749106-4m7i3ncmo8kv7ripsjtqq06fanffkf81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

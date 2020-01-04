@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titleFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="مكة فارم"
+        android:textColor="@color/Black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pathFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asfhas/asfasf/asfasf/asf"
+        android:textColor="@color/Gray"
+        android:textSize="18sp"
+        android:gravity="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleFile" />
+
+    <ImageView
+        android:id="@+id/image_excel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_microsoft_excel"
+        app:layout_constraintBottom_toTopOf="@+id/pathFile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

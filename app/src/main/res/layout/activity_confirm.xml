@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Confirm">
+
+    <EditText
+        android:id="@+id/editTextcode"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:inputType="number"
+        android:hint="ادخل كود التاكيد"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <Chronometer
+        android:id="@+id/Chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:countDown="false"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextcode"
+        app:layout_constraintStart_toStartOf="@+id/editTextcode"
+        app:layout_constraintTop_toBottomOf="@+id/editTextcode" />
+
+    <Button
+        android:id="@+id/buttonCode"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:textSize="@dimen/FontSizeView"
+        android:textStyle="bold"
+        android:background="@drawable/bt_shap"
+        android:text="@string/codeOk"
+        android:textColor="@color/White_White"
+        app:layout_constraintEnd_toEndOf="@+id/Chronometer"
+        app:layout_constraintStart_toStartOf="@+id/Chronometer"
+        app:layout_constraintTop_toBottomOf="@+id/Chronometer" />
+
+    <TextView
+        android:id="@+id/signUP_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/ReSend"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/FontSizeView"
+        android:onClick="goMain"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/buttonCode"
+        app:layout_constraintStart_toStartOf="@+id/buttonCode"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCode" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <ImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/White_transparent_white_hex_12"
+            android:contentDescription="@string/upload_image"
+            android:src="@mipmap/user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameC"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:hint="الاسم"
+            android:textAlignment="center"
+            android:textColor="#000"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
+
+            <TextView
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:hint="@string/chooseCity"
+                android:textAlignment="center"
+                android:textColor="#000"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameC"
+                />
+
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/chooseCity"
+            android:textAlignment="center"
+            android:textColor="#000"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner1" />
+
+        <TextView
+            android:id="@+id/neighborhood"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:textColor="#000"
+            android:textAlignment="center"
+            app:autoSizeTextType="uniform"
+            android:hint="@string/chooseRegion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/city" />
+
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:hint="@string/phoneNumber"
+            android:textAlignment="center"
+            android:textColor="#000"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="@+id/city"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/city"
+            app:layout_constraintTop_toBottomOf="@+id/neighborhood" />
+        <TextView
+            android:id="@+id/addressP"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/chooseCity"
+            android:textAlignment="center"
+            android:textColor="#000"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="@+id/number"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/number"
+            app:layout_constraintTop_toBottomOf="@+id/number" />
+
+        <Button
+            android:id="@+id/edit_profile_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/bt_shap"
+            android:text="تعديل"
+            android:textColor="@color/White_White"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/addressP"
+            app:layout_constraintStart_toStartOf="@+id/addressP"
+            app:layout_constraintTop_toBottomOf="@+id/addressP" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

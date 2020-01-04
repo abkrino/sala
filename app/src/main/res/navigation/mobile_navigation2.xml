@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home2">
+
+    <fragment
+        android:id="@+id/nav_home2"
+        android:name="pharamacy.eg.sala.ui2.Home_pharm"
+        android:label="الصفحة الرئيسة"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_profile2"
+        android:name="pharamacy.eg.sala.ui2.Profile_pharm"
+        android:label="الصفحة الشخصية"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_connectUs2"
+        android:name="pharamacy.eg.sala.ui.slideshow.SlideshowFragment"
+        android:label="تواصل معنا"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_about2"
+        android:name="pharamacy.eg.sala.ui.tools.ToolsFragment"
+        android:label="نبذة عن التطبيق"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_signOut2"
+        android:name="pharamacy.eg.sala.ui.SignOut"
+        android:label="تسجيل الخروج"
+        tools:layout="@layout/fragment_signout" />
+
+    <fragment
+        android:id="@+id/nav_order2"
+        android:name="pharamacy.eg.sala.ui.send.SendFragment"
+        android:label="الاوامر"
+        tools:layout="@layout/fragment_send" />
+</navigation>

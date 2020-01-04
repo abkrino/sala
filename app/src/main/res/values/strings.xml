@@ -1,0 +1,94 @@
+<resources>
+
+    <string name="app_name">SALA</string>
+
+
+    <string name="action_settings">Settings</string>
+
+
+    <string name="profile_desc">Rowan Sebastian Atkinson CBE is an English actor,  comedian and screenwriter</string>
+
+
+    <string name="profile_title">الصفحة الشخصية</string>
+    <string name="posts">posts</string>
+    <string name="followers">followers</string>
+    <string name="following">following</string>
+    <string name="msg_error_unable_select_profile_pic">Unable to set profile image. Please try again!</string>
+    <string name="lbl_set_profile_photo">Set profile image</string>
+    <string name="lbl_take_camera_picture">Take a picture</string>
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="toast_image_intent_null">Image picker option is missing!</string>
+    <string name="upload_image">upload Image</string>
+    <string name="name">الاسم</string>
+    <string name="chooseCountry">اختار المحافظة المقر</string>
+    <string name="chooseCity">المدينه</string>
+    <string name="chooseRegion">المنطقه</string>
+    <string name="theProvincesTheyServe">اختار المحافاظات للعمل بيها</string>
+    <string name="activityType">اختار نوع النشاط</string>
+    <string name="phoneNumber">رقم التليفون</string>
+    <string name="continuebt">متابعه</string>
+    <string name="codeOk">تاكيد الرمز</string>
+    <string name="address">العنوان</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="tital_app">Sala</string>
+    <string name="ReSend">اذا لم تستلم رسالة الكود اضغط هنا</string>
+    <string name="phoneNumberHint">رقم التليفون</string>
+    <string name="searchPh">أختار ما تبحث عنه</string>
+    <string name="tag_app">Choose your best price</string>
+    <string name="titalapp">sala</string>
+    <string name="title_activity_product_search">ProductSearch</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_pharmacies">Pharmacies</string>
+    <string name="fcm_message">fcm_message</string>
+    <string name="msg_token_fmt">asld alsdlas lasd asld </string>
+    <string-array name="country_arrays">
+        <item>اختار محافظة</item>
+        <item>الأقصر</item>
+        <item>الإسكندرية</item>
+        <item>الشرقية</item>
+        <item>أسيوط</item>
+        <item>البحيرة</item>
+        <item>القاهرة</item>
+        <item>دمياط</item>
+        <item>كفر الشيخ</item>
+        <item>المنوفية</item>
+        <item>المنيا</item>
+        <item>بورسعيد</item>
+        <item>القليوبية</item>
+        <item>أسوان</item>
+        <item>الإسماعيلية</item>
+        <item>بني سويف</item>
+        <item>الدقهلية</item>
+        <item>الفيوم</item>
+        <item>الغربية</item>
+        <item>الجيزة</item>
+        <item>البحر الأحمر</item>
+        <item>قنا</item>
+        <item>جنوب سيناء</item>
+        <item>شمال سيناء</item>
+        <item>السويس</item>
+        <item>سوهاج</item>
+        <item>الوادي الجديد</item>
+        <item>مطروح</item>
+    </string-array>
+    <string-array name="Specialist">
+        <item>النشاط</item>
+        <item>أدويةمحلية</item>
+        <item>أدوية مستوردة</item>
+        <item>مستلزمات</item>
+    </string-array>
+    <string name="title_activity_main_offices">MainOffices</string>
+
+
+</resources>

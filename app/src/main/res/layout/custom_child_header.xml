@@ -1,0 +1,131 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp"
+    card_view:cardElevation="4dp"
+    android:background="@drawable/background_alert"
+    card_view:cardCornerRadius="20dp"
+    card_view:cardUseCompatPadding="true"
+    tools:context=".SearchProduct"
+    >
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/callIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/discountd"
+            android:src="@drawable/ic_call_black"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/discountData"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/checkProduct"
+            android:layout_toEndOf="@+id/callIcon"
+            android:textColor="@color/Black"
+            android:visibility="invisible"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/checkProduct"
+            card_view:layout_constraintStart_toEndOf="@+id/callIcon" />
+
+        <ImageView
+            android:id="@+id/checkProduct"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/discountd"
+            android:layout_alignBaseline="@id/callIcon"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_add_shopping_cart"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/discountd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priced"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="الخصم"
+            android:textSize="20dp"
+            card_view:layout_constraintBottom_toTopOf="@+id/callIcon"
+            card_view:layout_constraintEnd_toStartOf="@+id/checkProduct"
+            card_view:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/priceData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameCompany"
+            android:layout_alignBaseline="@id/priced"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="43"
+            android:textSize="20sp"
+            card_view:layout_constraintBottom_toTopOf="@+id/discountData"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toEndOf="@+id/callIcon"
+            card_view:layout_constraintTop_toBottomOf="@+id/nameCompany" />
+
+        <TextView
+            android:id="@+id/discountData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priceData"
+            android:layout_alignBaseline="@id/discountd"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="43"
+            android:textSize="20sp"
+            card_view:layout_constraintBottom_toTopOf="@+id/checkProduct"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toEndOf="@+id/callIcon" />
+
+        <TextView
+            android:id="@+id/nameCompany"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:text="شركة :القصي"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="0dp"  />
+
+        <TextView
+            android:id="@+id/priced"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="  السعر"
+            android:textSize="20sp"
+            card_view:layout_constraintBottom_toTopOf="@+id/discountd"
+            card_view:layout_constraintEnd_toStartOf="@+id/checkProduct"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/nameCompany" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
