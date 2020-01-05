@@ -14,7 +14,7 @@ import pharamacy.eg.sala.R;
 public class SignUP_ph_ViewBinding implements Unbinder {
   private SignUP_ph target;
 
-  private View view7f090110;
+  private View view7f090111;
 
   @UiThread
   public SignUP_ph_ViewBinding(SignUP_ph target) {
@@ -27,7 +27,7 @@ public class SignUP_ph_ViewBinding implements Unbinder {
 
     View view;
     view = Utils.findRequiredView(source, R.id.profile_pic, "method 'onProfileImageClick'");
-    view7f090110 = view;
+    view7f090111 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -43,7 +43,7 @@ public class SignUP_ph_ViewBinding implements Unbinder {
     target = null;
 
 
-    view7f090110.setOnClickListener(null);
-    view7f090110 = null;
+    view7f090111.setOnClickListener(null);
+    view7f090111 = null;
   }
 }

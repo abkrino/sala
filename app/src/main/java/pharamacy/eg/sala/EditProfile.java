@@ -74,7 +74,7 @@ public class EditProfile extends AppCompatActivity {
 
     String[] array = {"اختار محافظة",
             "الأقصر", "الإسكندرية", "الشرقية", "أسيوط", "البحيرة", "القاهرة", "دمياط",
-            "كفر الشيخ", "المنوفية", "المنيا", "بورسعيد", "القليوبية", "أسوان", "الإسماعيلية", "سويف", "الدقهلية",
+            "كفر الشيخ", "المنوفية", "المنيا", "بورسعيد", "القليوبية", "أسوان", "الإسماعيلية", "بني سويف", "الدقهلية",
             "الفيوم", "الغربية", "الجيزة", "البحر الأحمر", "قنا", "جنوب سيناء", "شمال سيناء", "السويس", "سوهاج", "الوادي الجديد", "مطروح"};
 
 
@@ -106,9 +106,9 @@ public class EditProfile extends AppCompatActivity {
         addListenerOnSpinnerItemSelection();
 
 //        ImageView back = findViewById(R.id.back_arrow);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
+////        back.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
 //                startActivity(new Intent(EditProfile.this, Profile.class));
 //            }
 //        });

@@ -917,6 +917,7 @@ color cardview_shadow_start_color
 color colorAccent
 color colorPrimary
 color colorPrimaryDark
+color colorPrimary_transparent
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
 color common_google_signin_btn_text_dark_disabled
@@ -1566,6 +1567,7 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id btDelet
+id btDelete
 id button
 id buttonCode
 id buttonPanel
@@ -1764,6 +1766,7 @@ id right_icon
 id right_side
 id rotate_scroll_wheel
 id row
+id row2
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type

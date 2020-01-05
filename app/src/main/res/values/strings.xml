@@ -20,10 +20,10 @@
     <string name="toast_image_intent_null">Image picker option is missing!</string>
     <string name="upload_image">upload Image</string>
     <string name="name">الاسم</string>
-    <string name="chooseCountry">اختار المحافظة المقر</string>
+    <string name="chooseCountry">اختار محافظة المقر</string>
     <string name="chooseCity">المدينه</string>
     <string name="chooseRegion">المنطقه</string>
-    <string name="theProvincesTheyServe">اختار المحافاظات للعمل بيها</string>
+    <string name="theProvincesTheyServe">اختار المحافظات التي تخدمها </string>
     <string name="activityType">اختار نوع النشاط</string>
     <string name="phoneNumber">رقم التليفون</string>
     <string name="continuebt">متابعه</string>
@@ -54,12 +54,12 @@
     <string name="msg_token_fmt">asld alsdlas lasd asld </string>
     <string-array name="country_arrays">
         <item>اختار محافظة</item>
-        <item>الأقصر</item>
+        <item>القاهرة</item>
         <item>الإسكندرية</item>
+        <item>الأقصر</item>
         <item>الشرقية</item>
         <item>أسيوط</item>
         <item>البحيرة</item>
-        <item>القاهرة</item>
         <item>دمياط</item>
         <item>كفر الشيخ</item>
         <item>المنوفية</item>

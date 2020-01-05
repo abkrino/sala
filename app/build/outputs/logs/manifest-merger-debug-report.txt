@@ -253,7 +253,7 @@ MERGED from [com.google.android.gms:play-services-ads-base:18.2.0] /home/mahmoud
 	tools:ignore
 		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:20:9-48
 	android:roundIcon
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:17:9-54
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:17:9-59
 	android:icon
 		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:15:9-43
 	android:allowBackup

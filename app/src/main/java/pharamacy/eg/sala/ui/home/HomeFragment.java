@@ -62,7 +62,7 @@ import java.util.Map;
 import pharamacy.eg.sala.AdapterListOfFile;
 import pharamacy.eg.sala.Class.MainAdapter;
 import pharamacy.eg.sala.Class.Product;
-import pharamacy.eg.sala.MainAdapterTwo;
+import pharamacy.eg.sala.Class.MainAdapterTwo;
 import pharamacy.eg.sala.R;
 
 import static com.yalantis.ucrop.UCropFragment.TAG;
@@ -381,8 +381,25 @@ public class HomeFragment extends Fragment {
                     deleteDialog.dismiss();
                     //ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
                     showProg("loading", "ثواني لحد ما نجيب الملفات ");
-
-                    checkInternalStorage();
+                    //read file of excel
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            checkInternalStorage();
+                            // to show list in activity because the thread cant access activity
+                            myActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    AdapterListOfFile adapter = new AdapterListOfFile(getActivity(), FileNameStrings, FilePathStrings);
+                                    listOfFile.setAdapter(adapter);
+                                    recycler.setVisibility(View.GONE);
+                                    listOfFile.setVisibility(View.VISIBLE);
+                                    ListFileClick();
+//
+                                }
+                            });
+                        }
+                    }).start();
                     //ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
                     textView.setVisibility(View.GONE);
                     btuploadData.clearAnimation();
@@ -534,12 +551,13 @@ public class HomeFragment extends Fragment {
 //                               todo في مشلكة uploadProduct();
                             }
                         });
+                        uploadProduct();
                     }
                 }).start();
                 //ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
                 //upload date product to fire base
 //                todo بيخش هنا الاول ؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟
-                uploadProduct();
+
                 //ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
             }
         });
@@ -610,7 +628,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
             }
-            progressDialog.dismiss();
+
         } else {
             for (int p = 1; p < list2.size(); p++) {
 
@@ -640,7 +658,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
             }
-            progressDialog.dismiss();
+
         }
     }
 
@@ -736,51 +754,3 @@ public class HomeFragment extends Fragment {
 
 }
 
-//            row.setOnLongClickListener(new View.OnLongClickListener() {
-//@Override
-//public boolean onLongClick(View v) {
-//        btDelete.setVisibility(View.VISIBLE);
-//        name.setBackgroundColor(itemView.getResources().getColor(R.color.Red));
-//        price.setBackgroundColor(itemView.getResources().getColor(R.color.Red));
-//        discount.setBackgroundColor(itemView.getResources().getColor(R.color.Red));
-//        row.setOnClickListener(new View.OnClickListener() {
-//@Override
-//public void onClick(View v) {
-//        btDelete.setVisibility(View.GONE);
-//        name.setBackground(itemView.getResources().getDrawable(R.drawable.cell_bg));
-//        price.setBackground(itemView.getResources().getDrawable(R.drawable.cell_bg));
-//        discount.setBackground(itemView.getResources().getDrawable(R.drawable.cell_bg));
-//        }
-//        });
-//        return true;
-//        }
-//        });
-//        btDelete.setOnClickListener(new View.OnClickListener() {
-//@Override
-//public void onClick(View v) {
-//        String nameproduct = name.getText().toString();
-//        if (nameproduct.equals("أسم الصنف") || nameproduct.equals("اسم الصنف") || nameproduct.equals("إسم الصنف")) {
-//        nameproduct = " القائمة ";
-//        }
-//        String finalNameproduct = nameproduct;
-//        new AlertDialog.Builder(context).setTitle("هل تريد حذف " + nameproduct).setIcon(android.R.drawable.ic_menu_delete).setPositiveButton("نعم", new DialogInterface.OnClickListener() {
-//@Override
-//public void onClick(DialogInterface dialog, int which) {
-//
-//        if (finalNameproduct.equals(" القائمة ")){
-//        row.removeAllViews();
-//        }else {
-//        row.removeAllViewsInLayout();
-//        }
-//        Toast.makeText(context, " تم الحذف  " + finalNameproduct, Toast.LENGTH_LONG).show();
-//        }
-//        }).setNegativeButton("لا", new DialogInterface.OnClickListener() {
-//@Override
-//public void onClick(DialogInterface dialog, int which) {
-//
-//        Toast.makeText(context, " تم  الغاء حذف  " + finalNameproduct, Toast.LENGTH_LONG).show();
-//        }
-//        }).show();
-//
-//        }
-//        });

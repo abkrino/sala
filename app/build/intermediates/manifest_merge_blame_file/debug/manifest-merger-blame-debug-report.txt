@@ -59,8 +59,8 @@
 31-->/home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:15:9-43
 32        android:label="@string/app_name"
 32-->/home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:16:9-41
-33        android:roundIcon="@mipmap/ic_launcher_round"
-33-->/home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:17:9-54
+33        android:roundIcon="@mipmap/ic_launcher_foreground"
+33-->/home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:17:9-59
 34        android:supportsRtl="false"
 34-->/home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:18:9-36
 35        android:testOnly="true"

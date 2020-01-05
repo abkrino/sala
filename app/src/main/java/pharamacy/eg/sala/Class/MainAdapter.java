@@ -37,7 +37,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
     ItemClickListener mClickListener;
     ArrayList<Product> list;
     ArrayList<Product> prouductListFiltered = new ArrayList<>();
-    Product product = new Product();
     int poosition;
     int indx_row = -1;
     // data is passed into the constructor
@@ -64,6 +63,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
         holder.name.setText(list.get(position).getName());
         holder.price.setText(list.get(position).getPrice());
         holder.discount.setText(list.get(position).getDiscount());
+        // to mark one of row layOut to delete it in view and also in firebase
         holder.row.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -79,7 +79,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
         });
         if (indx_row == position) {
             holder.btDelete.setVisibility(View.VISIBLE);
-            holder.row.setBackgroundColor(Color.RED);
+            holder.row.setBackgroundResource(R.color.colorPrimary_transparent);
         } else {
             holder.btDelete.setVisibility(View.GONE);
             holder.row.setBackgroundColor(Color.WHITE);
@@ -95,10 +95,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        LinearLayout row;
         TextView name;
         TextView price;
         TextView discount;
+        LinearLayout row;
         ImageView btDelete;
 
         ViewHolder(View itemView) {
@@ -127,13 +127,24 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
                     String nameproduct = name.getText().toString();
                     if (nameproduct.equals("أسم الصنف") || nameproduct.equals("اسم الصنف") || nameproduct.equals("إسم الصنف")) {
                         Toast.makeText(context, "ممكن ترفع قائمة جديدة ", Toast.LENGTH_LONG).show();
+                    } if (nameproduct.contains(".")) {
+                        nameproduct = nameproduct.replace('.', ',');
+                    } else if (nameproduct.contains("#")) {
+                        nameproduct = nameproduct.replace('#', '\t');
+                    } else if (nameproduct.contains("$")) {
+                        nameproduct = nameproduct.replace('$', '\t');
+                    } else if (nameproduct.contains("[")) {
+                        nameproduct = nameproduct.replace('[', '\t');
+                    } else if (nameproduct.contains("]")) {
+                        nameproduct = nameproduct.replace(']', '\t');
+                    } else if (nameproduct.contains("/")) {
+                        nameproduct = nameproduct.replace('/', '\\');
                     }
                     String finalNameproduct = nameproduct;
                     new AlertDialog.Builder(context).setTitle("هل تريد حذف " + nameproduct).setIcon(android.R.drawable.ic_menu_delete).setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            list.remove(poosition);
-                            notifyDataSetChanged();
+                            removeAt(getAdapterPosition());                            notifyDataSetChanged();
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             userId = user.getPhoneNumber();
@@ -237,5 +248,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
     public void updateList(ArrayList<Product> list) {
         notifyDataSetChanged();
     }
-
+    public void removeAt(int position) {
+        list.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, list.size());
+    }
 }
