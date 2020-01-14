@@ -1,5 +1,6 @@
 package pharamacy.eg.sala.Class;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -14,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,7 +33,7 @@ import pharamacy.eg.sala.R;
 
 public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHolder> implements Filterable {
     LayoutInflater mInflater;
-    String finalNameproduct;
+    String finalNameproduct,nameproduct;
     String userId;
     String  Specia_workU;
     Context context;
@@ -67,9 +67,9 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
         holder.row.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
                 indx_row = position;
-                if (position == 0) {
+                nameproduct = holder.name.getText().toString();
+                if (position == 0&& (nameproduct.equals("أسم الصنف") || nameproduct.equals("اسم الصنف") || nameproduct.equals("إسم الصنف"))) {
                     Toast.makeText(context, "ممكن ترفع قائمة جديده", Toast.LENGTH_SHORT).show();
                     indx_row = -1;
                 }
@@ -79,7 +79,7 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
         });
         if (indx_row == position) {
             holder.btDelete.setVisibility(View.VISIBLE);
-            holder.row.setBackgroundResource(R.color.colorPrimary_transparent);
+            holder.row.setBackgroundResource(R.color.Black_transparent_black_hex_2);
         } else {
             holder.btDelete.setVisibility(View.GONE);
             holder.row.setBackgroundColor(Color.WHITE);
@@ -111,7 +111,7 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
             btDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String nameproduct = name.getText().toString();
+                     nameproduct = name.getText().toString();
                     if (nameproduct.equals("أسم الصنف") || nameproduct.equals("اسم الصنف") || nameproduct.equals("إسم الصنف")) {
                         Toast.makeText(context, "ممكن ترفع قائمة جديدة ", Toast.LENGTH_LONG).show();
                     }
@@ -134,11 +134,11 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
                         public void onClick(DialogInterface dialog, int which) {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             userId = user.getPhoneNumber();
-                            if(userId!=null){
+                            Specia_workU = ((Activity)context).getIntent().getStringExtra("Specia_workU");
+                            if(userId!=null&&Specia_workU!=null){
                                 removeAt(getAdapterPosition());
-                                deleteProductFromFireBase(getSpecia_work(userId));
+                                deleteProductFromFireBase(Specia_workU);
                             }
-
 
 //                            if(getSpecia_work().equals("أدوية مستوردة")){
 //                            }else {
@@ -163,7 +163,6 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
                     poosition = getAdapterPosition();
                     btDelete.setVisibility(View.GONE);
                     row.setBackgroundColor(itemView.getResources().getColor(R.color.White_White));
-                    Toast.makeText(context, " " + list.get(poosition).name, Toast.LENGTH_LONG).show();
 
                 }
             });
@@ -226,7 +225,6 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
             }
         };
     }
-
     public void updateList(ArrayList<Product> list) {
         notifyDataSetChanged();
     }
@@ -235,32 +233,12 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, list.size());
     }
-    public String getSpecia_work(String userNumber) {
 
-        if (userId != null) {
-            DatabaseReference referenceType = FirebaseDatabase.getInstance().getReference().child("users").child("Offices").child(userId);
-            referenceType.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                    Specia_workU = dataSnapshot.child("Specia_work").getValue().toString();
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
-            return Specia_workU;
-        }
 
     public void deleteProductFromFireBase(String typeOfWork){
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        userId = user.getPhoneNumber();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        userId = user.getPhoneNumber();
-        //todo nullPointerExption
         Query productQuery = ref.child("product").child(typeOfWork).child(finalNameproduct).child(userId);
         productQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -277,5 +255,6 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
         });
         Toast.makeText(context, " تم الحذف  " + finalNameproduct, Toast.LENGTH_LONG).show();
         indx_row = -1;
+
     }
 }

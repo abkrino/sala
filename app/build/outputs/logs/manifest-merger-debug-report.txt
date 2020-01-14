@@ -1,20 +1,20 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:56:9-64:20
+INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:57:9-65:20
 	android:grantUriPermissions
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:60:13-47
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:61:13-47
 	android:authorities
 		INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:58:13-60
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:59:13-60
 	android:exported
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:59:13-37
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:60:13-37
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:57:13-62
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:58:13-62
 manifest
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
-INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
-INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
-INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
+INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
+INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
+INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
 MERGED from [androidx.multidex:multidex:2.0.1] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/5dc853b36af9b4eab7e038be0ca01f86/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-ui:2.1.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/a224746eaee6410ddeee33583a16e3bf/jetified-navigation-ui-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.karumi:dexter:6.0.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/df8db48bc28c431e3a910671e4915515/dexter-6.0.0/AndroidManifest.xml:17:1-32:12
@@ -103,22 +103,22 @@ MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /home/mahmoud/.gradle/cache
 MERGED from [androidx.sqlite:sqlite:2.0.1] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/6664934e08f322374aa2eb3c7f27ef51/sqlite-2.0.1/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/7189998640d03cd8247a01f86409460d/firebase-database-collection-17.0.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-ads-base:18.2.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/5de5efc5d2d9c0d7222c07fe1768e7cd/play-services-ads-base-18.2.0/AndroidManifest.xml:2:1-9:12
-INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
-INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
-INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
+INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
+INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
+INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
 	package
 		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:4:5-32
 		INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
 		INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
 		INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-75:12
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:1-76:12
 		INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:2:11-69
@@ -168,8 +168,12 @@ uses-permission#android.permission.CAMERA
 ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:11:5-65
 	android:name
 		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:11:22-62
+uses-permission#android.permission.SET_DEBUG_APP 
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:12:5-72
+	android:name
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:12:22-70
 application
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:13:5-73:19
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:14:5-74:19
 MERGED from [com.karumi:dexter:6.0.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/df8db48bc28c431e3a910671e4915515/dexter-6.0.0/AndroidManifest.xml:26:5-30:19
 MERGED from [com.karumi:dexter:6.0.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/df8db48bc28c431e3a910671e4915515/dexter-6.0.0/AndroidManifest.xml:26:5-30:19
 MERGED from [com.google.android.material:material:1.0.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/3f2791d3ecf41ed9e54a91eddcfa2ad3/material-1.0.0/AndroidManifest.xml:22:5-20
@@ -247,119 +251,119 @@ MERGED from [com.google.android.gms:play-services-ads-base:18.2.0] /home/mahmoud
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/331630a23dfa1f0594bcf54d5352aa36/core-1.1.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:18:9-36
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:19:9-36
 	android:label
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:16:9-41
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:17:9-41
 	tools:ignore
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:20:9-48
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:21:9-48
 	android:roundIcon
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:17:9-59
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:18:9-59
 	android:icon
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:15:9-43
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:16:9-43
 	android:allowBackup
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:14:9-35
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:15:9-35
 	android:theme
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:19:9-52
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:20:9-52
 activity#pharamacy.eg.sala.ReceyPro
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:21:9-55
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:22:9-55
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:21:19-43
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:22:19-43
 activity#pharamacy.eg.sala.MainOffices
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:22:9-25:71
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:23:9-26:71
 	android:label
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:24:13-64
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:25:13-64
 	android:theme
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:25:13-68
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:26:13-68
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:23:13-40
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:24:13-40
 activity#pharamacy.eg.sala.Start_Activity
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:26:9-32:20
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:27:9-33:20
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:26:19-49
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:27:19-49
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:27:13-31:29
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:28:17-69
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:28:25-66
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:30:17-77
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:30:27-74
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:31:27-74
 activity#pharamacy.eg.sala.SearchProduct
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:33:9-51
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:34:9-51
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:33:19-48
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:34:19-48
 activity#pharamacy.eg.sala.EditProfile
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:34:9-49
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:35:9-49
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:34:19-46
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:35:19-46
 activity#pharamacy.eg.sala.SignUp.SignUP_ph
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:35:9-54
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:36:9-54
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:35:19-51
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:36:19-51
 activity#pharamacy.eg.sala.ImagePickerActivity
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:36:9-57
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:37:9-57
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:36:19-54
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:37:19-54
 activity#pharamacy.eg.sala.SignUp.SignUpKind
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:37:9-55
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:38:9-55
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:37:19-52
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:38:19-52
 activity#pharamacy.eg.sala.Confirm
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:38:9-45
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:39:9-45
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:38:19-42
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:39:19-42
 activity#pharamacy.eg.sala.SignUp.SignUP
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:39:9-51
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:40:9-51
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:39:19-48
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:40:19-48
 activity#pharamacy.eg.sala.SignIN
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:40:9-44
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:41:9-44
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:40:19-41
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:41:19-41
 activity#pharamacy.eg.sala.EditeProfilePh
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:41:9-52
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:42:9-52
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:41:19-49
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:42:19-49
 activity#com.yalantis.ucrop.UCropActivity
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:42:9-45:59
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:43:9-46:59
 	android:screenOrientation
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:44:13-49
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:45:13-49
 	android:theme
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:45:13-56
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:46:13-56
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:43:13-60
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:44:13-60
 meta-data#com.google.android.gms.ads.APPLICATION_ID
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:46:9-48:70
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:47:9-49:70
 	android:value
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:48:13-67
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:49:13-67
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:47:13-69
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:48:13-69
 meta-data#firebase_messaging_auto_init_enabled
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:49:9-51:37
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:50:9-52:37
 	android:value
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:51:13-34
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:52:13-34
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:50:13-64
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:51:13-64
 meta-data#firebase_analytics_collection_enabled
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:52:9-54:37
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:53:9-55:37
 	android:value
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:54:13-34
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:55:13-34
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:53:13-65
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:54:13-65
 service#pharamacy.eg.sala.MyFirebaseMessagingService
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:66:9-72:19
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:67:9-73:19
 	android:exported
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:68:13-36
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:69:13-36
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:67:13-55
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:68:13-55
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:69:13-71:29
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:70:13-72:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:70:17-78
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:71:17-78
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:70:25-75
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:71:25-75
 uses-sdk
 INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
@@ -553,11 +557,11 @@ INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManif
 		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
 		INJECTED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:61:13-63:54
+ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:62:13-64:54
 	android:resource
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:63:17-51
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:64:17-51
 	android:name
-		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:62:17-67
+		ADDED from /home/mahmoud/AndroidStudioProjects/sala/app/src/main/AndroidManifest.xml:63:17-67
 activity#com.karumi.dexter.DexterActivity
 ADDED from [com.karumi:dexter:6.0.0] /home/mahmoud/.gradle/caches/transforms-2/files-2.1/df8db48bc28c431e3a910671e4915515/dexter-6.0.0/AndroidManifest.xml:27:9-29:72
 	android:theme

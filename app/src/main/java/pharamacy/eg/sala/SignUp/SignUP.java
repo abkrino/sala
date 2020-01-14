@@ -72,7 +72,6 @@ public class SignUP extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseUser user;
     private FirebaseAuth mAuth;
-    private Bitmap bitmap;
     private Uri uri;
     private InterstitialAd mInterstitialAd;
 
@@ -308,7 +307,7 @@ public class SignUP extends AppCompatActivity {
                 uri = data.getParcelableExtra("path");
                 try {
                     // You can update this bitmap to your server
-                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                     //henaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                     // loading profile image from local cache
                     loadProfile(uri.toString());

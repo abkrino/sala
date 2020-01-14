@@ -57,6 +57,7 @@ public class MyAdapterList extends RecyclerView.Adapter<MyAdapterList.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 //nameC.get(position)
+        //todo stop here 14\1
         holder.nameCompany.setText(" شركة : "+nameC.get(position));
         holder.price.setText(list.get(position).getPrice());
         holder.discount.setText(list.get(position).getDiscount());

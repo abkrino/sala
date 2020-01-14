@@ -1375,9 +1375,11 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable backgraound_header
+drawable backgraound_list_product
 drawable background
 drawable background_alert
 drawable bt_shap
+drawable bt_sheet_background
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1647,6 +1649,7 @@ id icon_group
 id icon_only
 id icoon_image
 id ifRoom
+id imagc
 id image
 id imageView
 id imageViewHeader
@@ -1678,6 +1681,8 @@ id line3
 id linearLayout
 id linearLayout2
 id linearLayout3
+id linearLayoutClick
+id linearLayoutClick1
 id listMode
 id listOfFile
 id list_item
@@ -1851,6 +1856,7 @@ id textView4
 id textView5
 id textView6
 id textView7
+id textViewList
 id text_input_password_toggle
 id text_send
 id text_view_rotate
@@ -2005,6 +2011,7 @@ layout fragment_signout
 layout fragment_slideshow
 layout fragment_tools
 layout item_file_lister
+layout list_of_items
 layout main_cell
 layout main_cell2
 layout mtrl_layout_snackbar

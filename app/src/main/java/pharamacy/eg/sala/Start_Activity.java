@@ -67,6 +67,7 @@ public class Start_Activity extends AppCompatActivity {
                                     // change main to mainph
                                     Intent intent = new Intent(Start_Activity.this, MainOffices.class);
                                     intent.putExtra("Specia_workU", Specia_workU);
+
                                     endAnimation();
                                     startActivity(intent);
                                     finish();

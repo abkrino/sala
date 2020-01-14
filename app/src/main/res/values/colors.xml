@@ -6,7 +6,7 @@
         <color name="Black">#FF000000</color>
         <color name="Black_overlay">#66000000</color>
 
-    <color name="colorPrimary_transparent">#0F8A2BE2</color>
+    <color name="colorPrimary_transparent">#aa8A2BE2</color>
         <color name="Black_transparent_black_hex_1">#0F000000</color>
         <color name="Black_transparent_black_hex_10">#aa000000</color>
         <color name="Black_transparent_black_hex_11">#bb000000</color>

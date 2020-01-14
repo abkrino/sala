@@ -67,7 +67,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
         holder.row.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
                 indx_row = position;
                 if(position == 0){
                     Toast.makeText(context, "ممكن ترفع قائمة جديده", Toast.LENGTH_SHORT).show();
@@ -79,7 +78,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
         });
         if (indx_row == position) {
             holder.btDelete.setVisibility(View.VISIBLE);
-            holder.row.setBackgroundResource(R.color.colorPrimary_transparent);
+            holder.row.setBackgroundResource(R.color.Black_transparent_black_hex_2);
         } else {
             holder.btDelete.setVisibility(View.GONE);
             holder.row.setBackgroundColor(Color.WHITE);
@@ -182,7 +181,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
                     poosition = getAdapterPosition();
                     btDelete.setVisibility(View.GONE);
                     row.setBackgroundColor(itemView.getResources().getColor(R.color.White_White));
-                    Toast.makeText(context, " " + list.get(poosition).name, Toast.LENGTH_LONG).show();
                 }
             });
         }

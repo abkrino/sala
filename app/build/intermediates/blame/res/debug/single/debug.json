@@ -1892,6 +1892,10 @@
         "source": "/home/mahmoud/AndroidStudioProjects/sala/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
     },
     {
+        "merged": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/res/merged/debug/layout_list_of_items.xml.flat",
+        "source": "/home/mahmoud/AndroidStudioProjects/sala/app/src/main/res/layout/list_of_items.xml"
+    },
+    {
         "merged": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/fb8f7031ef66b8147647717c2aecca12/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
@@ -2182,6 +2186,10 @@
     {
         "merged": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_cancel.png.flat",
         "source": "/home/mahmoud/AndroidStudioProjects/sala/app/build/generated/res/pngs/debug/drawable-ldpi/ic_cancel.png"
+    },
+    {
+        "merged": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/res/merged/debug/drawable_backgraound_list_product.xml.flat",
+        "source": "/home/mahmoud/AndroidStudioProjects/sala/app/src/main/res/drawable/backgraound_list_product.xml"
     },
     {
         "merged": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -3266,6 +3274,10 @@
     {
         "merged": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
         "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/fb8f7031ef66b8147647717c2aecca12/appcompat-1.1.0/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/res/merged/debug/drawable_bt_sheet_background.xml.flat",
+        "source": "/home/mahmoud/AndroidStudioProjects/sala/app/src/main/res/drawable/bt_sheet_background.xml"
     },
     {
         "merged": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/res/merged/debug/drawable_abc_btn_default_mtrl_shape.xml.flat",

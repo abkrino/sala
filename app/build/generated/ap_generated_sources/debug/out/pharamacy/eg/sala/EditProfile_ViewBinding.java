@@ -13,7 +13,7 @@ import java.lang.Override;
 public class EditProfile_ViewBinding implements Unbinder {
   private EditProfile target;
 
-  private View view7f090111;
+  private View view7f090114;
 
   @UiThread
   public EditProfile_ViewBinding(EditProfile target) {
@@ -26,7 +26,7 @@ public class EditProfile_ViewBinding implements Unbinder {
 
     View view;
     view = Utils.findRequiredView(source, R.id.profile_pic, "method 'onProfileImageClick'");
-    view7f090111 = view;
+    view7f090114 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -42,7 +42,7 @@ public class EditProfile_ViewBinding implements Unbinder {
     target = null;
 
 
-    view7f090111.setOnClickListener(null);
-    view7f090111 = null;
+    view7f090114.setOnClickListener(null);
+    view7f090114 = null;
   }
 }
