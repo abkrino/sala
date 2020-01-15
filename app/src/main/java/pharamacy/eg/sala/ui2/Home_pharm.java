@@ -30,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,7 @@ public class Home_pharm extends Fragment {
     private ListView listProductInfo;
     private RecyclerView ProductInfo;
     public String name_company;
-    private String nameInList;
+    private String nameInList , phoneNumberPharmacy;
     private ArrayList<MyItemList> listZeft;
     private BottomSheetBehavior behavior;
     private SearchView search;
@@ -55,7 +56,7 @@ public class Home_pharm extends Fragment {
     private TextView typeSearch;
     private ProgressDialog progressDialog;
     private Activity myActivityPh;
-    int count = -1;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home_pharmcy, container, false);
@@ -80,6 +81,9 @@ public class Home_pharm extends Fragment {
         listProductInfo = view.findViewById(R.id.list_main);
         ProductInfo = view.findViewById(R.id.list_main2);
         typeSearch = view.findViewById(R.id.typeSearch);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        phoneNumberPharmacy = user.getPhoneNumber();
+        getCounteryOfpharmacies(phoneNumberPharmacy);
         //ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
         behavior = BottomSheetBehavior.from(BottomSheet);
         behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -176,7 +180,8 @@ public class Home_pharm extends Fragment {
                     ProductInfo.setVisibility(View.GONE);
                     listProductInfo.setAdapter(adapter);
                     behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    user = FirebaseAuth.getInstance().getCurrentUser();
+
+
                     listProductInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -187,6 +192,8 @@ public class Home_pharm extends Fragment {
                             intent.putExtra("local_medicines", "أدويةمحلية");
                             intent.putExtra("accessories", "");
                             intent.putExtra("imported_medicines", "");
+                            intent.putExtra("name_company", name_company);
+
                             startActivity(intent);
 //                            DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("product").child("أدويةمحلية").child(nameInList);
 //                            if (reference2 != null) {
@@ -286,7 +293,6 @@ public class Home_pharm extends Fragment {
                 ProductInfo.setVisibility(View.GONE);
                 listProductInfo.setAdapter(adapter);
                 behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                user = FirebaseAuth.getInstance().getCurrentUser();
                 //Todo بس لسا في لحطبة في الختة بتاعت المحافظات
                 listProductInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -399,7 +405,6 @@ public class Home_pharm extends Fragment {
                 ////////////////////////////////
                 /////////////////////////////////
                 behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                user = FirebaseAuth.getInstance().getCurrentUser();
                 //Todo بس لسا في لحطبة في الختة بتاعت المحافظات
                 listProductInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -515,7 +520,7 @@ public class Home_pharm extends Fragment {
                     progressDialog.dismiss();
                     showAd();
                 }
-                user = FirebaseAuth.getInstance().getCurrentUser();
+
             }
 
             @Override
@@ -646,6 +651,21 @@ public class Home_pharm extends Fragment {
         progressDialog.setCanceledOnTouchOutside(false); //To prevent the user dismiss progressDialog
         progressDialog.show();
 
+    }
+
+    public void getCounteryOfpharmacies(String phone) {
+        DatabaseReference databaseReferencePh = FirebaseDatabase.getInstance().getReference().child("users").child("pharmacies").child(phone);
+        databaseReferencePh.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                name_company = dataSnapshot.child("country_chooser").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
 

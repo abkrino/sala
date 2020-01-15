@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ReceyPro extends AppCompatActivity {
     ArrayList<String> nameProductL, nameProductImported, nameProductAccessories, ownerProduct, nameCompany, PhoneNumber, country_workU;
@@ -32,6 +33,7 @@ public class ReceyPro extends AppCompatActivity {
     RecyclerView ProductInfo;
     SearchView searchCompany;
     MyAdapterList myAdapterList;
+    MyAdapterList2 myAdapterList2;
     private FirebaseUser user;
     private InterstitialAd mInterstitialAd;
     private ProgressDialog progressDialog;
@@ -48,6 +50,7 @@ public class ReceyPro extends AppCompatActivity {
         type1 = rx.getString("local_medicines");
         type2 = rx.getString("accessories");
         type3 = rx.getString("imported_medicines");
+        name_company =rx.getString("name_company");
         nameProductL = new ArrayList<>();
         nameProductImported = new ArrayList<>();
         nameProductAccessories = new ArrayList<>();
@@ -64,6 +67,7 @@ public class ReceyPro extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+
                     myActivityProduct.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -72,12 +76,34 @@ public class ReceyPro extends AppCompatActivity {
                     });
                 }
             }).start();
-        } else if (type2.equals("مستلزمات") && type1.isEmpty() && type3.isEmpty()) {
 
-                getAccessories();
-            } else if (type3.equals("أدوية مستوردة") && type1.isEmpty() && type2.isEmpty()) {
-                    getImported_medicines();
+        } else if (type2.equals("مستلزمات") && type1.isEmpty() && type3.isEmpty()) {
+            showProg("loading", "لحظات لتحميل منتجات الشركات...");
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    myActivityProduct.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            getAccessories();
+                        }
+                    });
                 }
+            }).start();
+        } else if (type3.equals("أدوية مستوردة") && type1.isEmpty() && type2.isEmpty()) {
+            showProg("loading", "لحظات لتحميل منتجات الشركات...");
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    myActivityProduct.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            getImported_medicines();
+                        }
+                    });
+                }
+            }).start();
+        }
         phoneNumberPharmcy = user.getPhoneNumber();
     }
 
@@ -91,11 +117,7 @@ public class ReceyPro extends AppCompatActivity {
                         for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             ownerProduct.add(ds.getKey());
                             officePhoneNumber = ds.getKey();
-                            getInformtionOffice(officePhoneNumber);
-                            getCounteryOfpharmacies(phoneNumberPharmcy);
-                            getListPriceToAdapter("أدويةمحلية");
-                            //todo
-
+                            getInformtionOffice(officePhoneNumber , "أدويةمحلية");
                         }
                     }
                 }
@@ -119,9 +141,7 @@ public class ReceyPro extends AppCompatActivity {
                             ///////////////////////////////////////////////////////////////
                             //check country , get name company, get phone number of company
                             officePhoneNumber = ds.getKey();
-                            getInformtionOffice(officePhoneNumber);
-                            getCounteryOfpharmacies(phoneNumberPharmcy);
-                            getListPriceToAdapter("مستلزمات");
+                           getInformtionOffice(officePhoneNumber , "مستلزمات");
                         }
                     }
                 }
@@ -132,6 +152,7 @@ public class ReceyPro extends AppCompatActivity {
             });
         }
     }
+
     public void getImported_medicines() {
         DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("product").child("أدوية مستوردة").child(nameInList);
         if (reference2 != null) {
@@ -142,9 +163,7 @@ public class ReceyPro extends AppCompatActivity {
                         for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             ownerProduct.add(ds.getKey());
                             officePhoneNumber = ds.getKey();
-                            getInformtionOffice(officePhoneNumber);
-                            getCounteryOfpharmacies(phoneNumberPharmcy);
-                            getListPriceToAdapter("أدوية مستوردة");
+                            getInformtionOffice(officePhoneNumber , "أدوية مستوردة");
                             ///////////////////////////////////////////////////////////////
                         }
                     }
@@ -178,16 +197,18 @@ public class ReceyPro extends AppCompatActivity {
 
     }
 
-    public void getInformtionOffice(String phone) {
+    public void getInformtionOffice(String phone , String type) {
         ///////////////////////////////////////////////////////////////
         //check country , get name company, get phone number of company
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child("Offices").child(phone);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                PhoneNumber.add(dataSnapshot.child("phoneNumber").getValue().toString());
-                nameCompany.add(dataSnapshot.child("nameU").getValue().toString());
+                PhoneNumber.add(Objects.requireNonNull(dataSnapshot.child("phoneNumber").getValue()).toString());
+                nameCompany.add(Objects.requireNonNull(dataSnapshot.child("nameU").getValue()).toString());
                 country_workU = (ArrayList<String>) dataSnapshot.child("country_work").getValue();
+                getListPriceToAdapter(type);
+
             }
 
             @Override
@@ -195,52 +216,66 @@ public class ReceyPro extends AppCompatActivity {
             }
         });
     }
-
-    public void getCounteryOfpharmacies(String phone) {
-        DatabaseReference databaseReferencePh = FirebaseDatabase.getInstance().getReference().child("users").child("pharmacies").child(phone);
-        databaseReferencePh.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                name_company = dataSnapshot.child("country_chooser").getValue().toString();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     //todo انا وقفت هنا لسا فاضل اجيب بقيت الداتا بتاعت المنتج واقرنها بالمحافظة بتاعة الصيدلية وشكرا لحسن استماعكم
     public void getListPriceToAdapter(String typeWork) {
-
-        DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference().child("product").child(typeWork).child(nameInList).child(officePhoneNumber);
-        reference3.addValueEventListener(new ValueEventListener() {
-            String name3 = nameInList;
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-//                                                    for (int i =0 ;i<ownerProduct.size();i++) {
-                    MyItemList myItemList = dataSnapshot.getValue(MyItemList.class);
-                    listZeft.add(myItemList);
-                    ProductInfo.setVisibility(View.VISIBLE);
-                    myAdapterList = new MyAdapterList(listZeft, nameCompany, name3, PhoneNumber, ReceyPro.this);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ReceyPro.this);
-                    ProductInfo.setLayoutManager(linearLayoutManager);
-                    ProductInfo.setAdapter(myAdapterList);
-                    ProductInfo.setItemAnimator(new DefaultItemAnimator());
+        if (typeWork.equals("أدويةمحلية")) {
+            DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference().child("product").child(typeWork).child(nameInList).child(officePhoneNumber);
+            reference3.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        MyItemList myItemList = dataSnapshot.getValue(MyItemList.class);
+                        listZeft.add(myItemList);
+                        ProductInfo.setVisibility(View.VISIBLE);
+                        myAdapterList = new MyAdapterList(listZeft, nameCompany, nameInList, PhoneNumber, ReceyPro.this);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ReceyPro.this);
+                        ProductInfo.setLayoutManager(linearLayoutManager);
+                        ProductInfo.setAdapter(myAdapterList);
+                        ProductInfo.setItemAnimator(new DefaultItemAnimator());
+                        progressDialog.dismiss();
+                    }
                 }
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }else {
+            DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference().child("product").child(typeWork).child(nameInList).child(officePhoneNumber);
+            reference3.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        MyItemList myItemList = dataSnapshot.getValue(MyItemList.class);
+                        listZeft.add(myItemList);
+                        ProductInfo.setVisibility(View.VISIBLE);
+                        myAdapterList2 = new MyAdapterList2(listZeft, nameCompany, nameInList, PhoneNumber, ReceyPro.this);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ReceyPro.this);
+                        ProductInfo.setLayoutManager(linearLayoutManager);
+                        ProductInfo.setAdapter(myAdapterList2);
+                        ProductInfo.setItemAnimator(new DefaultItemAnimator());
+                        progressDialog.dismiss();
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-
-        progressDialog.dismiss();
-
-
+                }
+            });
+        }
     }
 }
+//    public void getCounteryOfpharmacies(String phone) {
+//        DatabaseReference databaseReferencePh = FirebaseDatabase.getInstance().getReference().child("users").child("pharmacies").child(phone);
+//        databaseReferencePh.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                name_company = dataSnapshot.child("country_chooser").getValue().toString();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }

@@ -51,9 +51,9 @@ public class MyAdapterList2 extends RecyclerView.Adapter<MyAdapterList2.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.nameCompany.setText(nameC.get(position));
-        holder.priceData.setText(list.get(position).getPrice());
+        holder.priceData.setText("السعر :  ");
         holder.phoneNumber.setText(PhoneNumber.get(position));
-        holder.price.setText("السعر ");
+        holder.price.setText(list.get(position).getPrice());
         holder.callIcon.setImageResource(R.drawable.ic_call_black);
         holder.checkProduct.setImageResource(R.drawable.ic_add_shopping_cart);
     }
