@@ -6,13 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorControlHighlight">@color/Black_transparent_black_hex_7</item>
     </style>
 
     <style name="FileListerItemColor">
         <item name="android:textColor">@color/Black</item>
         <item name="android:tint">@color/colorPrimary</item>
-        <item name="android:colorControlHighlight">@color/Black_transparent_black_hex_5</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

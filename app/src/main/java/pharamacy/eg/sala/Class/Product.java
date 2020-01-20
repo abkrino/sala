@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Product {
     String name_company;
-    String name;
+    String nameProduct;
     String price;
     String discount;
 
@@ -20,20 +20,20 @@ public class Product {
     }
 
     public Product(String name, String price) {
-        this.name = name;
+        this.nameProduct = name;
         this.price = price;
     }
 
     public Product(String name, String price, String discount) {
         //hnaa low fi discount
-        this.name = name;
+        this.nameProduct = name;
         this.price = price;
         this.discount = discount;
     }
 
     public Product(String name_company, String name, String price, String discount) {
         this.name_company = name_company;
-        this.name = name;
+        this.nameProduct = name;
         this.price = price;
         this.discount = discount;
     }
@@ -46,8 +46,8 @@ public class Product {
         this.name_company = name_company;
     }
 
-    public String getName() {
-        return name;
+    public String getNameProduct() {
+        return nameProduct;
     }
 
     public String getPrice() {
@@ -58,8 +58,8 @@ public class Product {
         return discount;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
     }
 
     public void setPrice(String price) {

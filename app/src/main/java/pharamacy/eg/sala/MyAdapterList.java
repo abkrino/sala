@@ -112,6 +112,7 @@ class MyViewHolder extends RecyclerView.ViewHolder {
                 }
                 Map<String, ArrayList<String>> order = new HashMap<>();
                 order.put(nameCompanyorder, productsOrder);
+              /////////////////////////////////////////////////////////////////////////////////////
                 LayoutInflater factory = LayoutInflater.from(context);
                 final View deleteDialogView = factory.inflate(R.layout.alert_go_app, null);
                 final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();

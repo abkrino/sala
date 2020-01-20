@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/abeezee</item>
+        <item>@font/aclonica</item>
+        <item>@font/aguafina_script</item>
+        <item>@font/anton</item>
+        <item>@font/arizonia</item>
+        <item>@font/asset</item>
+        <item>@font/bowlby_one</item>
+        <item>@font/crafty_girls</item>
+        <item>@font/creepster</item>
+    </array>
+</resources>

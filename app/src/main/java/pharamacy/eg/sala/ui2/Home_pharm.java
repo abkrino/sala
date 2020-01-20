@@ -555,6 +555,7 @@ public class Home_pharm extends Fragment {
                 intent.putExtra("local_medicines", "أدويةمحلية");
                 intent.putExtra("accessories", "");
                 intent.putExtra("imported_medicines", "");
+                intent.putExtra("country_chooser", name_company);
                 startActivity(intent);
             }
 

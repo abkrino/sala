@@ -2,10 +2,12 @@ package pharamacy.eg.sala;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +29,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ReceyPro extends AppCompatActivity {
-    ArrayList<String> nameProductL, nameProductImported, nameProductAccessories, ownerProduct, nameCompany, PhoneNumber, country_workU;
+    ArrayList<String> nameProductL, nameProductImported, nameProductAccessories,
+            ownerProduct, nameCompany, PhoneNumber, country_workU;
     ArrayList<MyItemList> listZeft;
     String name_company, nameInList, textSearch, officePhoneNumber, phoneNumberPharmcy;
     RecyclerView ProductInfo;
@@ -50,7 +53,7 @@ public class ReceyPro extends AppCompatActivity {
         type1 = rx.getString("local_medicines");
         type2 = rx.getString("accessories");
         type3 = rx.getString("imported_medicines");
-        name_company =rx.getString("name_company");
+        name_company = rx.getString("country_chooser");
         nameProductL = new ArrayList<>();
         nameProductImported = new ArrayList<>();
         nameProductAccessories = new ArrayList<>();
@@ -117,7 +120,8 @@ public class ReceyPro extends AppCompatActivity {
                         for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             ownerProduct.add(ds.getKey());
                             officePhoneNumber = ds.getKey();
-                            getInformtionOffice(officePhoneNumber , "أدويةمحلية");
+                            getInformtionOffice(officePhoneNumber, "أدويةمحلية");
+
                         }
                     }
                 }
@@ -141,7 +145,7 @@ public class ReceyPro extends AppCompatActivity {
                             ///////////////////////////////////////////////////////////////
                             //check country , get name company, get phone number of company
                             officePhoneNumber = ds.getKey();
-                           getInformtionOffice(officePhoneNumber , "مستلزمات");
+                            getInformtionOffice(officePhoneNumber, "مستلزمات");
                         }
                     }
                 }
@@ -152,10 +156,10 @@ public class ReceyPro extends AppCompatActivity {
             });
         }
     }
-
+// to find phone number offices's
     public void getImported_medicines() {
         DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("product").child("أدوية مستوردة").child(nameInList);
-        if (reference2 != null) {
+        try {
             reference2.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -163,7 +167,7 @@ public class ReceyPro extends AppCompatActivity {
                         for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             ownerProduct.add(ds.getKey());
                             officePhoneNumber = ds.getKey();
-                            getInformtionOffice(officePhoneNumber , "أدوية مستوردة");
+                            getInformtionOffice(officePhoneNumber, "أدوية مستوردة");
                             ///////////////////////////////////////////////////////////////
                         }
                     }
@@ -173,10 +177,12 @@ public class ReceyPro extends AppCompatActivity {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
+        } catch (NullPointerException e) {
+            Toast.makeText(myActivityProduct, "please check internet connection", Toast.LENGTH_SHORT).show();
         }
 
     }
-
+//ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
     public void showAd() {
         mInterstitialAd = new InterstitialAd(ReceyPro.this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
@@ -196,18 +202,29 @@ public class ReceyPro extends AppCompatActivity {
         progressDialog.show();
 
     }
-
-    public void getInformtionOffice(String phone , String type) {
+//to find name , country work , number to call
+    public void getInformtionOffice(String phone, String type) {
         ///////////////////////////////////////////////////////////////
         //check country , get name company, get phone number of company
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child("Offices").child(phone);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                PhoneNumber.add(Objects.requireNonNull(dataSnapshot.child("phoneNumber").getValue()).toString());
-                nameCompany.add(Objects.requireNonNull(dataSnapshot.child("nameU").getValue()).toString());
-                country_workU = (ArrayList<String>) dataSnapshot.child("country_work").getValue();
-                getListPriceToAdapter(type);
+                try {
+                        country_workU = (ArrayList<String>) dataSnapshot.child("country_work").getValue();
+                    if (comperBetweenCountery()) {
+                        PhoneNumber.add(Objects.requireNonNull(dataSnapshot.child("phoneNumber").getValue()).toString());
+                        nameCompany.add(Objects.requireNonNull(dataSnapshot.child("nameU").getValue()).toString());
+                        getListPriceToAdapter(type);
+                    } else {
+
+                        progressDialog.dismiss();
+                        Toast.makeText(myActivityProduct, "لا يوجد من يخدم محافظتك", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (NullPointerException e) {
+                    startActivity(new Intent(ReceyPro.this, SearchProduct.class));
+                }
+                // stop here and i'm tierd to comper between counrty
 
             }
 
@@ -216,7 +233,17 @@ public class ReceyPro extends AppCompatActivity {
             }
         });
     }
-    //todo انا وقفت هنا لسا فاضل اجيب بقيت الداتا بتاعت المنتج واقرنها بالمحافظة بتاعة الصيدلية وشكرا لحسن استماعكم
+// to mark if offic = phrmacy accurding to country work
+    public boolean comperBetweenCountery() {
+        if (country_workU.contains(name_company)) {
+            return true;
+//            getInformtionOffice();
+        } else {
+            return false;
+        }
+
+    }
+// set data to recycel view
     public void getListPriceToAdapter(String typeWork) {
         if (typeWork.equals("أدويةمحلية")) {
             DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference().child("product").child(typeWork).child(nameInList).child(officePhoneNumber);
@@ -233,14 +260,17 @@ public class ReceyPro extends AppCompatActivity {
                         ProductInfo.setAdapter(myAdapterList);
                         ProductInfo.setItemAnimator(new DefaultItemAnimator());
                         progressDialog.dismiss();
+                        Toast.makeText(myActivityProduct, "جميع من يخدم محافظتك", Toast.LENGTH_SHORT).show();
+
                     }
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
             });
-        }else {
+        } else {
             DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference().child("product").child(typeWork).child(nameInList).child(officePhoneNumber);
             reference3.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -249,14 +279,21 @@ public class ReceyPro extends AppCompatActivity {
                         MyItemList myItemList = dataSnapshot.getValue(MyItemList.class);
                         listZeft.add(myItemList);
                         ProductInfo.setVisibility(View.VISIBLE);
-                        myAdapterList2 = new MyAdapterList2(listZeft, nameCompany, nameInList, PhoneNumber, ReceyPro.this);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ReceyPro.this);
-                        ProductInfo.setLayoutManager(linearLayoutManager);
-                        ProductInfo.setAdapter(myAdapterList2);
-                        ProductInfo.setItemAnimator(new DefaultItemAnimator());
-                        progressDialog.dismiss();
+                        if (comperBetweenCountery()) {
+                            myAdapterList2 = new MyAdapterList2(listZeft, nameCompany, nameInList, PhoneNumber, ReceyPro.this);
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ReceyPro.this);
+                            ProductInfo.setLayoutManager(linearLayoutManager);
+                            ProductInfo.setAdapter(myAdapterList2);
+                            ProductInfo.setItemAnimator(new DefaultItemAnimator());
+                            progressDialog.dismiss();
+                            Toast.makeText(myActivityProduct, "جميع من يخدم محافظتك", Toast.LENGTH_SHORT).show();
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(myActivityProduct, "لا يوجد ما يخدم محافظتك", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -265,17 +302,3 @@ public class ReceyPro extends AppCompatActivity {
         }
     }
 }
-//    public void getCounteryOfpharmacies(String phone) {
-//        DatabaseReference databaseReferencePh = FirebaseDatabase.getInstance().getReference().child("users").child("pharmacies").child(phone);
-//        databaseReferencePh.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                name_company = dataSnapshot.child("country_chooser").getValue().toString();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }

@@ -60,7 +60,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.name.setText(list.get(position).getName());
+        holder.name.setText(list.get(position).getNameProduct());
         holder.price.setText(list.get(position).getPrice());
         holder.discount.setText(list.get(position).getDiscount());
         // to mark one of row layOut to delete it in view and also in firebase
@@ -218,9 +218,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
                     ArrayList<Product> filteredList = new ArrayList<>();
                     for (Product product : list) {
 
-                        // name match condition. this might differ depending on your requirement
-                        // here we are looking for name or phone number match
-                        if (product.getName().toLowerCase().contains(charString.toLowerCase())) {
+                        // nameProduct match condition. this might differ depending on your requirement
+                        // here we are looking for nameProduct or phone number match
+                        if (product.getNameProduct().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(product);
                         }
                     }

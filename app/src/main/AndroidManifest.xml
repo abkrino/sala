@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="pharamacy.eg.sala">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.SET_DEBUG_APP "/>
+    <uses-permission android:nameProduct="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:nameProduct="android.permission.CALL_PHONE" />
+    <uses-permission android:nameProduct="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:nameProduct="android.permission.READ_SMS" />
+    <uses-permission android:nameProduct="android.permission.INTERNET" />
+    <uses-permission android:nameProduct="android.permission.CAMERA" />
+    <uses-permission android:nameProduct="android.permission.SET_DEBUG_APP "/>
 
     <application
         android:allowBackup="true"
@@ -19,56 +19,59 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ReceyPro"></activity>
+        <activity android:nameProduct=".ReceyPro"></activity>
         <activity
-            android:name=".MainOffices"
+            android:nameProduct=".MainOffices"
             android:label="@string/title_activity_main_offices"
             android:theme="@style/AppTheme.NoActionBar.NoActionBar" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
-        <activity android:name=".Start_Activity">
+        <activity android:nameProduct=".Start_Activity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:nameProduct="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:nameProduct="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchProduct" />
-        <activity android:name=".EditProfile" />
-        <activity android:name=".SignUp.SignUP_ph" />
-        <activity android:name=".ImagePickerActivity" />
-        <activity android:name=".SignUp.SignUpKind" />
-        <activity android:name=".Confirm" />
-        <activity android:name=".SignUp.SignUP" />
-        <activity android:name=".SignIN" />
-        <activity android:name=".EditeProfilePh" />
+        <activity android:nameProduct=".SearchProduct" />
+        <activity android:nameProduct=".EditProfile" />
+        <activity android:nameProduct=".SignUp.SignUP_ph" />
+        <activity android:nameProduct=".ImagePickerActivity" />
+        <activity android:nameProduct=".SignUp.SignUpKind" />
+        <activity android:nameProduct=".Confirm" />
+        <activity android:nameProduct=".SignUp.SignUP" />
+        <activity android:nameProduct=".SignIN" />
+        <activity android:nameProduct=".EditeProfilePh" />
         <activity
-            android:name="com.yalantis.ucrop.UCropActivity"
+            android:nameProduct="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- uCrop cropping activity -->
         <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:nameProduct="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-1743625796086476~4917839514" /> <!-- cache directory file provider paths -->
         <meta-data
-            android:name="firebase_messaging_auto_init_enabled"
+            android:nameProduct="firebase_messaging_auto_init_enabled"
             android:value="false" />
         <meta-data
-            android:name="firebase_analytics_collection_enabled"
+            android:nameProduct="firebase_analytics_collection_enabled"
             android:value="false" />
+        <meta-data
+            android:nameProduct="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <provider
-            android:name="androidx.core.content.FileProvider"
+            android:nameProduct="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:nameProduct="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
 
         <service
-            android:name=".MyFirebaseMessagingService"
+            android:nameProduct=".MyFirebaseMessagingService"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:nameProduct="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>

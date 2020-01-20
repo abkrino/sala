@@ -199,12 +199,12 @@ public class HomeFragment extends Fragment {
 //                            @Override
 //                            //todo try and handel if crash whene discount == null
 //                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                                writeNewPost(userId, list.get(finalP).getName(), list.get(finalP).getPrice(), list.get(finalP).getDiscount());
+//                                writeNewPost(userId, list.get(finalP).getNameProduct(), list.get(finalP).getPrice(), list.get(finalP).getDiscount());
 //                            }
 //
 //                            @Override
 //                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-////                            writeNewPost( userId, list.get(finalP ).getName(),  list.get(finalP).getPrice(), list.get(finalP).getDiscount());
+////                            writeNewPost( userId, list.get(finalP ).getNameProduct(),  list.get(finalP).getPrice(), list.get(finalP).getDiscount());
 //
 //                            }
 //
@@ -232,13 +232,13 @@ public class HomeFragment extends Fragment {
 //                            @Override
 //                            //todo try and handel if crash whene discount == null
 //                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                                writeNewPost1(userId, list2.get(finalP).getName(), list2.get(finalP).getPrice());
+//                                writeNewPost1(userId, list2.get(finalP).getNameProduct(), list2.get(finalP).getPrice());
 //
 //                            }
 //
 //                            @Override
 //                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-////                            writeNewPost( userId, list.get(finalP ).getName(),  list.get(finalP).getPrice(), list.get(finalP).getDiscount());
+////                            writeNewPost( userId, list.get(finalP ).getNameProduct(),  list.get(finalP).getPrice(), list.get(finalP).getDiscount());
 //
 //                            }
 //
@@ -285,7 +285,7 @@ public class HomeFragment extends Fragment {
                     cancel.setVisibility(View.INVISIBLE);
                 }
                 RecyclerView recycle = view.findViewById(R.id.recycle_main);
-                if (Specia_workUIntent.equals("أدويةمحلية")) {
+                    if (Specia_workUIntent.equals("أدويةمحلية")) {
                     MainAdapter adapter = new MainAdapter(getActivity(), list);
                     recycle.setLayoutManager(new LinearLayoutManager(getActivity()));
                     adapter.getFilter().filter(s);
@@ -549,9 +549,10 @@ public class HomeFragment extends Fragment {
                                 editor.apply();
                                 showProductInList();
 //                               todo في مشلكة uploadProduct();
+                                uploadProduct();
                             }
                         });
-                        uploadProduct();
+
                     }
                 }).start();
             }
@@ -594,20 +595,20 @@ public class HomeFragment extends Fragment {
     }
 
     public void uploadProduct() {
+        databaseReference.child("product");
         if (Specia_workU.equals("أدويةمحلية")) {
             for (int p = 1; p < list.size(); p++) {
-                databaseReference.child("product");
                 int finalP = p;
                 databaseReference.addChildEventListener(new ChildEventListener() {
                     @Override
                     //todo try and handel if crash whene discount == null
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        writeNewPost(userId, list.get(finalP).getName(), list.get(finalP).getPrice(), list.get(finalP).getDiscount());
+                        writeNewPost(userId, list.get(finalP).getNameProduct(), list.get(finalP).getPrice(), list.get(finalP).getDiscount());
                     }
 
                     @Override
                     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//   writeNewPost( userId, list.get(finalP ).getName(),  list.get(finalP).getPrice(), list.get(finalP).getDiscount());
+//   writeNewPost( userId, list.get(finalP ).getNameProduct(),  list.get(finalP).getPrice(), list.get(finalP).getDiscount());
                     }
 
                     @Override
@@ -632,12 +633,12 @@ public class HomeFragment extends Fragment {
                 databaseReference.addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        writeNewPost1(userId, list2.get(finalP).getName(), list2.get(finalP).getPrice());
+                        writeNewPost1(userId, list2.get(finalP).getNameProduct(), list2.get(finalP).getPrice());
                     }
 
                     @Override
                     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//  writeNewPost( userId, list.get(finalP ).getName(),  list.get(finalP).getPrice(), list.get(finalP).getDiscount());
+//  writeNewPost( userId, list.get(finalP ).getNameProduct(),  list.get(finalP).getPrice(), list.get(finalP).getDiscount());
                     }
 
                     @Override
