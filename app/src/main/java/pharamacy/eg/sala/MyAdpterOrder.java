@@ -19,6 +19,7 @@ public class MyAdpterOrder extends RecyclerView.Adapter<MyAdpterOrder.MyViewHold
     ArrayList<Order> nameOfProduct;
     private Context context;
     String numberOffice;
+    int numberOrder;
     //todo فاضل رقم الاورد ونكمل الباقي
     public MyAdpterOrder(String nameCompanyOrder, ArrayList<Order> nameOfProduct, String numberOffice,Context context) {
         this.nameCompanyOrder = nameCompanyOrder;
@@ -44,6 +45,7 @@ public class MyAdpterOrder extends RecyclerView.Adapter<MyAdpterOrder.MyViewHold
     holder.discountData.setText(nameOfProduct.get(position).getDiscount());
     holder.nameProductData.setText(nameOfProduct.get(position).getNameProduct());
     holder.phoneNumber.setText(numberOffice);
+    holder.numberOrder.setText(numberOrder);
     }
 
     @Override
@@ -51,7 +53,7 @@ public class MyAdpterOrder extends RecyclerView.Adapter<MyAdpterOrder.MyViewHold
         return nameOfProduct.size();
     }
     class MyViewHolderOrder extends RecyclerView.ViewHolder {
-        public TextView priceData, discountData, price, discount, nameCompany, phoneNumber,nameProduct,nameProductData;
+        public TextView priceData, discountData, price, discount, nameCompany, phoneNumber,nameProduct,nameProductData,numberOrder;
         public ImageView callIcon;
 
 
@@ -66,7 +68,7 @@ public class MyAdpterOrder extends RecyclerView.Adapter<MyAdpterOrder.MyViewHold
             nameProduct = itemView.findViewById(R.id.nameProuductTitel);
             nameProductData=itemView.findViewById(R.id.nameProuductOrder);
             phoneNumber = itemView.findViewById(R.id.phoneNumberOrder);
-
+            numberOrder= itemView.findViewById(R.id.numberOrder);
             callIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -1,7 +1,9 @@
 package pharamacy.eg.sala;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,8 +27,46 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
-public class Start_Activity extends AppCompatActivity {
+import java.util.List;
+
+public class Start_Activity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Dexter.withActivity(this)
+                .withPermissions(Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.INTERNET,
+                        Manifest.permission.CALL_PHONE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_SMS,
+                        Manifest.permission.ACCESS_NETWORK_STATE)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        if (report.areAllPermissionsGranted()) {
+
+                        }
+
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                }).check();
+
+    }
     public ImageView logo;
     public TextView titel, tagApp;
     private FirebaseAuth mAuth;
@@ -35,11 +76,11 @@ public class Start_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        checkConnection();
         mAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         startAnimation();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-
         if (currentUser == null) {
             endAnimation();
             startActivity(new Intent(Start_Activity.this, SignIN.class));
@@ -98,7 +139,6 @@ public class Start_Activity extends AppCompatActivity {
         // [START fcm_runtime_enable_auto_init]
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
         // [END fcm_runtime_enable_auto_init]
-
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
@@ -135,4 +175,25 @@ public class Start_Activity extends AppCompatActivity {
         tagApp.clearAnimation();
     }
 
+    // Method to manually check connection status
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showSnack(isConnected);
+    }
+    // Showing the status in Snackbar
+    private void showSnack(boolean isConnected) {
+        Snackbar snackbar;
+        if (isConnected) {
+            snackbar  = Snackbar.make(findViewById(R.id.startActivity), Html.fromHtml("<font color=\"#FFFFFF\">Good! Connected to Internet</font>") , Snackbar.LENGTH_SHORT);
+            snackbar.show();
+        } else {
+            snackbar  = Snackbar.make(findViewById(R.id.startActivity), Html.fromHtml("<font color=\"#D81B60\">Sorry! Not connected to internet</font>") , Snackbar.LENGTH_INDEFINITE);
+            snackbar.show();
+        }
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
+    }
 }

@@ -4,6 +4,23 @@
             "outputFile": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ml/values-ml.xml",
             "map": [
                 {
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/bfd2b081222823476c94623f82ca8c47/jetified-firebase-messaging-20.1.0/res/values-ml/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "98",
+                        "endOffsets": "305"
+                    },
+                    "to": {
+                        "startLines": "47",
+                        "startColumns": "4",
+                        "startOffsets": "5704",
+                        "endColumns": "102",
+                        "endOffsets": "5802"
+                    }
+                },
+                {
                     "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/331630a23dfa1f0594bcf54d5352aa36/core-1.1.0/res/values-ml/values-ml.xml",
                     "from": {
                         "startLines": "2",
@@ -21,40 +38,6 @@
                     }
                 },
                 {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/d724f9acb148f8e3e133b080a02186ad/jetified-play-services-ads-18.2.0/res/values-ml/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10",
-                        "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "197,273,390,460,528,611,717",
-                        "endColumns": "75,116,69,67,82,105,76",
-                        "endOffsets": "272,389,459,527,610,716,793"
-                    },
-                    "to": {
-                        "startLines": "50,51,52,53,54,55,56",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "6051,6131,6252,6326,6398,6485,6595",
-                        "endColumns": "79,120,73,71,86,109,80",
-                        "endOffsets": "6126,6247,6321,6393,6480,6590,6671"
-                    }
-                },
-                {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/3e14f5e068b31de0d7f5a0f2811aeb46/jetified-firebase-messaging-20.0.0/res/values-ml/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "98",
-                        "endOffsets": "303"
-                    },
-                    "to": {
-                        "startLines": "47",
-                        "startColumns": "4",
-                        "startOffsets": "5704",
-                        "endColumns": "102",
-                        "endOffsets": "5802"
-                    }
-                },
-                {
                     "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/6d206c10dfcd7e4d261b33c292c090cb/play-services-base-17.1.0/res/values-ml/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -69,6 +52,23 @@
                         "startOffsets": "2854,2975,3186,3327,3450,3673,3800,3935,4289,4530,4648,4853,4991,5199,5390,5484,5583",
                         "endColumns": "120,210,140,122,222,126,134,134,240,117,204,137,207,190,93,98,120",
                         "endOffsets": "2970,3181,3322,3445,3668,3795,3930,4065,4525,4643,4848,4986,5194,5385,5479,5578,5699"
+                    }
+                },
+                {
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/550c12545bc2a4bfdea2fa4057884c7c/jetified-play-services-ads-18.3.0/res/values-ml/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "199,275,392,462,530,613,719",
+                        "endColumns": "75,116,69,67,82,105,76",
+                        "endOffsets": "274,391,461,529,612,718,795"
+                    },
+                    "to": {
+                        "startLines": "50,51,52,53,54,55,56",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "6051,6131,6252,6326,6398,6485,6595",
+                        "endColumns": "79,120,73,71,86,109,80",
+                        "endOffsets": "6126,6247,6321,6393,6480,6590,6671"
                     }
                 },
                 {

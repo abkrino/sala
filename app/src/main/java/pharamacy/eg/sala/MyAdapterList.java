@@ -1,5 +1,6 @@
 package pharamacy.eg.sala;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,12 +14,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+
+import pharamacy.eg.sala.payment.GetPay;
 
 public class MyAdapterList extends RecyclerView.Adapter<MyAdapterList.MyViewHolder> {
     ArrayList<String> nameC;
@@ -27,6 +32,9 @@ public class MyAdapterList extends RecyclerView.Adapter<MyAdapterList.MyViewHold
     String numoo;
     ArrayList<String> PhoneNumber;
     private Context context;
+    private FirebaseUser user;
+    int numberOrderS = 0;
+
     public String getNumoo() {
         return numoo;
     }
@@ -58,7 +66,7 @@ public class MyAdapterList extends RecyclerView.Adapter<MyAdapterList.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 //nameC.get(position)
         //todo stop here 14\1
-        holder.nameCompany.setText(" شركة : "+nameC.get(position));
+        holder.nameCompany.setText(" شركة : " + nameC.get(position));
         holder.price.setText(list.get(position).getPrice());
         holder.discount.setText(list.get(position).getDiscount());
         holder.phoneNumber.setText(PhoneNumber.get(position));
@@ -75,67 +83,106 @@ public class MyAdapterList extends RecyclerView.Adapter<MyAdapterList.MyViewHold
     }
 
 
-class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView priceData, discountData, price, discount, nameCompany, phoneNumber;
-    public ImageView callIcon;
-    public ImageView checkProduct;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView priceData, discountData, price, discount, nameCompany, phoneNumber;
+        public ImageView callIcon;
+        public ImageView checkProduct;
 
-    public MyViewHolder(@NonNull View itemView) {
-        super(itemView);
-        phoneNumber = itemView.findViewById(R.id.phoneNumber);
-        priceData = itemView.findViewById(R.id.priceData);
-        discountData = itemView.findViewById(R.id.discountData);
-        nameCompany = itemView.findViewById(R.id.nameCompany);
-        discount = itemView.findViewById(R.id.discountd);
-        price = itemView.findViewById(R.id.priced);
-        callIcon = itemView.findViewById(R.id.callIcon);
-        checkProduct = itemView.findViewById(R.id.checkProduct);
-        callIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                numoo = phoneNumber.getText().toString();
-                intent.setData(Uri.parse("tel:" + numoo));
-                context.startActivity(intent);
-            }
-        });
-
-        checkProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String nameCompanyorder, prouductname;
-                nameCompanyorder = nameCompany.getText().toString();
-                prouductname = nameProduct;
-                ArrayList<String> productsOrder = new ArrayList<>();
-                if (nameCompany.getText().toString().equals(nameCompanyorder)) {
-                    productsOrder.add(prouductname);
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            phoneNumber = itemView.findViewById(R.id.phoneNumber);
+            priceData = itemView.findViewById(R.id.priceData);
+            discountData = itemView.findViewById(R.id.discountData);
+            nameCompany = itemView.findViewById(R.id.nameCompany);
+            discount = itemView.findViewById(R.id.discountd);
+            price = itemView.findViewById(R.id.priced);
+            callIcon = itemView.findViewById(R.id.callIcon);
+            checkProduct = itemView.findViewById(R.id.checkProduct);
+            callIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    numoo = phoneNumber.getText().toString();
+                    intent.setData(Uri.parse("tel:" + numoo));
+                    context.startActivity(intent);
                 }
-                Map<String, ArrayList<String>> order = new HashMap<>();
-                order.put(nameCompanyorder, productsOrder);
-              /////////////////////////////////////////////////////////////////////////////////////
-                LayoutInflater factory = LayoutInflater.from(context);
-                final View deleteDialogView = factory.inflate(R.layout.alert_go_app, null);
-                final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();
-                deleteDialog.setView(deleteDialogView);
-                deleteDialog.show();
-                Animation animation = AnimationUtils.loadAnimation(context, R.anim.blink);
-                deleteDialog.findViewById(R.id.icoon_image).startAnimation(animation);
-                deleteDialogView.findViewById(R.id.alert_bt).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        deleteDialog.dismiss();
-                        Toast.makeText(context, "لسا معملناش تطبيق مدفوع !!", Toast.LENGTH_LONG).show();
+            });
+
+            checkProduct.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String nameCompanyS, prouductname, priceS, discountS, numberOfficeS, numberpharmS;
+                    nameCompanyS = nameCompany.getText().toString();
+                    priceS = price.getText().toString();
+                    discountS = discount.getText().toString();
+                    numberOfficeS = phoneNumber.getText().toString();
+                    prouductname = nameProduct;
+                    numberOrderS = genratOrderNumber(numberOrderS);
+                    user = FirebaseAuth.getInstance().getCurrentUser();
+                    numberpharmS = Objects.requireNonNull(user).getPhoneNumber();
+                    Order order = new Order(prouductname, priceS, discountS, numberOfficeS, numberpharmS, numberOrderS);
+                   //todo لسا برده الاوردارات
+                    ArrayList<Order> orders = new ArrayList<>();
+                    if (nameCompanyS.equals(nameCompany.getText().toString())) {
+                    orders.add(order);
+                    }else {
+                        orders = new ArrayList<>();
                     }
-                });
+                    Map<String, Object> newOrder = order.toMap();
+                    newOrder.put(nameCompanyS, orders);
+                    ///////////////////////////////////////////////////////////
+                    LayoutInflater factory = LayoutInflater.from(context);
+                    final View deleteDialogView = factory.inflate(R.layout.alert_go_app, null);
+                    final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();
+                    deleteDialog.setView(deleteDialogView);
+                    deleteDialog.show();
+                    Animation animation = AnimationUtils.loadAnimation(context, R.anim.blink);
+                    deleteDialog.findViewById(R.id.icoon_image).startAnimation(animation);
+                    deleteDialogView.findViewById(R.id.alert_bt).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            deleteDialog.dismiss();
+                            Toast.makeText(context, "من فضلك أضف بيانات البطاقة ", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent (context, GetPay.class).putExtra("numberpharm",numberpharmS);
+                            context.startActivity(intent);
 
-            }
-        });
+                        }
+                    });
+                }
+            });
 
+        }
+    }
+
+    public int genratOrderNumber(int numberorder) {
+        numberorder++;
+        return numberorder;
     }
 }
-
-
-}
+//    final String nameCompanyorder, prouductname;
+//                nameCompanyorder = nameCompany.getText().toString();
+//                        prouductname = nameProduct;
+//                        ArrayList<String> productsOrder = new ArrayList<>();
+//        if (nameCompany.getText().toString().equals(nameCompanyorder)) {
+//        productsOrder.add(prouductname);
+//        }
+//        Map<String, ArrayList<String>> order = new HashMap<>();
+//        order.put(nameCompanyorder, productsOrder);
+//        /////////////////////////////////////////////////////////////////////////////////////
+//        LayoutInflater factory = LayoutInflater.from(context);
+//final View deleteDialogView = factory.inflate(R.layout.alert_go_app, null);
+//final AlertDialog deleteDialog = new AlertDialog.Builder(context).create();
+//        deleteDialog.setView(deleteDialogView);
+//        deleteDialog.show();
+//        Animation animation = AnimationUtils.loadAnimation(context, R.anim.blink);
+//        deleteDialog.findViewById(R.id.icoon_image).startAnimation(animation);
+//        deleteDialogView.findViewById(R.id.alert_bt).setOnClickListener(new View.OnClickListener() {
+//@Override
+//public void onClick(View v) {
+//        deleteDialog.dismiss();
+//        Toast.makeText(context, "لسا معملناش تطبيق مدفوع !!", Toast.LENGTH_LONG).show();
+//        }
+//        });
 
 
 //    public void addToPayCar(View view) {

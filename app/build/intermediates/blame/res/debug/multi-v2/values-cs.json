@@ -4,23 +4,6 @@
             "outputFile": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-cs/values-cs.xml",
             "map": [
                 {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/3e14f5e068b31de0d7f5a0f2811aeb46/jetified-firebase-messaging-20.0.0/res/values-cs/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "99",
-                        "endOffsets": "304"
-                    },
-                    "to": {
-                        "startLines": "47",
-                        "startColumns": "4",
-                        "startOffsets": "5539",
-                        "endColumns": "103",
-                        "endOffsets": "5638"
-                    }
-                },
-                {
                     "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/331630a23dfa1f0594bcf54d5352aa36/core-1.1.0/res/values-cs/values-cs.xml",
                     "from": {
                         "startLines": "2",
@@ -72,20 +55,20 @@
                     }
                 },
                 {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/d724f9acb148f8e3e133b080a02186ad/jetified-play-services-ads-18.2.0/res/values-cs/values.xml",
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/bfd2b081222823476c94623f82ca8c47/jetified-firebase-messaging-20.1.0/res/values-cs/values.xml",
                     "from": {
-                        "startLines": "4,5,6,7,8,9,10",
-                        "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "197,269,381,447,514,600,707",
-                        "endColumns": "71,111,65,66,85,106,73",
-                        "endOffsets": "268,380,446,513,599,706,780"
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "99",
+                        "endOffsets": "306"
                     },
                     "to": {
-                        "startLines": "50,51,52,53,54,55,56",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "5878,5954,6070,6140,6211,6301,6412",
-                        "endColumns": "75,115,69,70,89,110,77",
-                        "endOffsets": "5949,6065,6135,6206,6296,6407,6485"
+                        "startLines": "47",
+                        "startColumns": "4",
+                        "startOffsets": "5539",
+                        "endColumns": "103",
+                        "endOffsets": "5638"
                     }
                 },
                 {
@@ -103,6 +86,23 @@
                         "startOffsets": "5643,5751",
                         "endColumns": "107,126",
                         "endOffsets": "5746,5873"
+                    }
+                },
+                {
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/550c12545bc2a4bfdea2fa4057884c7c/jetified-play-services-ads-18.3.0/res/values-cs/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "199,271,383,449,516,602,709",
+                        "endColumns": "71,111,65,66,85,106,73",
+                        "endOffsets": "270,382,448,515,601,708,782"
+                    },
+                    "to": {
+                        "startLines": "50,51,52,53,54,55,56",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "5878,5954,6070,6140,6211,6301,6412",
+                        "endColumns": "75,115,69,70,89,110,77",
+                        "endOffsets": "5949,6065,6135,6206,6296,6407,6485"
                     }
                 },
                 {

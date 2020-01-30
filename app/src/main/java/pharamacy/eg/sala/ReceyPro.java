@@ -49,6 +49,7 @@ public class ReceyPro extends AppCompatActivity {
         String type1, type2, type3;
         Bundle rx = getIntent().getExtras();
         //todo make thread to loading company
+        setTitle("اسعار الشركات");
         nameInList = rx.getString("nameInlist");
         type1 = rx.getString("local_medicines");
         type2 = rx.getString("accessories");

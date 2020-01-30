@@ -37,11 +37,11 @@ public class ToolsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setData(Uri.parse("email"));
+                intent.setType("massage/rfc822");
                 String [] s ={"mahmoud.mansour0b@gmail.com"};
                 intent.putExtra(Intent.EXTRA_EMAIL,s);
                 intent.putExtra(Intent.EXTRA_SUBJECT,"Enter subject");
                 intent.putExtra(Intent.EXTRA_TEXT,"Enter your email body");
-                intent.setType("massage/rfc822");
                 Intent choser = Intent.createChooser(intent,"launch Email");
                 startActivity(choser);
 

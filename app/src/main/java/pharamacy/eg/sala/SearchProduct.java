@@ -2,6 +2,7 @@ package pharamacy.eg.sala;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -23,6 +24,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +37,13 @@ import com.google.firebase.storage.StorageReference;
 
 import pharamacy.eg.sala.Class.GlideApp;
 
-public class SearchProduct extends AppCompatActivity  {
+public class SearchProduct extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener  {
+    @Override
+    protected void onResume() {
+        checkConnection();
+        super.onResume();
+    }
+
     private AppBarConfiguration mAppBarConfiguration;
     private StorageReference mStorage;
     public String userId;
@@ -117,6 +125,26 @@ public class SearchProduct extends AppCompatActivity  {
 
 
 
+    // Method to manually check connection status
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showSnack(isConnected);
+    }
+    // Showing the status in Snackbar
+    private void showSnack(boolean isConnected) {
+        Snackbar snackbar;
+        if (isConnected) {
+
+        } else {
+            snackbar  = Snackbar.make(findViewById(R.id.drawer_layout2), Html.fromHtml("<font color=\"#D81B60\">Sorry! Not connected to internet</font>") , Snackbar.LENGTH_INDEFINITE);
+            snackbar.show();
+        }
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
+    }
 
 
 //    Home_pharm home_pharm = new Home_pharm();
@@ -142,6 +170,7 @@ class ListOfPrice extends Fragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
 }
 
 //    Button local_medicines, imported_medicines, accessories, button2;

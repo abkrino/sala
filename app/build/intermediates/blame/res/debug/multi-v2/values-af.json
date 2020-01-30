@@ -4,20 +4,20 @@
             "outputFile": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-af/values-af.xml",
             "map": [
                 {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/d724f9acb148f8e3e133b080a02186ad/jetified-play-services-ads-18.2.0/res/values-af/values.xml",
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/bfd2b081222823476c94623f82ca8c47/jetified-firebase-messaging-20.1.0/res/values-af/values.xml",
                     "from": {
-                        "startLines": "4,5,6,7,8,9,10",
-                        "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "197,265,377,442,506,588,702",
-                        "endColumns": "67,111,64,63,81,113,73",
-                        "endOffsets": "264,376,441,505,587,701,775"
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "101",
+                        "endOffsets": "308"
                     },
                     "to": {
-                        "startLines": "50,51,52,53,54,55,56",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "5787,5859,5975,6044,6112,6198,6316",
-                        "endColumns": "71,115,68,67,85,117,77",
-                        "endOffsets": "5854,5970,6039,6107,6193,6311,6389"
+                        "startLines": "47",
+                        "startColumns": "4",
+                        "startOffsets": "5462",
+                        "endColumns": "105",
+                        "endOffsets": "5563"
                     }
                 },
                 {
@@ -72,6 +72,23 @@
                     }
                 },
                 {
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/550c12545bc2a4bfdea2fa4057884c7c/jetified-play-services-ads-18.3.0/res/values-af/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "199,267,379,444,508,590,704",
+                        "endColumns": "67,111,64,63,81,113,73",
+                        "endOffsets": "266,378,443,507,589,703,777"
+                    },
+                    "to": {
+                        "startLines": "50,51,52,53,54,55,56",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "5787,5859,5975,6044,6112,6198,6316",
+                        "endColumns": "71,115,68,67,85,117,77",
+                        "endOffsets": "5854,5970,6039,6107,6193,6311,6389"
+                    }
+                },
+                {
                     "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/331630a23dfa1f0594bcf54d5352aa36/core-1.1.0/res/values-af/values-af.xml",
                     "from": {
                         "startLines": "2",
@@ -86,23 +103,6 @@
                         "startOffsets": "6474",
                         "endColumns": "100",
                         "endOffsets": "6570"
-                    }
-                },
-                {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/3e14f5e068b31de0d7f5a0f2811aeb46/jetified-firebase-messaging-20.0.0/res/values-af/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "101",
-                        "endOffsets": "306"
-                    },
-                    "to": {
-                        "startLines": "47",
-                        "startColumns": "4",
-                        "startOffsets": "5462",
-                        "endColumns": "105",
-                        "endOffsets": "5563"
                     }
                 },
                 {

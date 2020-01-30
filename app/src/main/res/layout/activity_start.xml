@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:id="@+id/startActivity"
     tools:context=".Start_Activity">
 
     <ImageView
@@ -45,4 +46,6 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewStart"
         app:layout_constraintTop_toBottomOf="@+id/textLog"
         app:layout_constraintVertical_bias="0.0" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

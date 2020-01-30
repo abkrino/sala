@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -48,12 +50,13 @@ import butterknife.OnClick;
 import pharamacy.eg.sala.Class.CustomOnItemSelectedListener;
 import pharamacy.eg.sala.Class.GlideApp;
 import pharamacy.eg.sala.Confirm;
+import pharamacy.eg.sala.ConnectivityReceiver;
 import pharamacy.eg.sala.ImagePickerActivity;
 import pharamacy.eg.sala.R;
 import pharamacy.eg.sala.Start_Activity;
 import pharamacy.eg.sala.Users;
 
-public class SignUP_ph extends AppCompatActivity {
+public class SignUP_ph extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener  {
     private EditText name,  city,  neighborhood,  address, phoneNumber ;
     public String userId,nameU,  cityU,  neighborhoodU,  addressu, phoneNumberu,country_chooseru;
     ImageView profile;
@@ -93,6 +96,7 @@ private InterstitialAd mInterstitialAd;
         register_btn= findViewById(R.id.registerPh_btn);
         phoneNumber = findViewById(R.id.numberPh);
         profile = findViewById(R.id.profilePh_pic);
+        checkConnection();
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
 
@@ -406,4 +410,25 @@ private void startRegister() {
 
         mDatabase.child("users").child("pharmacies").child(userId).setValue(user);
     }
+    // Method to manually check connection status
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showSnack(isConnected);
+    }
+    // Showing the status in Snackbar
+    private void showSnack(boolean isConnected) {
+        Snackbar snackbar;
+        if (isConnected) {
+
+        } else {
+            snackbar  = Snackbar.make(findViewById(R.id.sginUp), Html.fromHtml("<font color=\"#D81B60\">Sorry! Not connected to internet</font>") , Snackbar.LENGTH_INDEFINITE);
+            snackbar.show();
+        }
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
+    }
+
 }

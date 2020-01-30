@@ -4,6 +4,23 @@
             "outputFile": "/home/mahmoud/AndroidStudioProjects/sala/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hi/values-hi.xml",
             "map": [
                 {
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/bfd2b081222823476c94623f82ca8c47/jetified-firebase-messaging-20.1.0/res/values-hi/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "98",
+                        "endOffsets": "305"
+                    },
+                    "to": {
+                        "startLines": "47",
+                        "startColumns": "4",
+                        "startOffsets": "5507",
+                        "endColumns": "102",
+                        "endOffsets": "5605"
+                    }
+                },
+                {
                     "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/331630a23dfa1f0594bcf54d5352aa36/core-1.1.0/res/values-hi/values-hi.xml",
                     "from": {
                         "startLines": "2",
@@ -72,20 +89,20 @@
                     }
                 },
                 {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/3e14f5e068b31de0d7f5a0f2811aeb46/jetified-firebase-messaging-20.0.0/res/values-hi/values.xml",
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/550c12545bc2a4bfdea2fa4057884c7c/jetified-play-services-ads-18.3.0/res/values-hi/values.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "98",
-                        "endOffsets": "303"
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "199,269,395,464,532,609,703",
+                        "endColumns": "69,125,68,67,76,93,70",
+                        "endOffsets": "268,394,463,531,608,702,773"
                     },
                     "to": {
-                        "startLines": "47",
-                        "startColumns": "4",
-                        "startOffsets": "5507",
-                        "endColumns": "102",
-                        "endOffsets": "5605"
+                        "startLines": "50,51,52,53,54,55,56",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "5828,5902,6032,6105,6177,6258,6356",
+                        "endColumns": "73,129,72,71,80,97,74",
+                        "endOffsets": "5897,6027,6100,6172,6253,6351,6426"
                     }
                 },
                 {
@@ -103,23 +120,6 @@
                         "startOffsets": "3956",
                         "endColumns": "204",
                         "endOffsets": "4156"
-                    }
-                },
-                {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/d724f9acb148f8e3e133b080a02186ad/jetified-play-services-ads-18.2.0/res/values-hi/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10",
-                        "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "197,267,393,462,530,607,701",
-                        "endColumns": "69,125,68,67,76,93,70",
-                        "endOffsets": "266,392,461,529,606,700,771"
-                    },
-                    "to": {
-                        "startLines": "50,51,52,53,54,55,56",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "5828,5902,6032,6105,6177,6258,6356",
-                        "endColumns": "73,129,72,71,80,97,74",
-                        "endOffsets": "5897,6027,6100,6172,6253,6351,6426"
                     }
                 }
             ]

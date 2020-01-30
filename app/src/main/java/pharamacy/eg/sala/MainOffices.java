@@ -2,6 +2,7 @@ package pharamacy.eg.sala;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +33,7 @@ import com.google.firebase.storage.StorageReference;
 
 import pharamacy.eg.sala.Class.GlideApp;
 
-public class MainOffices extends AppCompatActivity {
+public class MainOffices extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
     private AppBarConfiguration mAppBarConfiguration;
     private StorageReference mStorage;
     public String userId;
@@ -55,6 +57,7 @@ public class MainOffices extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        checkConnection();
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             userId = user.getPhoneNumber();
@@ -111,6 +114,27 @@ public class MainOffices extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+    // Method to manually check connection status
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showSnack(isConnected);
+    }
+    // Showing the status in Snackbar
+    private void showSnack(boolean isConnected) {
+        Snackbar snackbar;
+        if (isConnected) {
+            snackbar  = Snackbar.make(findViewById(R.id.drawer_layout), Html.fromHtml("<font color=\"#FFFFFF\">Good! Connected to Internet</font>") , Snackbar.LENGTH_LONG);
+            snackbar.show();
+        } else {
+            snackbar  = Snackbar.make(findViewById(R.id.drawer_layout), Html.fromHtml("<font color=\"#D81B60\">Sorry! Not connected to internet</font>") , Snackbar.LENGTH_INDEFINITE);
+            snackbar.show();
+        }
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
     }
 
 }

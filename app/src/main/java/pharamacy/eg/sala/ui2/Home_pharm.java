@@ -146,7 +146,9 @@ public class Home_pharm extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 text = newText;
-                adapter.getFilter().filter(newText);
+                if(text!=null) {
+                    adapter.getFilter().filter(text);
+                }else {return false;}
                 return false;
             }
         });

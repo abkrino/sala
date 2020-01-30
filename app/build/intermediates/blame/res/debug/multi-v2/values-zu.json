@@ -21,23 +21,6 @@
                     }
                 },
                 {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/d724f9acb148f8e3e133b080a02186ad/jetified-play-services-ads-18.2.0/res/values-zu/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10",
-                        "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "197,273,390,456,521,602,706",
-                        "endColumns": "75,116,65,64,80,103,74",
-                        "endOffsets": "272,389,455,520,601,705,780"
-                    },
-                    "to": {
-                        "startLines": "50,51,52,53,54,55,56",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "5914,5994,6115,6185,6254,6339,6447",
-                        "endColumns": "79,120,69,68,84,107,78",
-                        "endOffsets": "5989,6110,6180,6249,6334,6442,6521"
-                    }
-                },
-                {
                     "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/6d206c10dfcd7e4d261b33c292c090cb/play-services-base-17.1.0/res/values-zu/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -72,6 +55,23 @@
                     }
                 },
                 {
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/bfd2b081222823476c94623f82ca8c47/jetified-firebase-messaging-20.1.0/res/values-zu/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "110",
+                        "endOffsets": "317"
+                    },
+                    "to": {
+                        "startLines": "47",
+                        "startColumns": "4",
+                        "startOffsets": "5565",
+                        "endColumns": "114",
+                        "endOffsets": "5675"
+                    }
+                },
+                {
                     "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/a224746eaee6410ddeee33583a16e3bf/jetified-navigation-ui-2.1.0/res/values-zu/values-zu.xml",
                     "from": {
                         "startLines": "2,3",
@@ -89,20 +89,20 @@
                     }
                 },
                 {
-                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/3e14f5e068b31de0d7f5a0f2811aeb46/jetified-firebase-messaging-20.0.0/res/values-zu/values.xml",
+                    "source": "/home/mahmoud/.gradle/caches/transforms-2/files-2.1/550c12545bc2a4bfdea2fa4057884c7c/jetified-play-services-ads-18.3.0/res/values-zu/values.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "110",
-                        "endOffsets": "315"
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "199,275,392,458,523,604,708",
+                        "endColumns": "75,116,65,64,80,103,74",
+                        "endOffsets": "274,391,457,522,603,707,782"
                     },
                     "to": {
-                        "startLines": "47",
-                        "startColumns": "4",
-                        "startOffsets": "5565",
-                        "endColumns": "114",
-                        "endOffsets": "5675"
+                        "startLines": "50,51,52,53,54,55,56",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "5914,5994,6115,6185,6254,6339,6447",
+                        "endColumns": "79,120,69,68,84,107,78",
+                        "endOffsets": "5989,6110,6180,6249,6334,6442,6521"
                     }
                 },
                 {
