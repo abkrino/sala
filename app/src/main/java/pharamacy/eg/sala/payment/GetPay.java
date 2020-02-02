@@ -1,102 +1,225 @@
+//
+//webView.setWebViewClient(new WebViewClient() {
+//public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//
+//        Toast.makeText(GetPay.this, "Processing webview url click...", Toast.LENGTH_LONG).show();
+//
+//        progressBar.setVisibility(View.VISIBLE);
+//        if (url.startsWith("https://www.google.com/?accept=")) {
+//        Toast.makeText(GetPay.this, "عملية مقبولة ", Toast.LENGTH_LONG).show();
+//        finish();
+//        return false;
+//        } else if (url.startsWith("https://www.google.com/?fail=")) {
+//
+//        Toast.makeText(GetPay.this, "عملية غير مقبولة", Toast.LENGTH_LONG).show();
+//        finish();
+//        return false;
+//        } else {
+//        view.loadUrl(url);
+//        webView.requestFocus(View.FOCUS_DOWN);
+//        return true;
+//        }
+//
+//
+//        }
+//
+//public void onPageFinished(WebView view, String url) {
+//
+//        progressBar.setVisibility(View.GONE);
+//
+//        }
+//
+//public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+//
+//        progressBar.setVisibility(View.GONE);
+//
+//        }
+//        });
+//https://github.com/hwasiti/Android_Popup_Webview_handler_example/blob/master/app/src/main/java/com/example/haider/myapplication/MainActivity.java
 package pharamacy.eg.sala.payment;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.pm.PackageManager;
-import android.os.Build;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.http.SslError;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Message;
+import android.util.Log;
+import android.view.WindowManager;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import pharamacy.eg.sala.R;
 
 public class GetPay extends AppCompatActivity {
     WebView webView;
     ProgressBar progressBar;
+    private WebView mWebviewPop;
+    private AlertDialog builder;
+    private Toast mToast;
+    private Context mContext;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_pay);
         calling();
         handlling();
-        setTitle("أضف بيانات بطاقتك ");
     }
 
     private void calling() {
         webView = findViewById(R.id.webView1);
         progressBar = findViewById(R.id.progressBar);
+
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setAppCacheEnabled(true);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setSupportMultipleWindows(true);
+
+        webView.setWebViewClient(new UriWebViewClient());
+        webView.setWebChromeClient(new UriChromeClient());
+
+        mContext=this.getApplicationContext();
+
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private void handlling() {
         openPay();
     }
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @SuppressLint({"SetJavaScriptEnabled", "JavascriptInterface"})
     public void openPay() {
+        //            3f90876d-8936-4070-8159-00189b237ff6
+            webView.loadUrl("https://app.vapulus.com/website/?siteId=6e2add7e-3697-4d6c-b6b3-e65e2b803027&amount=100&link=http:%2F%2Fsalaa.epizy.com&pageTitle=matrix%20mobile%20app&onaccept=http:%2F%2Fwww.google.com%2Fncr&onfail=http:%2F%2Fwww.msn.com%2F");
 
-        //check if premission in manifest
-        if (checkSelfPermission(Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions();
-        } else {
-            webView.getSettings().setJavaScriptEnabled(true);
+        }
+    private class UriWebViewClient extends WebViewClient {
 
-            webView.loadUrl("https://app.vapulus.com/website/?siteId=3f90876d-8936-4070-8159-00189b237ff6&amount=100&link=https:%2F%2Fstorage.googleapis.com%2Fvapulus-website%2Fgoogle-storage-cart.html&pageTitle=test%20web%20site&onaccept=http:%2F%2Fwww.google.com%2Fncr&onfail=http:%2F%2Fwww.msn.com%2F");
-            webView.setWebViewClient(new WebViewClient() {
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                    Toast.makeText(GetPay.this, "Processing webview url click...", Toast.LENGTH_LONG).show();
-
-                    progressBar.setVisibility(View.VISIBLE);
-
-
-                    if (url.startsWith("https://www.google.com/?accept=")) {
-                        Toast.makeText(GetPay.this, "عملية مقبولة ", Toast.LENGTH_LONG).show();
-                        finish();
-                        return false;
-                    } else if (url.startsWith("https://www.google.com/?fail=")) {
-
-                        Toast.makeText(GetPay.this, "عملية غير مقبولة", Toast.LENGTH_LONG).show();
-                        finish();
-                        return false;
-                    } else {
-                        view.loadUrl(url);
-                        webView.requestFocus(View.FOCUS_DOWN);
-                        return true;
-                    }
-
-
+        /*
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            String host = Uri.parse(url).getHost();
+            //Log.d("shouldOverrideUrlLoading", url);
+            if (host.equals(target_url_prefix))
+            {
+                // This is my web site, so do not override; let my WebView load
+                // the page
+                if(mWebviewPop!=null)
+                {
+                    mWebviewPop.setVisibility(View.GONE);
+                    mContainer.removeView(mWebviewPop);
+                    mWebviewPop=null;
                 }
+                return false;
+            }
+            if(host.equals("m.facebook.com"))
+            {
+                return false;
+            }
+            // Otherwise, the link is not for a page on my site, so launch
+            // another Activity that handles URLs
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+            return true;
+        }
+        */
 
-                public void onPageFinished(WebView view, String url) {
 
-                    progressBar.setVisibility(View.GONE);
 
-                }
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler,
+                                       SslError error) {
+            Log.d("onReceivedSslError", "onReceivedSslError");
+            //super.onReceivedSslError(view, handler, error);
+        }
+    }
 
-                public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+    class UriChromeClient extends WebChromeClient {
 
-                    progressBar.setVisibility(View.GONE);
+        @Override
+        public boolean onCreateWindow(WebView view, boolean isDialog,
+                                      boolean isUserGesture, Message resultMsg) {
+            mWebviewPop = new WebView(mContext);
+            mWebviewPop.setVerticalScrollBarEnabled(false);
+            mWebviewPop.setHorizontalScrollBarEnabled(false);
+            mWebviewPop.setWebViewClient(new UriWebViewClient());
+            mWebviewPop.setWebChromeClient(new UriChromeClient());
+            mWebviewPop.getSettings().setJavaScriptEnabled(true);
+            mWebviewPop.getSettings().setSavePassword(true);
+            mWebviewPop.getSettings().setSaveFormData(true);
+            //mWebviewPop.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+            // create an AlertDialog.Builder
+            //the below did not give me .dismiss() method . See : https://stackoverflow.com/questions/14853325/how-to-dismiss-alertdialog-in-android
+
+//            AlertDialog.Builder builder;
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+//            } else {
+//                builder = new AlertDialog.Builder(MainActivity.this);
+//            }
+
+            // set the WebView as the AlertDialog.Builder’s view
+
+            builder = new AlertDialog.Builder(GetPay.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT).create();
+
+
+            builder.setTitle("");
+            builder.setView(mWebviewPop);
+
+            builder.setButton("Close", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    mWebviewPop.destroy();
+                    dialog.dismiss();
+
 
                 }
             });
+
+
+            builder.show();
+            builder.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
+            WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
+            transport.setWebView(mWebviewPop);
+            resultMsg.sendToTarget();
+
+            return true;
         }
 
-    }
 
-    //check permission
-    public void requestPermissions() {
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+        @Override
+        public void onCloseWindow(WebView window) {
+
+            //Toast.makeText(mContext,"onCloseWindow called",Toast.LENGTH_SHORT).show();
+
+
+            try {
+                mWebviewPop.destroy();
+            } catch (Exception e) {
+
+            }
+
+            try {
+                builder.dismiss();
+
+            } catch (Exception e) {
+
+            }
+
+
+        }
     }
 }
+
+
