@@ -3,13 +3,16 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
+        <device id="pixel" />
+        <device id="Nexus 10" />
+        <device id="pixel_c" />
+        <device id="Nexus 9" />
+        <device id="Nexus 7 2013" />
+        <device id="Nexus 7" />
+        <device id="pixel_3_xl" />
+        <device id="pixel_3a_xl" />
         <device id="pixel_2_xl" />
         <device id="Nexus 6" />
-        <device id="Nexus 6P" />
-        <device id="pixel_3a" />
-        <device id="pixel_xl" />
-        <device id="Nexus 5X" />
-        <device id="pixel_2" />
       </config>
     </shared>
   </component>
@@ -18,7 +21,19 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336cf3d8-f295-4d07-a0bd-f9869405e080" name="Default Changelist" comment="" />
+    <list default="true" id="336cf3d8-f295-4d07-a0bd-f9869405e080" name="Default Changelist" comment="end last update 2\2&#10;finish payment method but we need  to handel some error and save url to pay and url to accept and also fail in fireBase data base in user account infoo">
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-normal/activity_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-normal/activity_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,97 +106,21 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/SignUp/SignUP.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11520">
-              <caret line="347" column="22" selection-start-line="347" selection-start-column="22" selection-end-line="347" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/Start_Activity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6120">
-              <caret line="186" column="171" selection-start-line="186" selection-start-column="171" selection-end-line="186" selection-end-column="171" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#startAnimation#0;class#Start_Activity#0" />
-                <element signature="method#endAnimation#0;class#Start_Activity#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/SearchProduct.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3680">
-              <caret line="127" column="49" selection-start-line="127" selection-start-column="49" selection-end-line="127" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_product.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="4" column="35" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/ui/home/HomeFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1920">
-              <caret line="113" column="25" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#searchView#0;class#HomeFragment#0" />
-                <element signature="method#ActionFloatingButton#0;class#HomeFragment#0" />
-                <element signature="method#alert#0;class#HomeFragment#0" />
-                <element signature="method#readExcelData#0;class#HomeFragment#0" />
-                <element signature="method#getCellAsString#0;class#HomeFragment#0" />
-                <element signature="method#checkInternalStorage#0;class#HomeFragment#0" />
-                <element signature="method#ListFileClick#0;class#HomeFragment#0" />
-                <element signature="method#readExcleFile#0;class#HomeFragment#0" />
-                <element signature="method#showProductInList#0;class#HomeFragment#0" />
-                <element signature="method#uploadProduct#0;class#HomeFragment#0" />
-                <element signature="method#writeNewPost1#0;class#HomeFragment#0" />
-                <element signature="method#startAnimation#0;class#HomeFragment#0" />
-                <element signature="method#startAd#0;class#HomeFragment#0" />
-                <element signature="method#showProg#0;class#HomeFragment#0" />
-              </folding>
+            <state relative-caret-position="440">
+              <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-normal/activity_sign_in.xml">
+          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1920">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-              <folding>
-                <element signature="e#0#7594#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="method#openPay#0;class#GetPay#0" />
-                <element signature="class#UriWebViewClient#0;class#GetPay#0" />
-                <element signature="method#onCloseWindow#0;class#UriChromeClient#0;class#GetPay#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/MyAdapterList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="139" column="67" selection-start-line="139" selection-start-column="67" selection-end-line="139" selection-end-column="67" />
-              <folding>
-                <element signature="method#onClick#0;class#5862:6361" />
-              </folding>
+            <state relative-caret-position="377">
+              <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -202,7 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sear</find>
       <find>star</find>
       <find>map</find>
       <find>loading</find>
@@ -232,6 +170,7 @@
       <find>No a valid Card Number</find>
       <find>202</find>
       <find>R</find>
+      <find>LinearLayout</find>
     </findStrings>
     <replaceStrings>
       <replace>listZeft</replace>
@@ -249,9 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_pharmcy.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/backgraound_list_product.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_of_items.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/SignUp/SignUP.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_up.xml" />
@@ -299,13 +235,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/SignUp/SignUP_ph.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/Start_Activity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/SearchProduct.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-normal/activity_sign_in.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="362" />
-    <option name="y" value="263" />
+    <option name="x" value="330" />
+    <option name="y" value="27" />
     <option name="width" value="1196" />
     <option name="height" value="656" />
   </component>
@@ -315,9 +254,29 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sala" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="sala" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="sala" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -372,6 +331,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -696,12 +656,12 @@
       <option name="project" value="LOCAL" />
       <updated>1580650826337</updated>
     </task>
-    <task id="LOCAL-00008" summary="كده التسجيل ورفع الصورة شغلين زي الفل فاضل اغرض الداتا في البروفيل">
-      <created>1563438472484</created>
+    <task id="LOCAL-00008" summary="end last update 2\2&#10;finish payment method but we need  to handel some error and save url to pay and url to accept and also fail in fireBase data base in user account info">
+      <created>1580651020355</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1563438472484</updated>
+      <updated>1580651020355</updated>
     </task>
     <task id="LOCAL-00009" summary="شوف كده الاستيل ده وقولي">
       <created>1563606184302</created>
@@ -787,7 +747,7 @@
       <option name="project" value="LOCAL" />
       <updated>1565180489757</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -804,7 +764,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.51153845" side_tool="true" weight="0.20457019" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.48846152" weight="0.2132753" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.48846152" visible="true" weight="0.2132753" />
       <window_info id="Structure" order="2" sideWeight="0.5105853" side_tool="true" weight="0.20293798" />
       <window_info id="Favorites" order="3" sideWeight="0.51153845" side_tool="true" weight="0.20457019" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -815,20 +775,20 @@
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.8422198" weight="0.045184303" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.476605" weight="0.29845423" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32818073" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6273123" weight="0.045184303" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6273123" visible="true" weight="0.045184303" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32818073" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.3726877" side_tool="true" weight="0.5065398" />
       <window_info anchor="bottom" id="Find" order="6" weight="0.36028537" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32936978" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4983678" weight="0.50535077" />
-      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.89118606" visible="true" weight="0.045184303" />
+      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.89118606" weight="0.045184303" />
       <window_info anchor="bottom" id="Android Profiler" order="10" weight="0.4491917" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Gradle" order="1" sideWeight="0.49879226" weight="0.3297062" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info anchor="right" x="0" y="0" width="430" height="855" id="Documentation" order="3" side_tool="true" weight="0.47279653" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.320457" />
+      <window_info active="true" anchor="right" id="Preview" order="5" visible="true" weight="0.30250272" />
       <window_info active="true" anchor="right" id="Assistant" order="6" visible="true" weight="0.3297062" />
       <window_info anchor="right" id="StringPreview" order="7" />
       <window_info anchor="right" id="Device File Explorer" order="8" weight="0.3139282" />
@@ -916,6 +876,18 @@
           <properties />
           <option name="timeStamp" value="46" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.java</url>
+          <line>116</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.java</url>
+          <line>122</line>
+          <properties />
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/MyAdpterOrder.java</url>
           <line>73</line>
@@ -933,31 +905,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/file_paths.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/order_card.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1240">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/MyAdpterOrder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
-          <caret line="40" column="44" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/Order.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -1086,22 +1033,14 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-normal/activity_process_payment.xml" />
     <entry file="file://$PROJECT_DIR$/app/assets/cardForm.html" />
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
           <caret line="45" column="32" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-small/activity_get_session.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/ui2/Home_pharm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1158">
@@ -1215,18 +1154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/Start_Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6120">
-          <caret line="186" column="171" selection-start-line="186" selection-start-column="171" selection-end-line="186" selection-end-column="171" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#startAnimation#0;class#Start_Activity#0" />
-            <element signature="method#endAnimation#0;class#Start_Activity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/SearchProduct.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3680">
@@ -1266,27 +1193,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/MyAdapterList.java">
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-28/android/webkit/WebView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1450">
+          <caret line="214" column="16" selection-start-line="214" selection-start-column="16" selection-end-line="214" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
-          <caret line="139" column="67" selection-start-line="139" selection-start-column="67" selection-end-line="139" selection-end-column="67" />
+          <caret line="169" column="33" selection-start-line="169" selection-start-column="33" selection-end-line="169" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#7594#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/backgraound_header.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/MyAdapterList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="130" column="5" lean-forward="true" selection-start-line="130" selection-start-column="5" selection-end-line="138" selection-end-column="2" />
           <folding>
             <element signature="method#onClick#0;class#5862:6361" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/payment/GetPay.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pharamacy/eg/sala/Start_Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1920">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="620">
+          <caret line="186" column="171" selection-start-line="186" selection-start-column="171" selection-end-line="186" selection-end-column="171" />
           <folding>
-            <element signature="e#0#7594#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#openPay#0;class#GetPay#0" />
-            <element signature="class#UriWebViewClient#0;class#GetPay#0" />
-            <element signature="method#onCloseWindow#0;class#UriChromeClient#0;class#GetPay#0" />
+            <element signature="method#startAnimation#0;class#Start_Activity#0" />
+            <element signature="method#endAnimation#0;class#Start_Activity#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-normal/activity_sign_in.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
         </state>
       </provider>
     </entry>

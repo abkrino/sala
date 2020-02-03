@@ -42,10 +42,12 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
@@ -59,6 +61,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import pharamacy.eg.sala.R;
+import pharamacy.eg.sala.ReceyPro;
 
 public class GetPay extends AppCompatActivity {
     WebView webView;
@@ -104,37 +107,28 @@ public class GetPay extends AppCompatActivity {
         }
     private class UriWebViewClient extends WebViewClient {
 
-        /*
-        @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            String host = Uri.parse(url).getHost();
-            //Log.d("shouldOverrideUrlLoading", url);
-            if (host.equals(target_url_prefix))
-            {
-                // This is my web site, so do not override; let my WebView load
-                // the page
-                if(mWebviewPop!=null)
-                {
-                    mWebviewPop.setVisibility(View.GONE);
-                    mContainer.removeView(mWebviewPop);
-                    mWebviewPop=null;
-                }
+
+            Toast.makeText(GetPay.this, "Processing webview url click...", Toast.LENGTH_LONG).show();
+
+            progressBar.setVisibility(View.VISIBLE);
+//            http:%2F%2Fwww.google.com%2Fncr&onfail=http:%2F%2Fwww.msn.com%2F
+            if (url.startsWith("http://www.google.com")) {
+                Toast.makeText(GetPay.this, "عملية مقبولة ", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(GetPay.this, ReceyPro.class).putExtra("accept","accept"));
+                finish();
                 return false;
-            }
-            if(host.equals("m.facebook.com"))
-            {
+            } else if (url.startsWith("http://www.msn.com")) {
+                Toast.makeText(GetPay.this, "عملية غير مقبولة", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(GetPay.this, ReceyPro.class).putExtra("faild","faild"));
+                finish();
                 return false;
+            } else {
+                view.loadUrl(url);
+                webView.requestFocus(View.FOCUS_DOWN);
+                return true;
             }
-            // Otherwise, the link is not for a page on my site, so launch
-            // another Activity that handles URLs
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(intent);
-            return true;
         }
-        */
-
-
-
         @Override
         public void onReceivedSslError(WebView view, SslErrorHandler handler,
                                        SslError error) {

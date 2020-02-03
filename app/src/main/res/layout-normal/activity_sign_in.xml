@@ -9,6 +9,7 @@
 
 
     <include
+        android:id="@+id/include5"
         layout="@layout/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -17,14 +18,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/phone"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewStayl"
+         />
+
+
+    <ImageView
         android:id="@+id/ImageViewStayl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/White_transparent_white_hex_12"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sala"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <EditText
         android:id="@+id/editText"
         android:layout_width="0dp"
@@ -34,9 +54,9 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:inputType="phone"
-        android:hint="@string/phoneNumberHint"
-        android:textColorHint="@color/Black"
-        android:textAlignment="textEnd"
+        android:hint="mobile number"
+        android:textColorHint="@color/Black_transparent_black_hex_8"
+        android:textAlignment="textStart"
         android:textStyle="bold"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
