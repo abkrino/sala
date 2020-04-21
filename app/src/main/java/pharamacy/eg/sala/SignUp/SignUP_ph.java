@@ -25,7 +25,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -42,13 +45,14 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.List;
 
 import butterknife.OnClick;
 import pharamacy.eg.sala.Class.CustomOnItemSelectedListener;
-import pharamacy.eg.sala.Class.GlideApp;
+//import pharamacy.eg.sala.Class.GlideApp;
 import pharamacy.eg.sala.Confirm;
 import pharamacy.eg.sala.ConnectivityReceiver;
 import pharamacy.eg.sala.ImagePickerActivity;
@@ -74,7 +78,7 @@ private InterstitialAd mInterstitialAd;
     private FirebaseUser user;
     private Bitmap bitmap;
     private Uri uri;
-
+    AdView adView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,10 +100,14 @@ private InterstitialAd mInterstitialAd;
         register_btn= findViewById(R.id.registerPh_btn);
         phoneNumber = findViewById(R.id.numberPh);
         profile = findViewById(R.id.profilePh_pic);
+        adView = findViewById(R.id.adView);
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-1743625796086476/3426647804");
         checkConnection();
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
-
+        showAd();
 //        ImageView back = findViewById(R.id.back_arrow);
 //        back.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -204,15 +212,15 @@ private void startRegister() {
 
     //////////////////////////////////////////////////////////////
     private void loadProfile (String url){
-        GlideApp.with(this).load(url)
+        Picasso.get().load(url)
                 .into(profile);
         profile.setColorFilter(ContextCompat.getColor(this, android.R.color.transparent));
     }
 
     private void loadProfileDefault () {
 
-        GlideApp.with(this)
-                .load(R.color.Red)
+        Picasso.get()
+                .load(R.mipmap.user_foreground)
                 .into(profile);
         profile.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent));
     }
@@ -316,7 +324,7 @@ private void startRegister() {
 
         if (uri != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading...");
+            progressDialog.setTitle("loading");
             progressDialog.show();
 
             StorageReference ref = storageReference.child("images/" + userId);
@@ -340,7 +348,7 @@ private void startRegister() {
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                             double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                            progressDialog.setMessage("loading....");
                         }
                     });
         }
@@ -396,10 +404,7 @@ private void startRegister() {
                 // TODO: Add adView to your view hierarchy.
                 /////////////////////////////////////////////////////////////////////////////////////////
 
-                Toast.makeText(SignUP_ph.this,
-                        "OnClickListener : " +
-                                "\n Spinner 1 : " + String.valueOf(country_chooser.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
+
             }
 
         });
@@ -429,6 +434,12 @@ private void startRegister() {
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnack(isConnected);
+    }
+
+    public void showAd(){
+        MobileAds.initialize(this, "ca-app-pub-1743625796086476~4917839514");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
 }

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        >
 
         <item
             android:id="@+id/nav_home2"
             android:icon="@drawable/ic_icons8_home"
+
             android:title="الصفحة الرئيسة" />
         <item
             android:id="@+id/nav_profile2"
@@ -20,11 +23,13 @@
         <item
             android:id="@+id/nav_connectUs2"
             android:icon="@drawable/ic_contact_mail_black_24dp"
-            android:title="تواصل معنا " />
+            android:title="الاحكام والشروط " />
         <item
             android:id="@+id/nav_about2"
             android:icon="@drawable/ic_info"
-            android:title="نبذة عن التطبيق " />
+            android:title="نبذة عن التطبيق "
+
+            />
     </group>
 
     <item android:title=" ">

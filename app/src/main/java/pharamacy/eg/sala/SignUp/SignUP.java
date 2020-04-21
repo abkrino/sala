@@ -23,7 +23,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +42,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,7 +51,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pharamacy.eg.sala.Class.CustomOnItemSelectedListener;
-import pharamacy.eg.sala.Class.GlideApp;
+//import pharamacy.eg.sala.Class.GlideApp;
 import pharamacy.eg.sala.Class.MultiSelectionSpinner;
 import pharamacy.eg.sala.Confirm;
 import pharamacy.eg.sala.ImagePickerActivity;
@@ -74,7 +78,7 @@ public class SignUP extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Uri uri;
     private InterstitialAd mInterstitialAd;
-
+    AdView adView;
     String[] array = {"اختار محافظة",
             "الأقصر", "الإسكندرية", "الشرقية", "أسيوط", "البحيرة", "القاهرة", "دمياط",
             "الشيخ", "المنوفية", "المنيا", "بورسعيد", "القليوبية", "أسوان", "الإسماعيلية", "سويف", "الدقهلية",
@@ -96,13 +100,16 @@ public class SignUP extends AppCompatActivity {
         city = findViewById(R.id.city);
         neighborhood = findViewById(R.id.neighborhood);
         number = findViewById(R.id.number);
+        adView = findViewById(R.id.adView);
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-1743625796086476/3426647804");
 
-
+        showAd();
         ButterKnife.bind(SignUP.this);
 
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
-
 //        ImageView back = findViewById(R.id.back_arrow);
 //        back.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -117,8 +124,8 @@ public class SignUP extends AppCompatActivity {
             public void onClick(View v) {
                 //ads
                 mInterstitialAd = new InterstitialAd(SignUP.this);
-                mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-                mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice("BFE5A6AC72AC4A402AFDA3209FDB660A").build());
+                mInterstitialAd.setAdUnitId("ca-app-pub-1743625796086476/9244097333");
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                 } else {
@@ -155,6 +162,7 @@ public class SignUP extends AppCompatActivity {
         Specia_work = spinner2.getSelectedItem().toString().trim();
         country_chooser = spinner.getSelectedItem().toString().trim();
         country_work = new ArrayList<>(spinner_multi.getSelectedStrings());
+
         cityU = city.getText().toString().trim();
         neighborhoodU = neighborhood.getText().toString().trim();
         numberU = number.getText().toString().trim();
@@ -166,6 +174,12 @@ public class SignUP extends AppCompatActivity {
             Toast.makeText(SignUP.this, "من فضلك تأكد من تسجيل رقم هاتفك", Toast.LENGTH_LONG).show();
             startActivity(new Intent(SignUP.this, Confirm.class));
             finish();
+        }
+        if(country_work.isEmpty()){
+            country_work = getIntent().getStringArrayListExtra("country_work");
+            if (country_work==null||country_work.isEmpty()){
+                country_work.add(country_chooser);
+            }
         }
         validN(nameU);
         validc(cityU);
@@ -216,14 +230,14 @@ public class SignUP extends AppCompatActivity {
     /////////////////////////////////////////////////////////
 
     private void loadProfile(String url) {
-        GlideApp.with(this)
+        Picasso.get()
                 .load(url)
                 .into(profile);
     }
 
     private void loadProfileDefault() {
         profile = findViewById(R.id.profile_pic);
-        GlideApp.with(this)
+        Picasso.get()
                 .load(R.mipmap.user_foreground)
                 .into(profile);
 
@@ -327,7 +341,7 @@ public class SignUP extends AppCompatActivity {
 
         if (uri != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading...");
+            progressDialog.setTitle("loading");
             progressDialog.show();
 
             StorageReference ref = storageReference.child("images/" + userId);
@@ -336,14 +350,14 @@ public class SignUP extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-                            Toast.makeText(SignUP.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUP.this, "تم التسجيل", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(SignUP.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUP.this, "فشل التسجيل " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -351,7 +365,7 @@ public class SignUP extends AppCompatActivity {
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                             double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                            progressDialog.setMessage("loading....");
                         }
                     });
         }
@@ -401,5 +415,10 @@ public class SignUP extends AppCompatActivity {
     public void writeNewUserOffices(String userId, String nameU, String cityU, String neighborhoodU, String country_chooser, String specia_work, ArrayList<String> country_work, String phoneNumber) {
         Users user = new Users(userId, nameU, cityU, neighborhoodU, country_chooser, specia_work, country_work, phoneNumber);
         mDatabase.child("users").child("Offices").child(userId).setValue(user);
+    }
+    public void showAd(){
+        MobileAds.initialize(this, "ca-app-pub-1743625796086476~4917839514");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 }

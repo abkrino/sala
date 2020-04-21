@@ -1,67 +1,61 @@
 package pharamacy.eg.sala;
 
-import pharamacy.eg.sala.Class.Product;
+import java.util.ArrayList;
 
-public class Order extends Product {
-String PhoneNumberOffices;
-String PhoneNumberpharmacy;
-int numberOrder;
+public class Order {
+    String nameOfCompany;
+    String numberOffices;
 
-    public String getPhoneNumberOffices() {
-        return PhoneNumberOffices;
+    String date ;
+    ArrayList<ProductOrder> order ;
+
+    public Order(String nameOfCompany, String numberOffices,String date , ArrayList<ProductOrder> order) {
+        this.nameOfCompany = nameOfCompany;
+        this.numberOffices = numberOffices;
+        this.date  = date ;
+        this.order = order;
     }
 
-    public void setPhoneNumberOffices(String phoneNumberOffices) {
-        PhoneNumberOffices = phoneNumberOffices;
+    public String getNameOfCompany() {
+        return nameOfCompany;
     }
 
-    public String getPhoneNumberpharmacy() {
-        return PhoneNumberpharmacy;
+    public void setNameOfCompany(String nameOfCompany) {
+        this.nameOfCompany = nameOfCompany;
     }
 
-    public void setPhoneNumberpharmacy(String phoneNumberpharmacy) {
-        PhoneNumberpharmacy = phoneNumberpharmacy;
+    public String getDate() {
+        return date;
     }
 
-    public int getNumberOrder() {
-        return numberOrder;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setNumberOrder(int numberOrder) {
-        this.numberOrder = numberOrder;
+    public String getNumberOffices() {
+        return numberOffices;
     }
 
-    public Order(String phoneNumberOffices, String phoneNumberpharmacy, int numberOrder) {
-        PhoneNumberOffices = phoneNumberOffices;
-        PhoneNumberpharmacy = phoneNumberpharmacy;
-        this.numberOrder = numberOrder;
+    public void setNumberOffices(String numberOffices) {
+        this.numberOffices = numberOffices;
+    }
+    public String getTitle() {
+        return nameOfCompany;
     }
 
-    public Order(String price, String phoneNumberOffices, String phoneNumberpharmacy, int numberOrder) {
-        super(price);
-        PhoneNumberOffices = phoneNumberOffices;
-        PhoneNumberpharmacy = phoneNumberpharmacy;
-        this.numberOrder = numberOrder;
+    public void setTitle(String title) {
+        this.nameOfCompany = title;
     }
 
-    public Order(String name, String price, String phoneNumberOffices, String phoneNumberpharmacy, int numberOrder) {
-        super(name, price);
-        PhoneNumberOffices = phoneNumberOffices;
-        PhoneNumberpharmacy = phoneNumberpharmacy;
-        this.numberOrder = numberOrder;
+    public ArrayList<ProductOrder> getOrder() {
+        return order;
     }
 
-    public Order(String name, String price, String discount, String phoneNumberOffices, String phoneNumberpharmacy, int numberOrder) {
-        super(name, price, discount);
-        PhoneNumberOffices = phoneNumberOffices;
-        PhoneNumberpharmacy = phoneNumberpharmacy;
-        this.numberOrder = numberOrder;
+    public void setOrder(ArrayList<ProductOrder> order) {
+        this.order = order;
     }
 
-    public Order(String name_company, String name, String price, String discount, String phoneNumberOffices, String phoneNumberpharmacy, int numberOrder) {
-        super(name_company, name, price, discount);
-        PhoneNumberOffices = phoneNumberOffices;
-        PhoneNumberpharmacy = phoneNumberpharmacy;
-        this.numberOrder = numberOrder;
-    }
+
+
+
 }

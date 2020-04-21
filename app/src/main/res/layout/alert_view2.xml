@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_alert">
+    android:background="@drawable/background_aler">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/linearRow"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             >
@@ -30,21 +31,64 @@
                 android:layout_marginEnd="24dp"
                 android:text="يجب أن تكون بداية الملف "
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="@color/White_White"
                 android:textSize="@dimen/FontSizeView"
+                android:fontFamily="@font/naskh1"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <include
-                android:id="@+id/include4"
-                layout="@layout/main_cell2"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                android:layoutDirection="rtl">
+
+            <TextView
+                android:id="@+id/nameC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:fontFamily="@font/naskh1"
+                android:text="السعر"
+                android:textSize="12sp"
+                android:textColor="@color/White_White"
+                android:maxLines="1"
+                android:background="@drawable/cell_bg3"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:layout_weight="3"
+                android:id="@+id/priceC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/naskh1"
+                android:textSize="12sp"
+                android:text="اسم الصنف"
+                android:padding="10dp"
+                android:background="@drawable/cell_bg"
+                android:gravity="center"
+                android:textColor="@color/White_White"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout_editor_absoluteX="211dp" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/textView5"
@@ -53,12 +97,13 @@
                 android:layout_marginTop="24dp"
                 android:text="برجاء التاكد من صيغه ملف ال excel بصيغه xlxs."
                 android:textAlignment="center"
-                android:textColor="#000"
-                android:textSize="@dimen/FontSizeView"
+                android:textColor="@color/White_White"
+                android:textSize="15sp"
+                android:fontFamily="@font/naskh1"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/include4" />
+                app:layout_constraintTop_toBottomOf="@+id/row2" />
 
 
             <TextView
@@ -67,8 +112,12 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="32dp"
                 android:text="موافق"
-                android:textColor="#4CAF50"
-                app:autoSizeTextType="uniform"
+                android:textStyle="bold"
+                android:background="@drawable/background_aler"
+                android:padding="10dp"
+                android:fontFamily="@font/f"
+                android:textSize="18sp"
+                android:textColor="@color/White_White"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />

@@ -84,7 +84,6 @@ public class Confirm extends AppCompatActivity {
                 TimeUnit.SECONDS,
                 TaskExecutors.MAIN_THREAD,
                 mCallbacks);
-        Toast.makeText(Confirm.this, "sendVerificationCode", Toast.LENGTH_LONG).show();
     }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -115,7 +114,7 @@ public class Confirm extends AppCompatActivity {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
-            Toast.makeText(Confirm.this, "onCodeSent", Toast.LENGTH_LONG).show();
+            Toast.makeText(Confirm.this, "تم ارسال كود التحقق", Toast.LENGTH_LONG).show();
             //storing the verification id that is sent to the user
             mVerificationId = s;
         }
@@ -145,8 +144,10 @@ public class Confirm extends AppCompatActivity {
                                     //we are get the value from the key reference
                                     if (dataSnapshot.getValue() != null) {
                                         String wellcomeName = dataSnapshot.child("nameU").getValue().toString();
+                                        String Specia_workU = dataSnapshot.child("Specia_work").getValue().toString();
+
                                         Toast.makeText(Confirm.this, "اهلا بك " + wellcomeName, Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(Confirm.this, MainOffices.class));
+                                        startActivity(new Intent(Confirm.this, MainOffices.class).putExtra("Specia_workU", Specia_workU));
                                         finish();
                                     } else {
                                         DatabaseReference referencePh = FirebaseDatabase.getInstance().getReference().child("users").child("pharmacies").child(numberCheck);

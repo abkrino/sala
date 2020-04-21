@@ -7,8 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
 
         <include
@@ -25,14 +24,13 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:background="@color/White_White"
             android:contentDescription="@string/upload_image"
             android:src="@mipmap/user"
-            android:background="@color/White_White"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include2" />
+            app:layout_constraintTop_toBottomOf="@+id/adView" />
 
         <EditText
             android:id="@+id/namePh"
@@ -41,13 +39,16 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
+            android:fontFamily="@font/naskh1"
             android:hint="@string/name"
+            android:inputType="text"
+
             android:textAlignment="textStart"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profilepic"
-            android:inputType="text" />
+            app:layout_constraintTop_toBottomOf="@+id/profilepic" />
 
         <TextView
             android:id="@+id/textView2"
@@ -57,10 +58,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bt_shap"
-            android:textColor="@color/White_White"
+            android:fontFamily="@font/f_m"
             android:gravity="center"
             android:text="@string/chooseCountry"
-            android:textSize="16sp"
+            android:textColor="@color/White_White"
+            android:textSize="23sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/namePh" />
@@ -71,29 +74,32 @@
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:entries="@array/country_arrays"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <EditText
             android:id="@+id/cityPh"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/naskh1"
             android:hint="@string/chooseCity"
             android:textAlignment="viewEnd"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerPh"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerPh" />
 
         <EditText
             android:id="@+id/neighborhoodPh"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/naskh1"
             android:hint="@string/chooseRegion"
+            android:textSize="15sp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -105,7 +111,9 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/naskh1"
             android:hint="@string/address"
+            android:textSize="15sp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -116,9 +124,12 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/naskh1"
+            android:gravity="end"
             android:hint="@string/phoneNumber"
             android:inputType="phone"
             android:textAlignment="textEnd"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/cityPh"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/cityPh"
@@ -127,20 +138,34 @@
 
         <Button
             android:id="@+id/registerPh"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/bt_shap"
-            android:textColor="@color/White_White"
+            android:fontFamily="@font/f_m"
+            android:gravity="center"
             android:text="@string/continuebt"
+            android:textColor="@color/White_White"
+            android:textSize="23sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.558"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/numberPh" />
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            app:adSize="BANNER"
+            app:adUnitId="@string/codeAd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

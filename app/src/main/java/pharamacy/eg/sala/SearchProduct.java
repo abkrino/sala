@@ -1,5 +1,7 @@
 package pharamacy.eg.sala;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -8,6 +10,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,8 +37,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
-import pharamacy.eg.sala.Class.GlideApp;
+//import pharamacy.eg.sala.Class.GlideApp;
 
 public class SearchProduct extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener  {
     @Override
@@ -48,6 +52,11 @@ public class SearchProduct extends AppCompatActivity implements ConnectivityRece
     private StorageReference mStorage;
     public String userId;
     String nameU;
+    private String resultPay;
+    private boolean result;
+    private int datePayDay;
+    private int datePayMonth;
+    private String date;
     private FirebaseUser user;
     View headerView;
     @Override
@@ -97,7 +106,7 @@ public class SearchProduct extends AppCompatActivity implements ConnectivityRece
             @Override
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
-                GlideApp.with(SearchProduct.this)
+                Picasso.get()
                         .load(uri)
                         .into(imageView);
             }
@@ -107,7 +116,42 @@ public class SearchProduct extends AppCompatActivity implements ConnectivityRece
                 // Handle any errors
             }
         });
+
+        LinearLayout layoutPaid = headerView.findViewById(R.id.layoutPaid);
+        TextView datePaid = headerView.findViewById(R.id.DatePaid);
+        if (checkPayment()) {
+            layoutPaid.setVisibility(View.VISIBLE);
+            date = "" + datePayMonth + "\\" + datePayDay + "";
+            datePaid.setText(date);
+        }
     }
+    public boolean checkPayment() {
+        String defult = "def";
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("my payment", Context.MODE_PRIVATE);
+        resultPay = sharedPref.getString("resultPay", defult);
+        if (resultPay != null) {
+            switch (resultPay) {
+
+                case "def":
+                    result = false;
+
+                    break;
+                case "failed":
+                    result = false;
+                    break;
+                case "accept":
+                    result = true;
+//                Toast.makeText(context, "انت تستمتع بالمزايا المدفوعة ", Toast.LENGTH_SHORT).show();
+                    datePayDay = sharedPref.getInt("datePayDay", 0);
+                    datePayMonth = sharedPref.getInt("datePayMonth", 0);
+                    break;
+            }
+        }
+
+
+        return result;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -146,18 +190,6 @@ public class SearchProduct extends AppCompatActivity implements ConnectivityRece
         showSnack(isConnected);
     }
 
-
-//    Home_pharm home_pharm = new Home_pharm();
-
-
-
-//    public void goCall(View view) {
-//        MyAdapterList adapterList = new MyAdapterList();
-//        phone=adapterList.getNumoo();
-//        Intent intent = new Intent(Intent.ACTION_DIAL);
-//        intent.setData(Uri.parse("tel:" + phone));
-//        startActivity(intent);
-//    }
 }
 class ListOfPrice extends Fragment{
     @Nullable
@@ -173,544 +205,3 @@ class ListOfPrice extends Fragment{
 
 }
 
-//    Button local_medicines, imported_medicines, accessories, button2;
-//    ArrayList<String> nameProductL, nameProductImported, nameProductAccessories, ownerProduct, nameCompany;
-//    ArrayList<String> country_workU;
-//    private InterstitialAd mInterstitialAd;
-//    DataBaseHelper mydb = new DataBaseHelper(this);
-//    private ProgressBar lodaer;
-//    private FirebaseAuth mAuth;
-//    ////////////////////////////////////////////////////////////////////////////////////////////
-//    ListView listProductInfo;
-//    RecyclerView ProductInfo;
-//    String name_company, PhoneNumber, nameInList;
-//    ArrayList<MyItemList> listZeft;
-//    BottomSheetBehavior behavior;
-//    private NavigationView navigationView;
-//    SearchView search;
-//    String text;
-//    ArrayAdapter<String> adapter;
-//    Intent intent1;
-//    ///////////////////////////////////////////////////////////////////////////////////////////
-//    //orderMap
-//    String nameComMap;
-//    ArrayList<String> productMap = new ArrayList<>();
-//    Map<String, ArrayList<String>> order = new HashMap<>();
-//
-//    public Map<String, ArrayList<String>> getOrder() {
-//        return order;
-//    }
-//
-//    ///////////////////////////////////////////////////////////////////////////////////////////
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_search_product);
-//        //////////////////////////////////////////////////////////////////////////////////////////
-//        nameProductL = new ArrayList<>();
-//        nameProductImported = new ArrayList<>();
-//        nameProductAccessories = new ArrayList<>();
-//        listZeft = new ArrayList<>();
-//        /////////////////////////////////////////////////////////////////////////////////////////
-//        nameCompany = new ArrayList<>();
-//        ownerProduct = new ArrayList<>();
-//        local_medicines = findViewById(R.id.Local_medicines);
-//        imported_medicines = findViewById(R.id.Imported_medicines);
-//        accessories = findViewById(R.id.Accessories);
-//        View BottomSheet = findViewById(R.id.design_bottom_sheet);
-//        listProductInfo = findViewById(R.id.list_main);
-//        ProductInfo = findViewById(R.id.list_main2);
-//        navigationView = findViewById(R.id.nav_view);
-////        button2 = findViewById(R.id.button2);
-////        mAuth = FirebaseAuth.getInstance();
-//        //order
-//        View header = navigationView.getHeaderView(0);
-////        ConstraintLayout orderbt = header.findViewById(R.id.order);
-////        ConstraintLayout profile = header.findViewById(R.id.profile_btn);
-////        ConstraintLayout contactUs = header.findViewById(R.id.contactUs);
-////        ConstraintLayout signOut = header.findViewById(R.id.signOut);
-////        signOut.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-//                mAuth.signOut();
-////                startActivity(new Intent(SearchProduct.this, SignIN.class));
-////                finish();
-////            }
-////        });
-////        profile.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                startActivity(new Intent(SearchProduct.this,Profile.class));
-////                finish();
-////            }
-////        });
-////        contactUs.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////            startActivity(new Intent(SearchProduct.this,ContactUs.class));
-////            }
-////        });
-////        orderbt.setVisibility(View.VISIBLE);
-////        orderbt.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                intent1 = new Intent(SearchProduct.this, ProductOrder.class);
-////                startActivity(intent1);
-////
-////            }
-////        });
-//        ///////////////////////////////////////////////////////////////////////////////////////////
-//
-//        behavior = BottomSheetBehavior.from(BottomSheet);
-//        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-//            @Override
-//            public void onStateChanged(@NonNull View view, int i) {
-//                switch (i) {
-//                    case BottomSheetBehavior.STATE_DRAGGING:
-//                        Toast.makeText(SearchProduct.this, "STATE_DRAGGING", Toast.LENGTH_LONG).show();
-//                        break;
-//                    case BottomSheetBehavior.STATE_SETTLING:
-//                        Toast.makeText(SearchProduct.this, "STATE_SETTLING", Toast.LENGTH_LONG).show();
-//                        break;
-//                    case BottomSheetBehavior.STATE_EXPANDED:
-//                        behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
-//                        Toast.makeText(SearchProduct.this, "STATE_EXPANDED", Toast.LENGTH_LONG).show();
-//                        break;
-//                    case BottomSheetBehavior.STATE_COLLAPSED:
-//                        Toast.makeText(SearchProduct.this, "STATE_COLLAPSED", Toast.LENGTH_LONG).show();
-//                        break;
-//                    case BottomSheetBehavior.STATE_HIDDEN:
-//                        behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//                        Toast.makeText(SearchProduct.this, "STATE_HIDDEN", Toast.LENGTH_LONG).show();
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onSlide(@NonNull View view, float v) {
-//
-//            }
-//        });
-//        /////////////////////////////////////////////////////////////////////////////////////////
-//        /////////////////////////////////////////////////////////////////////////////////////////
-//        //ads
-//        mInterstitialAd = new InterstitialAd(this);
-//        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-//        mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice("BFE5A6AC72AC4A402AFDA3209FDB660A").build());
-//        // TODO: Add adView to your view hierarchy.
-//        /////////////////////////////////////////////////////////////////////////////////////////
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("product").child("أدوية");
-//        reference.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                nameProductL.add(dataSnapshot.getKey());
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//            }
-//        });
-//        //////////////////////////////////////////////////////////////////////////////////////////
-//        DatabaseReference referenceImported = FirebaseDatabase.getInstance().getReference().child("product").child("أدوية مستوردة");
-//        referenceImported.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                nameProductImported.add(dataSnapshot.getKey());
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//        ///////////////////////////////////////////////////////////////////////////////////////////
-//        DatabaseReference referenceAccessories = FirebaseDatabase.getInstance().getReference().child("product").child("مستلزمات");
-//        referenceAccessories.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                nameProductAccessories.add(dataSnapshot.getKey());
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//        //////////////////////////////////////////////
-//        //Search
-//        search = findViewById(R.id.search);
-//        search.setOnQueryTextListener(this);
-//        ///////////////////////////////////////////////////////////////////////////////////////////
-//        //https://www.youtube.com/watch?v=PmqYd-AdmC0
-//    }
-//    public void goSearchLocal_medicines(View view) {
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameProductL);
-//        listProductInfo.setVisibility(View.VISIBLE);
-//        ProductInfo.setVisibility(View.GONE);
-//        listProductInfo.setAdapter(adapter);
-//
-//        ////////////////////////////////
-//        if (mInterstitialAd.isLoaded()) {
-//            mInterstitialAd.show();
-//        } else {
-//            Log.d("TAG", "The interstitial wasn't loaded yet.");
-//        }
-//        /////////////////////////////////
-//        behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        //Todo بس لسا في لحطبة في الختة بتاعت المحافظات
-//        listProductInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            //todo عيزين ناخد position قبل ما يتغير في السيرش
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                listZeft.clear();
-//                nameInList = parent.getItemAtPosition(position).toString();
-//                DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("product").child("أدوية").child(nameInList);
-//                if (reference2 != null) {
-//                    reference2.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                            if (dataSnapshot.exists()) {
-//                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                                    ownerProduct.add(ds.getKey());
-//                                    ///////////////////////////////////////////////////////////////
-//                                    //check country , get name company, get phone number of company
-//                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child("Offices").child(ds.getKey());
-//                                    databaseReference.addValueEventListener(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                            nameCompany.add(dataSnapshot.child("nameU").getValue().toString());
-//                                            sleep(300);
-//                                            country_workU = (ArrayList<String>) dataSnapshot.child("country_work").getValue();
-//                                            PhoneNumber = dataSnapshot.child("phoneNumber").getValue().toString();
-//                                            if (PhoneNumber == null && PhoneNumber.isEmpty()) {
-//                                                PhoneNumber = ds.getKey();
-//                                            }
-//
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//                                        }
-//                                    });
-//                                    DatabaseReference databaseReferencePh = FirebaseDatabase.getInstance().getReference().child("users").child("pharmacies").child(user.getPhoneNumber());
-//                                    databaseReferencePh.addValueEventListener(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                                            DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference().child("product").child("أدوية").child(nameInList).child(ds.getKey());
-//                                            name_company = dataSnapshot.child("country_chooser").getValue().toString();
-//                                           if(country_workU!=null)
-//                                            if (country_workU.contains(name_company)) {
-//                                                if (reference3 != null) {
-//                                                    reference3.addValueEventListener(new ValueEventListener() {
-//                                                        String name3 = nameInList;
-//                                                        @Override
-//                                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                                            if (dataSnapshot.exists()) {
-////                                                    for (int i =0 ;i<ownerProduct.size();i++) {
-//                                                                MyItemList myItemList = dataSnapshot.getValue(MyItemList.class);
-//                                                                listZeft.add(myItemList);
-//                                                                listProductInfo.setVisibility(View.GONE);
-//                                                                ProductInfo.setVisibility(View.VISIBLE);
-//
-//                                                                MyAdapterList myAdapterList = new MyAdapterList(listZeft, nameCompany, name3,mydb);
-//                                                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-//                                                                ProductInfo.setLayoutManager(linearLayoutManager);
-//                                                                ProductInfo.setAdapter(myAdapterList);
-//                                                                ProductInfo.setItemAnimator(new DefaultItemAnimator());
-//                                                            }
-//                                                        }
-//
-//                                                        @Override
-//                                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                                        }
-//                                                    });
-//                                                }
-//                                            } else {
-//                                                Toast.makeText(SearchProduct.this, "لا يوجد مخزن يخدم محافظتك ", Toast.LENGTH_LONG).show();
-//                                            }
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//                                        }
-//                                    });
-//                                }
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//
-//    }
-//
-//    public void goSearchImported_medicines(View view) {
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameProductImported);
-//        listProductInfo.setVisibility(View.VISIBLE);
-//        ProductInfo.setVisibility(View.GONE);
-//        listProductInfo.setAdapter(adapter);
-//        behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//        listProductInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                listZeft.clear();
-//                nameInList = parent.getItemAtPosition(position).toString();
-//                DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("product").child("أدوية مستوردة").child(nameInList);
-//                if (reference2 != null) {
-//                    reference2.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                            if (dataSnapshot.exists()) {
-//                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                                    ownerProduct.add(ds.getKey());
-//                                    ///////////////////////////////////////////////////////////////
-//                                    //check country , get name company, get phone number of company
-//                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child("Offices").child(ds.getKey());
-//                                    databaseReference.addValueEventListener(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                            nameCompany.add(dataSnapshot.child("nameU").getValue().toString());
-//                                            sleep(200);
-//                                            country_workU = (ArrayList<String>) dataSnapshot.child("country_work").getValue();
-//                                            PhoneNumber = dataSnapshot.child("phoneNumber").getValue().toString();
-//                                            if (PhoneNumber == null && PhoneNumber.isEmpty()) {
-//                                                PhoneNumber = ds.getKey();
-//                                            }
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//                                        }
-//                                    });
-//                                    DatabaseReference databaseReferencePh = FirebaseDatabase.getInstance().getReference().child("users").child("pharmacies").child(user.getPhoneNumber());//todo a7a
-//                                    databaseReferencePh.addValueEventListener(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                            name_company = dataSnapshot.child("country_chooser").getValue().toString();
-//                                            DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference().child("product").child("أدوية مستوردة").child(nameInList).child(ds.getKey());
-//                                            if (country_workU.contains(name_company)) {
-//                                                if (reference3 != null) {
-//                                                    reference3.addValueEventListener(new ValueEventListener() {
-//                                                        String name =nameInList;
-//                                                        @Override
-//                                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                                            if (dataSnapshot.exists()) {
-////                                                    for (int i =0 ;i<ownerProduct.size();i++) {
-//                                                                MyItemList myItemList = dataSnapshot.getValue(MyItemList.class);
-//                                                                listZeft.add(myItemList);
-//                                                                listProductInfo.setVisibility(View.GONE);
-//                                                                ProductInfo.setVisibility(View.VISIBLE);
-//
-//                                                                MyAdapterList myAdapterList = new MyAdapterList(listZeft, nameCompany, name,mydb);
-//                                                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-//                                                                ProductInfo.setLayoutManager(linearLayoutManager);
-//                                                                ProductInfo.setAdapter(myAdapterList);
-//                                                                ProductInfo.setItemAnimator(new DefaultItemAnimator());
-//                                                            }
-//                                                        }
-//
-//                                                        @Override
-//                                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                                        }
-//                                                    });
-//                                                }
-//                                            } else {
-//                                                Toast.makeText(SearchProduct.this, "لا يوجد مخزن يخدم محافظتك ", Toast.LENGTH_LONG).show();
-//                                            }
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//                                        }
-//                                    });
-//                                }
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//
-//    }
-//
-//    public void goSearchAccessories(View view) {
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameProductAccessories);
-//        listProductInfo.setVisibility(View.VISIBLE);
-//        ProductInfo.setVisibility(View.GONE);
-//        listProductInfo.setAdapter(adapter);
-//        behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//        listProductInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                listZeft.clear();
-//                nameInList = parent.getItemAtPosition(position).toString();
-//                DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("product").child("مستلزمات").child(nameInList);
-//                if (reference2 != null) {
-//                    reference2.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                            if (dataSnapshot.exists()) {
-//                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                                    ownerProduct.add(ds.getKey());
-//                                    ///////////////////////////////////////////////////////////////
-//                                    //check country , get name company, get phone number of company
-//                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child("Offices").child(ds.getKey());
-//                                    databaseReference.addValueEventListener(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                            nameCompany.add(dataSnapshot.child("nameU").getValue().toString());
-//                                            sleep(200);
-//                                            country_workU = (ArrayList<String>) dataSnapshot.child("country_work").getValue();
-//                                            PhoneNumber = dataSnapshot.child("phoneNumber").getValue().toString();
-//                                            if (PhoneNumber == null && PhoneNumber.isEmpty()) {
-//                                                PhoneNumber = ds.getKey();
-//                                            }
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//                                        }
-//                                    });
-//                                    DatabaseReference databaseReferencePh = FirebaseDatabase.getInstance().getReference().child("users").child("pharmacies").child(user.getPhoneNumber());
-//                                    databaseReferencePh.addValueEventListener(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                            name_company = dataSnapshot.child("country_chooser").getValue().toString();
-//                                            DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference().child("product").child("مستلزمات").child(nameInList).child(ds.getKey());
-//                                            if (country_workU.contains(name_company)) {
-//                                                if (reference3 != null) {
-//                                                    reference3.addValueEventListener(new ValueEventListener() {
-//                                                        @Override
-//                                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                                            if (dataSnapshot.exists()) {
-//                                                                MyItemList myItemList = dataSnapshot.getValue(MyItemList.class);
-//                                                                listZeft.add(myItemList);
-//                                                                listProductInfo.setVisibility(View.GONE);
-//                                                                ProductInfo.setVisibility(View.VISIBLE);
-//                                                                MyAdapterList myAdapterList = new MyAdapterList(listZeft, nameCompany, nameInList,mydb);
-//                                                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-//                                                                ProductInfo.setLayoutManager(linearLayoutManager);
-//                                                                ProductInfo.setAdapter(myAdapterList);
-//                                                                ProductInfo.setItemAnimator(new DefaultItemAnimator());
-//                                                            }
-//                                                        }
-//
-//                                                        @Override
-//                                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                                        }
-//                                                    });
-//                                                }
-//                                            } else {
-//                                                Toast.makeText(SearchProduct.this, "لا يوجد مخزن يخدم محافظتك ", Toast.LENGTH_LONG).show();
-//                                            }
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//                                        }
-//                                    });
-//                                }
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//    }
-//
-//    public void callCompany(View view) {
-//        String phone;
-//        Intent intent = new Intent(Intent.ACTION_DIAL);
-//        phone = PhoneNumber;
-//        if (phone == null && phone.isEmpty()) {
-//            Toast.makeText(SearchProduct.this, "لايوجد ارقام للاتصال ", Toast.LENGTH_LONG).show();
-//        } else {
-//            intent.setData(Uri.parse("tel:" + phone));
-//            Toast.makeText(this, "وبرده كس ام البرمجة", Toast.LENGTH_LONG).show();
-//        }
-//        startActivity(intent);
-//    }
-//
-//    public void openSheet(View view) {
-//        behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
-//    }
-//
-//    public void openDrawer(View view) {
-//        if (navigationView.getVisibility() == View.GONE) {
-//            navigationView.setVisibility(View.VISIBLE);
-//        } else {
-//            navigationView.setVisibility(View.GONE);
-//        }
-//    }
-//
-//    @Override
-//    public boolean onQueryTextSubmit(String query) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean onQueryTextChange(String newText) {
-//
-//        return false;
-//
-//    }

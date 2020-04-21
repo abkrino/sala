@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
     <resources>
-        <color name="colorPrimary">#8A2BE2</color>
+        <color name="colorPrimary">#4B0082</color>
         <color name="colorPrimaryDark">#6A5ACD</color>
-        <color name="colorAccent">#D81B60</color>
+        <color name="colorAccent">#4B0082</color>
         <color name="Black">#FF000000</color>
         <color name="Black_overlay">#66000000</color>
 
     <color name="colorPrimary_transparent">#aa8A2BE2</color>
+
+    <color name="colorPrimary_transparent2">#9C4B0082</color>
+    4B0082
         <color name="Black_transparent_black_hex_1">#0F000000</color>
         <color name="Black_transparent_black_hex_10">#aa000000</color>
         <color name="Black_transparent_black_hex_11">#bb000000</color>

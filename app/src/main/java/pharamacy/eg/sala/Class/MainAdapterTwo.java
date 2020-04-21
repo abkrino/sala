@@ -63,7 +63,7 @@ public class MainAdapterTwo extends RecyclerView.Adapter<MainAdapterTwo.ViewHold
     @Override
     public void onBindViewHolder(MainAdapterTwo.ViewHolder holder, int position) {
         holder.name.setText(list.get(position).getNameProduct());
-        holder.price.setText(list.get(position).getPrice());
+        holder.price.setText(list.get(position).getPrice()+"");
         holder.row.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

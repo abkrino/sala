@@ -5,33 +5,33 @@ import com.google.firebase.database.Exclude;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Product {
+public class Product implements Comparable {
     String name_company;
     String nameProduct;
-    String price;
-    String discount;
-
+    double price;
+    double discount;
 
     public Product() {
     }
 
-    public Product(String price) {
+
+    public Product(double price) {
         this.price = price;
     }
 
-    public Product(String name, String price) {
+    public Product(String name, double price) {
         this.nameProduct = name;
         this.price = price;
     }
 
-    public Product(String name, String price, String discount) {
+    public Product(String name, double price, double discount) {
         //hnaa low fi discount
         this.nameProduct = name;
         this.price = price;
         this.discount = discount;
     }
 
-    public Product(String name_company, String name, String price, String discount) {
+    public Product(String name_company, String name, double price, double discount) {
         this.name_company = name_company;
         this.nameProduct = name;
         this.price = price;
@@ -50,11 +50,11 @@ public class Product {
         return nameProduct;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public String getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
@@ -62,23 +62,36 @@ public class Product {
         this.nameProduct = nameProduct;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        if (discount != null) {
+        if (discount !=0.0) {
             result.put("price", price);
             result.put("discount", discount);
         } else {
             result.put("price", price);
         }
         return result;
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        if (discount !=0.0) {
+        int comparedis= (int) ((Product)o).getDiscount();
+        return (int) (comparedis-this.discount);
+
+    }else {
+            int comparePri= (int) ((Product)o).getPrice();
+            return (int) (this.price-comparePri);
+        }
     }
 }

@@ -7,7 +7,9 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_icons8_home"
-            android:title="الصفحة الرئيسة" />
+            android:title="الصفحة الرئيسة"
+
+            />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_user"
@@ -19,7 +21,7 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_contact_mail_black_24dp"
-            android:title="تواصل معنا " />
+            android:title="الاحكام والشروط " />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_info"

@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:id="@+id/startActivity"
     tools:context=".Start_Activity">
 
     <ImageView
         android:id="@+id/imageViewStart"
-        android:layout_width="187dp"
-        android:layout_height="177dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
         android:gravity="start"
-        android:src="@mipmap/ic_launcher_foreground"
+        android:src="@drawable/ic_launcher_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,16 +23,15 @@
         android:id="@+id/textLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:fontFamily="monospace"
         android:text="@string/titalapp"
-        android:textColor="@color/Blue_BlueViolet"
-        android:textSize="@dimen/FontSizeViewXl"
+        android:textColor="@color/DarkOrchid"
+        android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewStart"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.475" />
+        app:layout_constraintVertical_bias="0.471" />
 
     <TextView
         android:id="@+id/textLog2"
@@ -39,11 +39,13 @@
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:text="@string/tag_app"
-        android:textColor="@color/Blue_BlueViolet"
-        android:textSize="@dimen/FontSizeViewXlt"
+        android:textColor="@color/DarkOrchid"
+        android:textSize="@dimen/FontSizeView"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewStart"
         app:layout_constraintTop_toBottomOf="@+id/textLog"
         app:layout_constraintVertical_bias="0.0" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backgraound_header"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/idchild"
+        style="@android:style/TextAppearance.Large"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="this is a child"
+        android:fontFamily="@font/f"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="@color/Black"
+ />
+</RelativeLayout>

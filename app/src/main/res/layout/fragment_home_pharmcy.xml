@@ -2,22 +2,66 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/White_White"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/abkrino2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/abkrino"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mylayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/White_White"
+        android:visibility="gone">
 
-    <SearchView
-        android:id="@+id/search"
-        android:layout_width="0dp"
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="@string/codeAd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/White_transparent_white_hex_1"
+
+        android:gravity="end"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <TextView
+        android:id="@+id/text_ss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/naskh"
+        android:text="   ابحث عن الصنف "
+        app:layout_constraintBottom_toTopOf="@+id/list_main"
+        app:layout_constraintEnd_toStartOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
     <ListView
         android:id="@+id/list_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@+id/search"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:outlineAmbientShadowColor="@color/colorPrimary_transparent2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,6 +89,7 @@
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/White_transparent_white_hex_1"
         tools:context=".SearchProduct"
         tools:openDrawer="end">
 
@@ -58,11 +103,11 @@
             app:behavior_peekHeight="50dp"
             app:elevation="4dp"
             app:layout_behavior="@string/bottom_sheet_behavior">
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linearLayoutClick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/White_transparent_white_hex_2"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,22 +119,42 @@
                     android:id="@+id/imagc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/typeSearch"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:src="@android:drawable/button_onoff_indicator_off" />
-
-                <TextView
-                    android:id="@+id/typeSearch"
-                    android:layout_width="match_parent"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="top|center"
-                    android:text="@string/searchPh"
-                    android:textAlignment="center"
-                    android:textColor="@color/Black"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
+                    >
 
+                    <TextView
+                        android:id="@+id/typeSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/f"
+                        android:gravity="top|center"
+                        android:text="@string/searchPh"
+                        android:textAlignment="center"
+                        android:textColor="@color/Black"
+                        android:textSize="35sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/typeSearch"
+                        app:layout_constraintStart_toStartOf="@+id/typeSearch"
+                        app:layout_constraintTop_toBottomOf="@+id/typeSearch"
+                        />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -111,10 +176,11 @@
                     android:layout_marginStart="@dimen/FontSizeView"
                     android:layout_marginEnd="@dimen/FontSizeView"
                     android:background="@drawable/bt_shap"
+                    android:fontFamily="@font/f"
                     android:text="أدوية محلية"
                     android:textColor="@color/White_White"
-                    android:textSize="@dimen/FontSizeView"
-                    android:textStyle="bold" />
+                    android:textSize="30sp"
+                    />
 
                 <Button
                     android:id="@+id/Imported_medicines"
@@ -123,14 +189,15 @@
                     android:layout_below="@+id/Local_medicines"
                     android:layout_centerInParent="true"
                     android:layout_marginStart="@dimen/FontSizeView"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="23dp"
                     android:layout_marginEnd="@dimen/FontSizeView"
                     android:background="@drawable/bt_shap"
+                    android:fontFamily="@font/f"
                     android:onClick="goSearchImported_medicines"
                     android:text="ادوية مستوردة"
                     android:textColor="@color/White_White"
-                    android:textSize="@dimen/FontSizeView"
-                    android:textStyle="bold" />
+                    android:textSize="30sp"
+                   />
 
                 <Button
                     android:id="@+id/Accessories"
@@ -138,15 +205,17 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/Imported_medicines"
                     android:layout_marginStart="@dimen/FontSizeView"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="23dp"
                     android:layout_marginEnd="@dimen/FontSizeView"
                     android:background="@drawable/bt_shap"
+                    android:fontFamily="@font/f"
                     android:onClick="goSearchAccessories"
                     android:text="مستلزمات"
                     android:textColor="@color/White_White"
-                    android:textSize="@dimen/FontSizeView"
-                    android:textStyle="bold" />
+                    android:textSize="30sp"
+                   />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

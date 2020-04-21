@@ -12,7 +12,7 @@
         android:interpolator="@android:anim/cycle_interpolator"/>
     <translate
         android:fromXDelta="0%p"
-        android:toXDelta="-38%p"
+        android:toXDelta="-20%p"
         android:duration="200"
         android:repeatMode="restart"
         android:repeatCount="0"

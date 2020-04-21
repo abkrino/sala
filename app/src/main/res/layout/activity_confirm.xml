@@ -42,6 +42,7 @@
         android:layout_marginTop="32dp"
         android:textSize="@dimen/FontSizeView"
         android:textStyle="bold"
+        android:fontFamily="@font/f_m"
         android:background="@drawable/bt_shap"
         android:text="@string/codeOk"
         android:textColor="@color/White_White"

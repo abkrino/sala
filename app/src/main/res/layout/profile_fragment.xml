@@ -1,139 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Profile">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/White_transparent_white_hex_12"
-            android:contentDescription="@string/upload_image"
-            android:src="@mipmap/user"
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/background">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_launcher_round"
+                app:civ_border_color="#BCffffff"
+                app:civ_border_width="10dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nameC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/naskh1"
+                    android:gravity="center"
+                    android:text="زيكوو"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/FontSizeView" />
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/naskh1"
+                    android:gravity="center_horizontal"
+                    android:text="01118556397"
+                    android:textColor="@color/Black_transparent_black_hex_9"
+                    android:textSize="@dimen/FontSizeView" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/edit_profile_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+                <TextView
+                    android:id="@+id/spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/naskh"
+                    android:gravity="center"
+
+                    android:text="الاسكندرية"
+                    android:textColor="@color/Black_transparent_black_percent_50"
+                    android:textSize="@dimen/FontSizeView" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/naskh"
+                    android:text="محافظة المقر :"
+                    android:textAlignment="center"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/FontSizeView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+                <TextView
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/naskh"
+                    android:text="الاسكندرية "
+                    android:gravity="center"
+
+                    android:textAlignment="center"
+                    android:textColor="@color/Black_transparent_black_percent_50"
+                    android:textSize="@dimen/FontSizeView"
+                    app:layout_constraintEnd_toStartOf="@+id/textView9"
+                    app:layout_constraintHorizontal_bias="0.811"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner1" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/naskh"
+
+                    android:text="@string/chooseCity"
+                    android:textAlignment="center"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/FontSizeView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                <TextView
+                    android:id="@+id/neighborhood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="10"
+                    android:fontFamily="@font/naskh"
+                    android:gravity="center"
+                    android:text="فلمنج"
+                    android:textAlignment="center"
+                    android:textColor="@color/Black_transparent_black_percent_50"
+                    android:textSize="@dimen/FontSizeView" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/naskh"
+                    android:text="@string/chooseRegion"
+                    android:textAlignment="center"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/FontSizeView" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+                <TextView
+                    android:id="@+id/addressP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="36dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/naskh"
+                    android:text="ادوية محلية "
+                    android:gravity="center"
+
+                    android:textColor="@color/Black_transparent_black_percent_50"
+                    android:textSize="@dimen/FontSizeView" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="36dp"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/naskh"
+                    android:text="العنوان :"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/FontSizeView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/edit_profile_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bt_shap"
+            android:elevation="5dp"
+            android:fontFamily="@font/f"
+            android:text="تعديل"
+            android:textColor="@color/White_White"
+            android:textSize="@dimen/FontSizeView"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            app:adSize="BANNER"
+            app:adUnitId="@string/codeAd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/nameC"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:hint="الاسم"
-            android:textAlignment="center"
-            android:textColor="#000"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
-
-            <TextView
-                android:id="@+id/spinner1"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:hint="@string/chooseCity"
-                android:textAlignment="center"
-                android:textColor="#000"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameC"
-                />
-
-
-        <TextView
-            android:id="@+id/city"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:hint="@string/chooseCity"
-            android:textAlignment="center"
-            android:textColor="#000"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner1" />
-
-        <TextView
-            android:id="@+id/neighborhood"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="#000"
-            android:textAlignment="center"
-            app:autoSizeTextType="uniform"
-            android:hint="@string/chooseRegion"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/city" />
-
-
-        <TextView
-            android:id="@+id/number"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:hint="@string/phoneNumber"
-            android:textAlignment="center"
-            android:textColor="#000"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toEndOf="@+id/city"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/city"
-            app:layout_constraintTop_toBottomOf="@+id/neighborhood" />
-        <TextView
-            android:id="@+id/addressP"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:hint="@string/chooseCity"
-            android:textAlignment="center"
-            android:textColor="#000"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toEndOf="@+id/number"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/number"
-            app:layout_constraintTop_toBottomOf="@+id/number" />
-
-        <Button
-            android:id="@+id/edit_profile_btn"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bt_shap"
-            android:text="تعديل"
-            android:textColor="@color/White_White"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/addressP"
-            app:layout_constraintStart_toStartOf="@+id/addressP"
-            app:layout_constraintTop_toBottomOf="@+id/addressP" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+
+</RelativeLayout>

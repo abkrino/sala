@@ -3,78 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ContactUs">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="للتواصل معنا "
-        android:textColor="@color/Black"
-        android:textSize="40sp"
+        android:fontFamily="@font/f"
+        android:text="الأحكام والشروط "
+        android:textColor="@color/colorPrimary"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/Black"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header">
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/titleEmail"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="عبر البريد الالكنروني "
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/naskh"
+            android:gravity="center_horizontal"
+            android:text="@string/termsAndConditions"
+
             android:textColor="@color/Black"
-            android:textStyle="bold"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/email"
-            android:layout_weight="1"
-            android:paddingLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sala.pharmacy@gmail.com"
-            android:textColor="@color/Blue"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+            android:textSize="13sp"/>
+    </ScrollView>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="@string/codeAd"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <TextView
-            android:id="@+id/titleNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:paddingRight="20dp"
-            android:text="للتوصل تليفونيا"
-            android:textStyle="bold"
-            android:textColor="@color/Black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/Number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="11dp"
-            android:layout_weight="1"
-            android:text="01554046584"
-            android:textColor="@color/Blue"
-            android:textSize="20sp" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,11 +15,27 @@
       },
       "oauth_client": [
         {
-          "client_id": "142820749106-il8j1h64k2nfaib9t486hqqna3a75lqf.apps.googleusercontent.com",
+          "client_id": "142820749106-5reu9g5h6tqbpg4ia7kiff9eajvc2055.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "pharamacy.eg.sala",
-            "certificate_hash": "73fb6f993a0b773afdf1aebdb729f2404c91f2d4"
+            "certificate_hash": "271605affd6a39d42b85129b2c94a1292c3b7d54"
+          }
+        },
+        {
+          "client_id": "142820749106-h7ihp3lgki5i9ta9mrgclrhseint1nlm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pharamacy.eg.sala",
+            "certificate_hash": "8770a49a6fd973b3a8d1bfcaed3826c06461973d"
+          }
+        },
+        {
+          "client_id": "142820749106-kmuutn39k3n4f931rki26j2gsun9r1cv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pharamacy.eg.sala",
+            "certificate_hash": "9f97ee872105814eec7b8b58c398a961e9922330"
           }
         },
         {

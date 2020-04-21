@@ -2,6 +2,7 @@ package pharamacy.eg.sala.Class;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,9 +12,11 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,8 +64,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(list.get(position).getNameProduct());
-        holder.price.setText(list.get(position).getPrice());
-        holder.discount.setText(list.get(position).getDiscount());
+        holder.price.setText(list.get(position).getPrice()+"");
+        holder.discount.setText(list.get(position).getDiscount()+"");
         // to mark one of row layOut to delete it in view and also in firebase
         holder.row.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -90,6 +93,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
     public int getItemCount() {
         return list.size();
     }
+//lisadpter
+
 
 
     // stores and recycles views as they are scrolled off screen
@@ -107,19 +112,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
             discount = itemView.findViewById(R.id.discountC);
             btDelete = itemView.findViewById(R.id.btDelet);
             row = itemView.findViewById(R.id.row);
-//            row.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View v) {
-//                    row.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//
-//
-//                        }
-//                    });
-//                    return true;
-//                }
-//            });
             btDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -192,9 +184,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> im
     }
 
     // convenience method for getting data at click position
-    int getItem(int position) {
+    public Object getItem(int position) {
         return position;
     }
+
 
     // allows clicks events to be caught
     void setClickListener(ItemClickListener itemClickListener) {

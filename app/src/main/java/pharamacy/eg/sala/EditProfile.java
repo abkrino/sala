@@ -24,6 +24,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +41,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,7 +50,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pharamacy.eg.sala.Class.CustomOnItemSelectedListener;
-import pharamacy.eg.sala.Class.GlideApp;
+//import pharamacy.eg.sala.Class.GlideApp;
 import pharamacy.eg.sala.Class.MultiSelectionSpinner;
 
 
@@ -82,6 +85,7 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        showAd();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -92,6 +96,9 @@ public class EditProfile extends AppCompatActivity {
         city = findViewById(R.id.city);
         neighborhood = findViewById(R.id.neighborhood);
         number = findViewById(R.id.number);
+        ButterKnife.bind(this);
+
+        profile = findViewById(R.id.profile_pic);
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             userId = user.getPhoneNumber();
@@ -100,7 +107,6 @@ public class EditProfile extends AppCompatActivity {
 
         setHint();
 
-        ButterKnife.bind(this);
 
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
@@ -133,7 +139,7 @@ public class EditProfile extends AppCompatActivity {
         ImagePickerActivity.clearCache(this);
 
 
-        profile = findViewById(R.id.profile_pic);
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +156,8 @@ public class EditProfile extends AppCompatActivity {
         Specia_work = spinner2.getSelectedItem().toString().trim();
         if(Specia_work.equals("النشاط")){
             Specia_work = getIntent().getStringExtra("Specia_workU");
+            intent.putExtra("Specia_workU",Specia_work);
+
         }
         country_chooser = spinner.getSelectedItem().toString().trim();
         if(country_chooser.equals(array[0])){
@@ -158,6 +166,9 @@ public class EditProfile extends AppCompatActivity {
         country_work = new ArrayList<>(spinner_multi.getSelectedStrings());
         if(country_work.isEmpty()){
             country_work = getIntent().getStringArrayListExtra("country_work");
+            if (country_work==null||country_work.isEmpty()){
+                country_work.add(country_chooser);
+            }
         }
         cityU = city.getText().toString().trim();
         neighborhoodU = neighborhood.getText().toString().trim();
@@ -205,7 +216,7 @@ public class EditProfile extends AppCompatActivity {
     /////////////////////////////////////////////////////////
 
     private void loadProfile(String url) {
-        GlideApp.with(this).load(url)
+        Picasso.get().load(url)
                 .into(profile);
         profile.setColorFilter(ContextCompat.getColor(this, android.R.color.transparent));
     }
@@ -382,10 +393,10 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(EditProfile.this,
-                        "OnClickListener : " +
-                                "\n Spinner 1 : " + String.valueOf(spinner.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(EditProfile.this,
+//                        "OnClickListener : " +
+//                                "\n Spinner 1 : " + String.valueOf(spinner.getSelectedItem()),
+//                        Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -418,7 +429,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
-                GlideApp.with(EditProfile.this)
+                Picasso.get()
                         .load(uri)
                         .into(profile);
             }
@@ -430,6 +441,10 @@ public class EditProfile extends AppCompatActivity {
         });
     }
 
-
+    public void showAd(){
+        AdView adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        adView.loadAd(adRequest);
+    }
 }
 

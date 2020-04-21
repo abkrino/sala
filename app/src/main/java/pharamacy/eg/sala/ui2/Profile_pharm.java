@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,14 +28,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import pharamacy.eg.sala.Class.GlideApp;
+//import pharamacy.eg.sala.Class.GlideApp;
 import pharamacy.eg.sala.EditeProfilePh;
 import pharamacy.eg.sala.R;
 
 public class Profile_pharm extends Fragment {
+
     private TextView name, city, neighborhood, country_chooser,  phoneNumber,address ;
     public String nameU, cityU, neighborhoodU, country_chooserU,phoneNumberU,addressU;
     public ArrayList<String> country_workU;
@@ -44,8 +48,9 @@ public class Profile_pharm extends Fragment {
     public String userId;
     private ImageView userPic;
     private StorageReference mStorage;
+    AdView adView;
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+        ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.profile_fragment, container, false);
         return root;
     }
@@ -53,13 +58,14 @@ public class Profile_pharm extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        adView =view.findViewById(R.id.adView);
         name = view.findViewById(R.id.nameC);
         city = view.findViewById(R.id.city);
         neighborhood = view.findViewById(R.id.neighborhood);
         country_chooser = view.findViewById(R.id.spinner1);
         phoneNumber = view.findViewById(R.id.number);
+        showAd();
         address = view.findViewById(R.id.addressP);
-
         userPic = view.findViewById(R.id.profile_pic);
         Button edit = view.findViewById(R.id.edit_profile_btn);
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -82,9 +88,9 @@ public class Profile_pharm extends Fragment {
                         flag = true;
                     }
 
-                    name.setText("الاسم: " + nameU);
-                    city.setText("المدينة: " + cityU);
-                    neighborhood.setText("المنطقة: " + neighborhoodU);
+                    name.setText( nameU);
+                    city.setText( cityU);
+                    neighborhood.setText( neighborhoodU);
                     country_chooser.setText(country_chooserU);
                     phoneNumber.setText(phoneNumberU);
 
@@ -94,7 +100,7 @@ public class Profile_pharm extends Fragment {
                         public void onSuccess(Uri uri) {
                             // Got the download URL for 'users/me/profile.png'
                             a = uri;
-                            GlideApp.with(getActivity())
+                            Picasso.get()
                                     .load(uri)
                                     .into(userPic);
                         }
@@ -122,19 +128,19 @@ public class Profile_pharm extends Fragment {
                                 flag = true;
                             }
 
-                            name.setText("الاسم : " + nameU);
-                            city.setText("المدينة : " + cityU);
-                            neighborhood.setText("المنطقة : " + neighborhoodU);
-                            country_chooser.setText("محافظة المقر :"+country_chooserU);
-                            phoneNumber.setText("تليفون :"+phoneNumberU);
-                            address.setText("العنوان:"+addressU);
+                            name.setText( nameU);
+                            city.setText(cityU);
+                            neighborhood.setText(neighborhoodU);
+                            country_chooser.setText(country_chooserU);
+                            phoneNumber.setText(phoneNumberU);
+                            address.setText(addressU);
 
                             mStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     // Got the download URL for 'users/me/profile.png'
                                     a = uri;
-                                    GlideApp.with(getActivity())
+                                    Picasso.get()
                                             .load(uri)
                                             .into(userPic);
                                 }
@@ -182,6 +188,11 @@ public class Profile_pharm extends Fragment {
 
         String str = TextUtils.join("\n", country_workU);
         return str;
+    }
+    public void showAd(){
+
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        adView.loadAd(adRequest);
     }
 
 }

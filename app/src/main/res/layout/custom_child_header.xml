@@ -42,6 +42,19 @@
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@+id/checkProduct"
             card_view:layout_constraintStart_toEndOf="@+id/callIcon" />
+        <TextView
+            android:id="@+id/phoneNumberIdOffices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/discountData"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/checkProduct"
+            android:layout_toEndOf="@+id/callIcon"
+            android:textColor="@color/Black"
+            android:visibility="invisible"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/checkProduct"
+            card_view:layout_constraintStart_toEndOf="@+id/callIcon" />
 
         <ImageView
             android:id="@+id/checkProduct"
@@ -62,7 +75,8 @@
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="الخصم"
-            android:textSize="20dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/naskh"
             card_view:layout_constraintBottom_toTopOf="@+id/callIcon"
             card_view:layout_constraintEnd_toStartOf="@+id/checkProduct"
             card_view:layout_constraintStart_toStartOf="parent" />
@@ -76,7 +90,8 @@
             android:layout_alignParentRight="true"
             android:padding="10dp"
             android:text="43"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:fontFamily="@font/naskh"
             card_view:layout_constraintBottom_toTopOf="@+id/discountData"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/callIcon"
@@ -91,7 +106,9 @@
             android:layout_alignParentRight="true"
             android:padding="10dp"
             android:text="43"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:fontFamily="@font/naskh"
+
             card_view:layout_constraintBottom_toTopOf="@+id/checkProduct"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/callIcon" />
@@ -105,11 +122,11 @@
             android:layout_alignParentEnd="true"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:padding="8dp"
             android:text="شركة :القصي"
+            android:fontFamily="@font/naskh"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
+            android:textSize="17sp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="0dp"  />
@@ -121,7 +138,8 @@
             android:gravity="center_horizontal"
             android:padding="10dp"
             android:text="  السعر"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:fontFamily="@font/naskh"
             card_view:layout_constraintBottom_toTopOf="@+id/discountd"
             card_view:layout_constraintEnd_toStartOf="@+id/checkProduct"
             card_view:layout_constraintStart_toStartOf="parent"

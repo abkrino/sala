@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/abkrino2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/abkrino"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mylayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/White_White"
+        android:visibility="visible"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            app:adSize="BANNER"
+            app:adUnitId="@string/codeAd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SearchView
+            android:id="@+id/searchP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/White_transparent_white_hex_1"
+            android:gravity="end"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+        <TextView
+            android:id="@+id/text_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/naskh"
+            android:text="   ابحث عن الصنف "
+            app:layout_constraintEnd_toStartOf="@+id/searchP"
+            app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+        <ListView
+            android:id="@+id/list_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/searchP"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchP" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_main2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/searchP"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchP" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/searchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/White_transparent_white_hex_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/adView"
+            tools:context=".SearchProduct"
+            tools:openDrawer="end">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/design_bottom_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bt_sheet_background"
+                app:behavior_hideable="true"
+                app:behavior_peekHeight="50dp"
+                app:elevation="4dp"
+                app:layout_behavior="@string/bottom_sheet_behavior">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/imagc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@android:drawable/button_onoff_indicator_off" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/typeSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/f"
+                            android:gravity="top|center"
+                            android:text="@string/searchPh"
+                            android:textAlignment="center"
+                            android:textColor="@color/Black"
+                            android:textSize="35sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+
+                            android:background="?android:attr/listDivider"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/typeSearch"
+                            app:layout_constraintStart_toStartOf="@+id/typeSearch"
+                            app:layout_constraintTop_toBottomOf="@+id/typeSearch" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutClick1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutClick"
+                    app:layout_constraintVertical_bias="0.153">
+
+                    <Button
+                        android:id="@+id/Local_medicines"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/FontSizeView"
+                        android:layout_marginEnd="@dimen/FontSizeView"
+                        android:background="@drawable/bt_shap"
+                        android:fontFamily="@font/f"
+                        android:text="أدوية محلية"
+                        android:textColor="@color/White_White"
+                        android:textSize="30sp" />
+
+                    <Button
+                        android:id="@+id/Imported_medicines"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Local_medicines"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="@dimen/FontSizeView"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginEnd="@dimen/FontSizeView"
+                        android:background="@drawable/bt_shap"
+                        android:fontFamily="@font/f"
+                        android:onClick="goSearchImported_medicines"
+                        android:text="ادوية مستوردة"
+                        android:textColor="@color/White_White"
+                        android:textSize="30sp" />
+
+                    <Button
+                        android:id="@+id/Accessories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Imported_medicines"
+                        android:layout_marginStart="@dimen/FontSizeView"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginEnd="@dimen/FontSizeView"
+                        android:background="@drawable/bt_shap"
+                        android:fontFamily="@font/f"
+                        android:onClick="goSearchAccessories"
+                        android:text="مستلزمات"
+                        android:textColor="@color/White_White"
+                        android:textSize="30sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

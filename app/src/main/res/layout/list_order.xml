@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/bt_shap"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/discountDeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الخصم"
+        android:textColor="@color/White_White"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/priceDeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="السعر"
+        android:textColor="@color/White_White"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+
+
+    <TextView
+        android:layout_weight="3"
+        android:id="@+id/nameProuductDeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="اسم الصنف"
+        android:textColor="@color/White_White"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

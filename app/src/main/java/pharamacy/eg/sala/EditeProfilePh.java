@@ -1,4 +1,5 @@
 package pharamacy.eg.sala;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,6 +23,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,29 +41,30 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.List;
 
 import butterknife.OnClick;
 import pharamacy.eg.sala.Class.CustomOnItemSelectedListener;
-import pharamacy.eg.sala.Class.GlideApp;
+//import pharamacy.eg.sala.Class.GlideApp;
 
 public class EditeProfilePh extends AppCompatActivity {
-    private EditText name,  city,  neighborhood,  address, phoneNumber ;
-    public String userId,nameU,  cityU,  neighborhoodU,  addressu, phoneNumberu,country_chooseru;
+    private EditText name, city, neighborhood, address, phoneNumber;
+    public String userId, nameU, cityU, neighborhoodU, addressu, phoneNumberu, country_chooseru;
     ImageView profile;
     Spinner country_chooser;
     Button savebtn;
     public static final int REQUEST_IMAGE = 100;
     //    public static final String PHARMACIES = "صيدليات";
     private InterstitialAd mInterstitialAd;
-    String[] array = {"اختار محافظة",
+    String[] array = {"أختر محافظة",
             "الأقصر", "الإسكندرية", "الشرقية", "أسيوط", "البحيرة", "القاهرة", "دمياط",
             "كفر الشيخ", "المنوفية", "المنيا", "بورسعيد", "القليوبية", "أسوان", "الإسماعيلية", "سويف", "الدقهلية",
             "الفيوم", "الغربية", "الجيزة", "البحر الأحمر", "قنا", "جنوب سيناء", "شمال سيناء", "السويس", "سوهاج", "الوادي الجديد", "مطروح"};
 
-
+    AdView adView;
     //Firebase
     private StorageReference mStorage;
     FirebaseStorage storage;
@@ -70,9 +74,11 @@ public class EditeProfilePh extends AppCompatActivity {
     private FirebaseUser user;
     private Bitmap bitmap;
     private Uri uri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.edit_profileph);
         //////////////////////////////////////////
         //fire base
@@ -83,12 +89,13 @@ public class EditeProfilePh extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         //////////////////////////////////////////////////////
-        name= findViewById(R.id.namePh);
+        name = findViewById(R.id.namePh);
         city = findViewById(R.id.cityPh);
         neighborhood = findViewById(R.id.neighborhoodPh);
         country_chooser = findViewById(R.id.spinnerPh);
         address = findViewById(R.id.address);
-
+        adView = findViewById(R.id.adView);
+        showAd();
         phoneNumber = findViewById(R.id.numberPh);
         profile = findViewById(R.id.profilepic);
         userId = user.getPhoneNumber();
@@ -128,9 +135,10 @@ public class EditeProfilePh extends AppCompatActivity {
         });
 
     }
-    private void loadProfileDefault () {
 
-        GlideApp.with(this)
+    private void loadProfileDefault() {
+
+        Picasso.get()
                 .load(R.color.Red)
                 .into(profile);
         profile.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent));
@@ -142,15 +150,15 @@ public class EditeProfilePh extends AppCompatActivity {
         Intent intent = new Intent(EditeProfilePh.this, SearchProduct.class);
         nameU = name.getText().toString().trim();
         country_chooseru = country_chooser.getSelectedItem().toString().trim();
-        if(country_chooser.equals(array[0])){
-            country_chooseru = getIntent().getStringExtra( "country_chooser");
+        if (country_chooseru.equals(array[0])) {
+            country_chooseru = getIntent().getStringExtra("country_chooser");
         }
         cityU = city.getText().toString().trim();
         neighborhoodU = neighborhood.getText().toString().trim();
         phoneNumberu = phoneNumber.getText().toString().trim();
         addressu = address.getText().toString().trim();
-        if (addressu.isEmpty()){
-            addressu =getIntent().getStringExtra("address");
+        if (addressu.isEmpty()) {
+            addressu = getIntent().getStringExtra("address");
         }
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
@@ -160,22 +168,21 @@ public class EditeProfilePh extends AppCompatActivity {
             Toast.makeText(EditeProfilePh.this, "من فضلك تأكد من تسجيل رقم هاتفك", Toast.LENGTH_LONG).show();
             startActivity(new Intent(EditeProfilePh.this, Confirm.class));
         }
-        writeNewUserpharmacies(userId, nameU, cityU, neighborhoodU, country_chooseru, addressu,phoneNumberu);
+        writeNewUserpharmacies(userId, nameU, cityU, neighborhoodU, country_chooseru, addressu, phoneNumberu);
         uploadImage();
         startActivity(intent);
     }
     /////////////////////////////////////////////////////////
 
     private void loadProfile(String url) {
-        GlideApp.with(this).load(url)
+        Picasso.get().load(url)
                 .into(profile);
         profile.setColorFilter(ContextCompat.getColor(this, android.R.color.transparent));
     }
 
 
-
     @OnClick({R.id.profile_pic})
-    void onProfileImageClick () {
+    void onProfileImageClick() {
         Dexter.withActivity(this)
                 .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .withListener(new MultiplePermissionsListener() {
@@ -328,7 +335,7 @@ public class EditeProfilePh extends AppCompatActivity {
 
     public void addListenerOnSpinnerItemSelection() {
         country_chooser = findViewById(R.id.spinnerPh);
-        country_chooser.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
     }
 
     //get the selected dropdown list value
@@ -337,28 +344,17 @@ public class EditeProfilePh extends AppCompatActivity {
         country_chooser = findViewById(R.id.spinnerPh);
         savebtn = findViewById(R.id.registerPh);
 
-        savebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(EditeProfilePh.this,
-                        "OnClickListener : " +
-                                "\n Spinner 1 : " + String.valueOf(country_chooser.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
-            }
-
-        });
     }
 
-    public void writeNewUserpharmacies(String userId,String nameU, String cityU, String neighborhoodU, String country_chooser, String address,String phoneNumber) {
+    public void writeNewUserpharmacies(String userId, String nameU, String cityU, String neighborhoodU, String country_chooser, String address, String phoneNumber) {
         Users user = new Users(userId, nameU, cityU, neighborhoodU, country_chooser, address, phoneNumber);
 
         mDatabase.child("users").child("pharmacies").child(userId).setValue(user);
     }
 
-    public void setHint(){
+    public void setHint() {
         TextView address = findViewById(R.id.textView2);
-        address.setText("المحافظة: " + getIntent().getStringExtra(  "country_chooser" ));
+        address.setText(  getIntent().getStringExtra("country_chooser"));
 
         name.setText(getIntent().getStringExtra("name"));
         city.setText(getIntent().getStringExtra("city"));
@@ -369,7 +365,7 @@ public class EditeProfilePh extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
-                GlideApp.with(EditeProfilePh.this)
+                Picasso.get()
                         .load(uri)
                         .into(profile);
             }
@@ -381,6 +377,11 @@ public class EditeProfilePh extends AppCompatActivity {
         });
     }
 
+    public void showAd() {
+
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        adView.loadAd(adRequest);
+    }
 
 }
 
