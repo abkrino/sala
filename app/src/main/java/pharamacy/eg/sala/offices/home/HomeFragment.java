@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -54,6 +55,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.internal.VisibilityAwareImageButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,7 +65,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -96,6 +100,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import pharamacy.eg.sala.ReceyPro;
 import pharamacy.eg.sala.adpter.AdapterListOfFile;
 import pharamacy.eg.sala.Class.MainAdapter;
 import pharamacy.eg.sala.Class.Product;
@@ -107,40 +112,41 @@ import static androidx.core.content.ContextCompat.checkSelfPermission;
 import static com.yalantis.ucrop.UCropFragment.TAG;
 
 public class HomeFragment extends Fragment {
-    String userId, Specia_workU, excelPath, resultPay;
-    String Specia_workUIntent, lastDirectory;
-    View include, include2;
-    int datePayDay, datePayMonth;
-    Bundle bundle;
-    List<String> ignoreString;//
+    private String userId, Specia_workU, excelPath, resultPay;
+    private String Specia_workUIntent, lastDirectory;
+    private View include, include2;
+    private int datePayDay, datePayMonth;
+    private Bundle bundle;
+    private List<String> ignoreString;//
     private FirebaseUser user;
-    DatabaseReference databaseReference;
-    LinearLayout try_paid;
-    TextView text_go_pay;
-    private InterstitialAd mInterstitialAd;
-    public ArrayList<Product> list = new ArrayList<Product>();
-    public ArrayList<Product> list2 = new ArrayList<Product>();
-    FloatingActionButton btuploadData;
-    RecyclerView recycler;
-    TextView textView;
-    ListView listOfFile;
+    private DatabaseReference databaseReference;
+    private ArrayList<Product> list = new ArrayList<Product>();
+    private ArrayList<Product> list2 = new ArrayList<Product>();
+    private FloatingActionButton btuploadData;
+    private RecyclerView recycler;
+    private TextView textView;
+    private ListView listOfFile;
     private String[] FileNameStrings, FilePathStrings;
-    View view;
-    ArrayList<File> excelSheet;
-    int cellsCount, month, day;
-    int count = 1;
-    ProgressDialog progressDialog;
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
-    Activity myActivity;
-    boolean r, result;
+    private View view;
+    private ArrayList<String> nameProductL;
+     ArrayList<File> excelSheet;
+    private int cellsCount, month, day;
+    private int count = 1;
+    private ProgressDialog progressDialog;
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor editor;
+    private Activity myActivity;
+    private boolean r, result;
     private LayoutInflater factory;
     private View deleteDialogView;
     private android.app.AlertDialog deleteDialog;
-    AdView adView;
-    ImageView akrino;
-    ConstraintLayout mylayout1;
-    int count_upload;
+    private AdView adView;
+    private ImageView akrino;
+    private ConstraintLayout mylayout1;
+    private LinearLayout try_paid;
+    private int count_upload;
+    private TextView text_go_pay;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     public void onStart() {
@@ -154,6 +160,8 @@ public class HomeFragment extends Fragment {
         }
 
     }
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -180,7 +188,7 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         this.view = view;
-
+        nameProductL = new ArrayList<>();
         adView = view.findViewById(R.id.adView);
         adView = new AdView(getActivity());
         adView.setAdSize(AdSize.BANNER);
@@ -193,7 +201,7 @@ public class HomeFragment extends Fragment {
         text_go_pay = view.findViewById(R.id.text_go_pay);
         Specia_workUIntent = bundle.getString("Specia_workU");
         count_upload = bundle.getInt("count_upload");
-
+        excelSheet = new ArrayList<>();
 
         ignoreString = Arrays.asList(getResources().getStringArray(R.array.Ignore_String));
         //ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
@@ -215,13 +223,27 @@ public class HomeFragment extends Fragment {
         include2 = view.findViewById(R.id.titleSheet2);
         //ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
-//      mStorage = FirebaseStorage.getInstance().getReference().child("images/").child(userId);
+//        mStorage = FirebaseStorage.getInstance().getReference().child("images/").child(userId);
         DatePicker pikPicker = new DatePicker(getActivity());
         month = pikPicker.getMonth() + 1;
         day = pikPicker.getDayOfMonth();
 
         //ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-        getRececlyData();
+
+        if (checkStatues(userId)) {
+            if (!checkPayment()) {
+                recycler.setVisibility(View.GONE);
+                try_paid.setVisibility(View.VISIBLE);
+            } else {
+                getRececlyData();
+
+            }
+        } else {
+            getRececlyData();
+
+        }
+
+
         ActionFloatingButton();
         text_go_pay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,10 +253,18 @@ public class HomeFragment extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
+        mylayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.clearAnimation();
+                btuploadData.clearAnimation();
+                textView.setVisibility(View.GONE);
+            }
+        });
     }
-
     //end onViewCreated
     //ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
     public void searchView() {
         final EditText search = view.findViewById(R.id.search_txt);
         ImageView cancel = view.findViewById(R.id.cancelbtn);
@@ -316,6 +346,8 @@ public class HomeFragment extends Fragment {
             deleteDialogView.findViewById(R.id.alert_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    getProductData("أدويةمحلية");
+
                     //your business logic
                     deleteDialog.dismiss();
                     include.setVisibility(View.GONE);
@@ -348,6 +380,14 @@ public class HomeFragment extends Fragment {
             });
             deleteDialog.show();
         } else {
+            switch (Specia_workU) {
+                case "أدوية مستوردة":
+                    getProductData("أدوية مستوردة");
+                    break;
+                case "مستلزمات":
+                    getProductData("مستلزمات");
+                    break;
+            }
             final View deleteDialogView = factory.inflate(R.layout.alert_view2, null);
             final AlertDialog deleteDialog = new AlertDialog.Builder(getActivity()).create();
             deleteDialog.setView(deleteDialogView);
@@ -420,11 +460,34 @@ public class HomeFragment extends Fragment {
                                     if (!checkPayment()) {
                                         showdialog();
                                     } else {
+                                        switch (Specia_workU) {
+                                            case "أدويةمحلية":
+                                                DelateProdut("أدويةمحلية");
+                                                break;
+                                            case "أدوية مستوردة":
+                                                getProductData("أدوية مستوردة");
+                                                break;
+                                            case "مستلزمات":
+                                                getProductData("مستلزمات");
+                                                break;
+                                        }
+
                                         uploadProduct();
                                         changeStatue();
                                     }
 
                                 } else {
+                                    switch (Specia_workU) {
+                                        case "أدويةمحلية":
+                                            DelateProdut("أدويةمحلية");
+                                            break;
+                                        case "أدوية مستوردة":
+                                            getProductData("أدوية مستوردة");
+                                            break;
+                                        case "مستلزمات":
+                                            getProductData("مستلزمات");
+                                            break;
+                                    }
                                     uploadProduct();
                                     changeStatue();
                                 }
@@ -561,17 +624,23 @@ public class HomeFragment extends Fragment {
     }
 
     public ArrayList<File> readExcleFile(File root) {
-        ArrayList<File> arrayList = new ArrayList<File>();
-        File file3[] = root.listFiles();
-        for (File files : file3) {
-            if (files.isDirectory()) {
-                arrayList.addAll(readExcleFile(files));
-            } else {
-                if (files.getName().endsWith(".xlsx")) {
-                    arrayList.add(files);
+        ArrayList<File> arrayList = new ArrayList<>();
+        File[] file3 = root.listFiles();
+
+        if (file3 != null) {
+            for (File files : file3) {
+                    if (files.isDirectory()) {
+                        arrayList.addAll(readExcleFile(files));
+                    } else {
+                        if (files.getName().endsWith(".xlsx")) {
+                            arrayList.add(files);
+                        }
+                    }
                 }
-            }
+        }else{
+            Toast.makeText(getActivity(), "لا توجد ملفات", Toast.LENGTH_SHORT).show();
         }
+
         return arrayList;
     }
 
@@ -695,10 +764,11 @@ public class HomeFragment extends Fragment {
         databaseReference.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(getActivity(), "تم رفع " + list.size() + " صنف الي خوادمنا", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getActivity(), "تم رفع منتجاتك الي خودمنا", Toast.LENGTH_SHORT).show();
             }
         });
-        ;
+
 
     }
 
@@ -729,7 +799,8 @@ public class HomeFragment extends Fragment {
                 databaseReference.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getActivity(), "تم رفع " + list2.size() + " صنف الي خوادمنا", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "تم رفع منتجاتك الي خودمنا", Toast.LENGTH_SHORT).show();
+
                     }
                 });
                 break;
@@ -738,7 +809,8 @@ public class HomeFragment extends Fragment {
                 databaseReference.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getActivity(), "تم رفع " + list2.size() + " صنف الي خوادمنا", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "تم رفع منتجاتك الي خودمنا", Toast.LENGTH_SHORT).show();
+
                     }
                 });
                 break;
@@ -752,6 +824,7 @@ public class HomeFragment extends Fragment {
         btuploadData.startAnimation(animation);
         textView.startAnimation(animation3);
         textView.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -786,7 +859,6 @@ public class HomeFragment extends Fragment {
     }
 
     public boolean checkStatues(String uID) {
-//todo بيطلع بترووو علي تبلت نورا
         if (count_upload == 0) {
 
             r = false;
@@ -1114,6 +1186,57 @@ public class HomeFragment extends Fragment {
             }
 
         }
+    }
+
+    public void getProductData(String type) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("product").child(type);
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                nameProductL.add(dataSnapshot.getKey());
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+
+        });
+
+    }
+
+    public void DelateProdut(String type) {
+
+        for (int i = 0; i < nameProductL.size(); i++) {
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+            Query productQuery = ref.child("product").child(type).child(nameProductL.get(i)).child(userId);
+            productQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot productSnapshot : dataSnapshot.getChildren()) {
+                        productSnapshot.getRef().removeValue();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.e("databaseErrorRemove", "onCancelled", databaseError.toException());
+                }
+            });
+        }
+
     }
 
 }

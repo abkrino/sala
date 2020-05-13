@@ -326,6 +326,7 @@ public class ReceyPro extends AppCompatActivity {
 
                                             Toast.makeText(myActivityProduct, "جميع من يخدم محافظتك", Toast.LENGTH_SHORT).show();
                                         }
+
                                         //todo thinking about this .....
                                     }
 

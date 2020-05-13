@@ -1,41 +1,3 @@
-//
-//webView.setWebViewClient(new WebViewClient() {
-//public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//
-//        Toast.makeText(GetPay.this, "Processing webview url click...", Toast.LENGTH_LONG).show();
-//
-//        progressBar.setVisibility(View.VISIBLE);
-//        if (url.startsWith("https://www.google.com/?accept=")) {
-//        Toast.makeText(GetPay.this, "عملية مقبولة ", Toast.LENGTH_LONG).show();
-//        finish();
-//        return false;
-//        } else if (url.startsWith("https://www.google.com/?fail=")) {
-//
-//        Toast.makeText(GetPay.this, "عملية غير مقبولة", Toast.LENGTH_LONG).show();
-//        finish();
-//        return false;
-//        } else {
-//        view.loadUrl(url);
-//        webView.requestFocus(View.FOCUS_DOWN);
-//        return true;
-//        }
-//
-//
-//        }
-//
-//public void onPageFinished(WebView view, String url) {
-//
-//        progressBar.setVisibility(View.GONE);
-//
-//        }
-//
-//public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-//
-//        progressBar.setVisibility(View.GONE);
-//
-//        }
-//        });
-//https://github.com/hwasiti/Android_Popup_Webview_handler_example/blob/master/app/src/main/java/com/example/haider/myapplication/MainActivity.java
 package pharamacy.eg.sala.payment;
 
 import android.annotation.SuppressLint;
@@ -131,7 +93,6 @@ public class GetPay extends AppCompatActivity {
         adView.setAdSize(AdSize.BANNER);
         adView.setAdUnitId("ca-app-pub-1743625796086476/3426647804");
         activity = this;
-        startAd();
         final MediaController mediacontroller = new MediaController(this);
 
         StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("video/").child("InShot_20200412_204213021.mp4");
@@ -434,12 +395,7 @@ public class GetPay extends AppCompatActivity {
         return endDay;
     }
 
-    private void startAd() {
-        MobileAds.initialize(activity, "ca-app-pub-1743625796086476~4917839514");
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
 
-    }
 }
 
 

@@ -195,22 +195,7 @@ public class Home_pharm extends Fragment {
                 search.setMaxWidth(4000);
             }
         });
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                text = newText;
-                if (text != null) adapter.getFilter().filter(text);
-                else {
-                    return false;
-                }
-                return false;
-            }
-        });
         //ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
         //https://www.youtube.com/watch?v=PmqYd-AdmC0
         typeSearch.setOnClickListener(new View.OnClickListener() {
@@ -231,8 +216,28 @@ public class Home_pharm extends Fragment {
         local_medicines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
                 adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_of_items, R.id.textViewList, nameProductL);
+                search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
 
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        text = newText;
+                        if (text != null) adapter.getFilter().filter(text);
+                        else {
+                            return false;
+                        }
+                        return false;
+                    }
+                });
                 listProductInfo.setVisibility(View.VISIBLE);
                 ProductInfo.setVisibility(View.GONE);
                 listProductInfo.setAdapter(adapter);
@@ -262,7 +267,28 @@ public class Home_pharm extends Fragment {
         accessories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
                 adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_of_items, R.id.textViewList, nameProductAccessories);
+                search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        text = newText;
+                        if (text != null) adapter.getFilter().filter(text);
+                        else {
+                            return false;
+                        }
+                        return false;
+                    }
+                });
                 listProductInfo.setVisibility(View.VISIBLE);
                 ProductInfo.setVisibility(View.GONE);
                 listProductInfo.setAdapter(adapter);
@@ -287,8 +313,28 @@ public class Home_pharm extends Fragment {
         imported_medicines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
                 adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_of_items, R.id.textViewList, nameProductImported);
+                search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        text = newText;
+                        if (text != null) adapter.getFilter().filter(text);
+                        else {
+                            return false;
+                        }
+                        return false;
+                    }
+                });
                 listProductInfo.setVisibility(View.VISIBLE);
                 ProductInfo.setVisibility(View.GONE);
                 listProductInfo.setAdapter(adapter);
@@ -327,6 +373,22 @@ public class Home_pharm extends Fragment {
                 nameProductL.add(dataSnapshot.getKey());
                 if (nameProductL.size() > 50) {
                     adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_of_items, R.id.textViewList, nameProductL);
+                    search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String query) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String newText) {
+                            text = newText;
+                            if (text != null) adapter.getFilter().filter(text);
+                            else {
+                                return false;
+                            }
+                            return false;
+                        }
+                    });
                     listProductInfo.setVisibility(View.VISIBLE);
                     ProductInfo.setVisibility(View.GONE);
                     listProductInfo.setAdapter(adapter);
